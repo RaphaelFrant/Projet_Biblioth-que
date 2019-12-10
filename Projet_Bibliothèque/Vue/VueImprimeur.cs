@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Projet_Bibliothèque
+namespace Projet_Bibliothèque.Vue
 {
-    public partial class Accueil : Form
+    public partial class VueImprimeur : Form
     {
-        public Accueil()
+        public VueImprimeur()
         {
             InitializeComponent();
+        }
+
+        private void labDateDebModifImpr_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

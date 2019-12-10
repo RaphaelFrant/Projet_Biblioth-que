@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Projet_Bibliothèque
+namespace Projet_Bibliothèque.Vue
 {
-    public partial class Accueil : Form
+    public partial class VueEditeur : Form
     {
-        public Accueil()
+        public VueEditeur()
         {
             InitializeComponent();
         }
