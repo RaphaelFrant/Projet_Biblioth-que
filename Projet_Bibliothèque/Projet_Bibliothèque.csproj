@@ -54,11 +54,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vue\VueAfficherLivre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueAfficherLivre.Designer.cs">
+      <DependentUpon>VueAfficherLivre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vue\VueAuteur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vue\VueAuteur.Designer.cs">
       <DependentUpon>VueAuteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueCreationLivre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueCreationLivre.Designer.cs">
+      <DependentUpon>VueCreationLivre.cs</DependentUpon>
     </Compile>
     <Compile Include="Vue\VueEditeur.cs">
       <SubType>Form</SubType>
@@ -71,6 +83,24 @@
     </Compile>
     <Compile Include="Vue\VueImprimeur.Designer.cs">
       <DependentUpon>VueImprimeur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueIntervenantDivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueIntervenantDivers.Designer.cs">
+      <DependentUpon>VueIntervenantDivers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueRecherche.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueRecherche.Designer.cs">
+      <DependentUpon>VueRecherche.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueSuppressionLivre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueSuppressionLivre.Designer.cs">
+      <DependentUpon>VueSuppressionLivre.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -92,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueImprimeur.resx">
       <DependentUpon>VueImprimeur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueIntervenantDivers.resx">
+      <DependentUpon>VueIntervenantDivers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
