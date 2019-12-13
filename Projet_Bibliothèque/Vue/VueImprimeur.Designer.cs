@@ -53,6 +53,10 @@
             this.cmbBoxChoixSupprImpr = new System.Windows.Forms.ComboBox();
             this.labChoixSupprImpr = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.labNatioCreaImpr = new System.Windows.Forms.Label();
+            this.txtNatioCreaImpr = new System.Windows.Forms.TextBox();
+            this.labNatioModifImpr = new System.Windows.Forms.Label();
+            this.txtNatioModifImpr = new System.Windows.Forms.TextBox();
             this.grpBoxNouvImprim.SuspendLayout();
             this.grBoxModifImpr.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,6 +86,8 @@
             // 
             // grpBoxNouvImprim
             // 
+            this.grpBoxNouvImprim.Controls.Add(this.txtNatioCreaImpr);
+            this.grpBoxNouvImprim.Controls.Add(this.labNatioCreaImpr);
             this.grpBoxNouvImprim.Controls.Add(this.btnAjoutImpr);
             this.grpBoxNouvImprim.Controls.Add(this.txtDateFinNouvImpr);
             this.grpBoxNouvImprim.Controls.Add(this.labDateFermImprim);
@@ -99,7 +105,7 @@
             // 
             // btnAjoutImpr
             // 
-            this.btnAjoutImpr.Location = new System.Drawing.Point(283, 184);
+            this.btnAjoutImpr.Location = new System.Drawing.Point(460, 178);
             this.btnAjoutImpr.Name = "btnAjoutImpr";
             this.btnAjoutImpr.Size = new System.Drawing.Size(123, 38);
             this.btnAjoutImpr.TabIndex = 10;
@@ -108,15 +114,15 @@
             // 
             // txtDateFinNouvImpr
             // 
-            this.txtDateFinNouvImpr.Location = new System.Drawing.Point(440, 139);
+            this.txtDateFinNouvImpr.Location = new System.Drawing.Point(458, 126);
             this.txtDateFinNouvImpr.Name = "txtDateFinNouvImpr";
-            this.txtDateFinNouvImpr.Size = new System.Drawing.Size(168, 26);
+            this.txtDateFinNouvImpr.Size = new System.Drawing.Size(150, 26);
             this.txtDateFinNouvImpr.TabIndex = 9;
             // 
             // labDateFermImprim
             // 
             this.labDateFermImprim.AutoSize = true;
-            this.labDateFermImprim.Location = new System.Drawing.Point(381, 103);
+            this.labDateFermImprim.Location = new System.Drawing.Point(411, 103);
             this.labDateFermImprim.Name = "labDateFermImprim";
             this.labDateFermImprim.Size = new System.Drawing.Size(248, 20);
             this.labDateFermImprim.TabIndex = 8;
@@ -124,15 +130,15 @@
             // 
             // txtDateDebNouvImpr
             // 
-            this.txtDateDebNouvImpr.Location = new System.Drawing.Point(58, 139);
+            this.txtDateDebNouvImpr.Location = new System.Drawing.Point(90, 126);
             this.txtDateDebNouvImpr.Name = "txtDateDebNouvImpr";
-            this.txtDateDebNouvImpr.Size = new System.Drawing.Size(168, 26);
+            this.txtDateDebNouvImpr.Size = new System.Drawing.Size(150, 26);
             this.txtDateDebNouvImpr.TabIndex = 7;
             // 
             // labDateDebNouvImpr
             // 
             this.labDateDebNouvImpr.AutoSize = true;
-            this.labDateDebNouvImpr.Location = new System.Drawing.Point(23, 103);
+            this.labDateDebNouvImpr.Location = new System.Drawing.Point(62, 103);
             this.labDateDebNouvImpr.Name = "labDateDebNouvImpr";
             this.labDateDebNouvImpr.Size = new System.Drawing.Size(216, 20);
             this.labDateDebNouvImpr.TabIndex = 6;
@@ -156,6 +162,8 @@
             // 
             // grBoxModifImpr
             // 
+            this.grBoxModifImpr.Controls.Add(this.txtNatioModifImpr);
+            this.grBoxModifImpr.Controls.Add(this.labNatioModifImpr);
             this.grBoxModifImpr.Controls.Add(this.btnModifImpr);
             this.grBoxModifImpr.Controls.Add(this.textBox3);
             this.grBoxModifImpr.Controls.Add(this.textBox2);
@@ -175,7 +183,7 @@
             // 
             // btnModifImpr
             // 
-            this.btnModifImpr.Location = new System.Drawing.Point(283, 216);
+            this.btnModifImpr.Location = new System.Drawing.Point(460, 209);
             this.btnModifImpr.Name = "btnModifImpr";
             this.btnModifImpr.Size = new System.Drawing.Size(123, 41);
             this.btnModifImpr.TabIndex = 8;
@@ -297,6 +305,38 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             // 
+            // labNatioCreaImpr
+            // 
+            this.labNatioCreaImpr.AutoSize = true;
+            this.labNatioCreaImpr.Location = new System.Drawing.Point(23, 187);
+            this.labNatioCreaImpr.Name = "labNatioCreaImpr";
+            this.labNatioCreaImpr.Size = new System.Drawing.Size(98, 20);
+            this.labNatioCreaImpr.TabIndex = 11;
+            this.labNatioCreaImpr.Text = "Nationalité* :";
+            // 
+            // txtNatioCreaImpr
+            // 
+            this.txtNatioCreaImpr.Location = new System.Drawing.Point(127, 184);
+            this.txtNatioCreaImpr.Name = "txtNatioCreaImpr";
+            this.txtNatioCreaImpr.Size = new System.Drawing.Size(223, 26);
+            this.txtNatioCreaImpr.TabIndex = 12;
+            // 
+            // labNatioModifImpr
+            // 
+            this.labNatioModifImpr.AutoSize = true;
+            this.labNatioModifImpr.Location = new System.Drawing.Point(23, 219);
+            this.labNatioModifImpr.Name = "labNatioModifImpr";
+            this.labNatioModifImpr.Size = new System.Drawing.Size(98, 20);
+            this.labNatioModifImpr.TabIndex = 9;
+            this.labNatioModifImpr.Text = "Nationalité* :";
+            // 
+            // txtNatioModifImpr
+            // 
+            this.txtNatioModifImpr.Location = new System.Drawing.Point(127, 216);
+            this.txtNatioModifImpr.Name = "txtNatioModifImpr";
+            this.txtNatioModifImpr.Size = new System.Drawing.Size(223, 26);
+            this.txtNatioModifImpr.TabIndex = 10;
+            // 
             // VueImprimeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,5 +388,9 @@
         private System.Windows.Forms.ComboBox cmbBoxChoixSupprImpr;
         private System.Windows.Forms.Label labChoixSupprImpr;
         private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.TextBox txtNatioCreaImpr;
+        private System.Windows.Forms.Label labNatioCreaImpr;
+        private System.Windows.Forms.TextBox txtNatioModifImpr;
+        private System.Windows.Forms.Label labNatioModifImpr;
     }
 }

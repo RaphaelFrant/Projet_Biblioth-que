@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Projet_Bibliothèque.Vue
 {
-    public partial class VueCreationLivre : Form
+    public partial class Accueil : Form
     {
-        public VueCreationLivre()
+        public Accueil()
         {
             InitializeComponent();
         }
-        
     }
 }
