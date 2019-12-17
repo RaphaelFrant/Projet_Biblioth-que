@@ -60,6 +60,30 @@
     <Compile Include="Vue\Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vue\VueAfficherAuteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueAfficherAuteur.Designer.cs">
+      <DependentUpon>VueAfficherAuteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueAfficherEditeur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueAfficherEditeur.Designer.cs">
+      <DependentUpon>VueAfficherEditeur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueAfficherImprimeur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueAfficherImprimeur.Designer.cs">
+      <DependentUpon>VueAfficherImprimeur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueAfficherIntervenant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueAfficherIntervenant.Designer.cs">
+      <DependentUpon>VueAfficherIntervenant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vue\VueAfficherLivre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +147,21 @@
     <EmbeddedResource Include="Vue\Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueAfficherAuteur.resx">
+      <DependentUpon>VueAfficherAuteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueAfficherEditeur.resx">
+      <DependentUpon>VueAfficherEditeur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueAfficherImprimeur.resx">
+      <DependentUpon>VueAfficherImprimeur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueAfficherIntervenant.resx">
+      <DependentUpon>VueAfficherIntervenant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueAfficherLivre.resx">
+      <DependentUpon>VueAfficherLivre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueAuteur.resx">
       <DependentUpon>VueAuteur.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueIntervenantDivers.resx">
       <DependentUpon>VueIntervenantDivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueRecherche.resx">
+      <DependentUpon>VueRecherche.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
