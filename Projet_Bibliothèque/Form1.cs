@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_Bibliothèque.Vue;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,18 @@ using System.Windows.Forms;
 
 namespace Projet_Bibliothèque
 {
-    public partial class Accueil : Form
+    public partial class Intro : Form
     {
-        public Accueil()
+        public Intro()
         {
             InitializeComponent();
+        }
+
+        private void btnDebut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Accueil nouvPageAcc = new Accueil();
+            nouvPageAcc.Show();
         }
     }
 }

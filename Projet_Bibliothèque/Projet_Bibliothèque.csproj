@@ -52,6 +52,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modèle\Auteur.cs" />
+    <Compile Include="Modèle\Editeur.cs" />
+    <Compile Include="Modèle\Fonction.cs" />
+    <Compile Include="Modèle\GenreLitteraire.cs" />
+    <Compile Include="Modèle\Imprimeur.cs" />
+    <Compile Include="Modèle\IntervenantDivers.cs" />
+    <Compile Include="Modèle\Livre.cs" />
+    <Compile Include="Modèle\Pays.cs" />
+    <Compile Include="Modèle\PeriodeTemporelle.cs" />
+    <Compile Include="Modèle\SerieLivre.cs" />
+    <Compile Include="Modèle\TypeLivre.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vue\Accueil.cs">
@@ -95,6 +106,12 @@
     </Compile>
     <Compile Include="Vue\VueAuteur.Designer.cs">
       <DependentUpon>VueAuteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\VueChoixLivre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueChoixLivre.Designer.cs">
+      <DependentUpon>VueChoixLivre.cs</DependentUpon>
     </Compile>
     <Compile Include="Vue\VueCreationLivre.cs">
       <SubType>Form</SubType>
@@ -165,6 +182,9 @@
     <EmbeddedResource Include="Vue\VueAuteur.resx">
       <DependentUpon>VueAuteur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueChoixLivre.resx">
+      <DependentUpon>VueChoixLivre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueCreationLivre.resx">
       <DependentUpon>VueCreationLivre.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,7 +216,6 @@
   <ItemGroup>
     <Folder Include="Base de données\" />
     <Folder Include="Controlleur\" />
-    <Folder Include="Modèle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

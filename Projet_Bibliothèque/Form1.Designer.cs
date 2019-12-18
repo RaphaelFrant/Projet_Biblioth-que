@@ -1,6 +1,6 @@
 ﻿namespace Projet_Bibliothèque
 {
-    partial class Accueil
+    partial class Intro
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Intro));
             this.labTitrePrincip = new System.Windows.Forms.Label();
             this.txtIntroAppli = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -74,8 +74,9 @@
             this.btnDebut.TabIndex = 3;
             this.btnDebut.Text = "Commencer";
             this.btnDebut.UseVisualStyleBackColor = true;
+            this.btnDebut.Click += new System.EventHandler(this.btnDebut_Click);
             // 
-            // Accueil
+            // Intro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,8 +85,8 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.txtIntroAppli);
             this.Controls.Add(this.labTitrePrincip);
-            this.Name = "Accueil";
-            this.Text = "Accueil";
+            this.Name = "Intro";
+            this.Text = "Introduction";
             this.ResumeLayout(false);
             this.PerformLayout();
 

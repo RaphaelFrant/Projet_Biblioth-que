@@ -31,6 +31,8 @@
             this.labGestInterv = new System.Windows.Forms.Label();
             this.txtGestInterv = new System.Windows.Forms.RichTextBox();
             this.grpboxCreaInterv = new System.Windows.Forms.GroupBox();
+            this.txtNatioCreaInterv = new System.Windows.Forms.TextBox();
+            this.labNatioCreaInterv = new System.Windows.Forms.Label();
             this.txtFoncCreaInterv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAjoutCreaInterv = new System.Windows.Forms.Button();
@@ -45,6 +47,8 @@
             this.txtNomCreaInterv = new System.Windows.Forms.TextBox();
             this.labNomCreaInterv = new System.Windows.Forms.Label();
             this.grpboxModifInterv = new System.Windows.Forms.GroupBox();
+            this.txtNatioModifInterv = new System.Windows.Forms.TextBox();
+            this.labNatioModifInterv = new System.Windows.Forms.Label();
             this.txtFoncModifInterv = new System.Windows.Forms.TextBox();
             this.labFoncModifInterv = new System.Windows.Forms.Label();
             this.btnModifInterv = new System.Windows.Forms.Button();
@@ -65,10 +69,6 @@
             this.cmboxChoixSupprInterv = new System.Windows.Forms.ComboBox();
             this.labChoixSupprInterv = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.labNatioModifInterv = new System.Windows.Forms.Label();
-            this.txtNatioModifInterv = new System.Windows.Forms.TextBox();
-            this.labNatioCreaInterv = new System.Windows.Forms.Label();
-            this.txtNatioCreaInterv = new System.Windows.Forms.TextBox();
             this.grpboxCreaInterv.SuspendLayout();
             this.grpboxModifInterv.SuspendLayout();
             this.grpboxSupprInterv.SuspendLayout();
@@ -120,6 +120,22 @@
             this.grpboxCreaInterv.TabIndex = 2;
             this.grpboxCreaInterv.TabStop = false;
             this.grpboxCreaInterv.Text = "Création d\'intervenants";
+            // 
+            // txtNatioCreaInterv
+            // 
+            this.txtNatioCreaInterv.Location = new System.Drawing.Point(673, 133);
+            this.txtNatioCreaInterv.Name = "txtNatioCreaInterv";
+            this.txtNatioCreaInterv.Size = new System.Drawing.Size(226, 26);
+            this.txtNatioCreaInterv.TabIndex = 14;
+            // 
+            // labNatioCreaInterv
+            // 
+            this.labNatioCreaInterv.AutoSize = true;
+            this.labNatioCreaInterv.Location = new System.Drawing.Point(579, 136);
+            this.labNatioCreaInterv.Name = "labNatioCreaInterv";
+            this.labNatioCreaInterv.Size = new System.Drawing.Size(92, 20);
+            this.labNatioCreaInterv.TabIndex = 13;
+            this.labNatioCreaInterv.Text = "Nationalité :";
             // 
             // txtFoncCreaInterv
             // 
@@ -252,6 +268,22 @@
             this.grpboxModifInterv.TabIndex = 3;
             this.grpboxModifInterv.TabStop = false;
             this.grpboxModifInterv.Text = "Modification d\'intervenant";
+            // 
+            // txtNatioModifInterv
+            // 
+            this.txtNatioModifInterv.Location = new System.Drawing.Point(673, 158);
+            this.txtNatioModifInterv.Name = "txtNatioModifInterv";
+            this.txtNatioModifInterv.Size = new System.Drawing.Size(226, 26);
+            this.txtNatioModifInterv.TabIndex = 16;
+            // 
+            // labNatioModifInterv
+            // 
+            this.labNatioModifInterv.AutoSize = true;
+            this.labNatioModifInterv.Location = new System.Drawing.Point(569, 161);
+            this.labNatioModifInterv.Name = "labNatioModifInterv";
+            this.labNatioModifInterv.Size = new System.Drawing.Size(92, 20);
+            this.labNatioModifInterv.TabIndex = 15;
+            this.labNatioModifInterv.Text = "Nationalité :";
             // 
             // txtFoncModifInterv
             // 
@@ -423,38 +455,7 @@
             this.btnRetour.TabIndex = 5;
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
-            // 
-            // labNatioModifInterv
-            // 
-            this.labNatioModifInterv.AutoSize = true;
-            this.labNatioModifInterv.Location = new System.Drawing.Point(569, 161);
-            this.labNatioModifInterv.Name = "labNatioModifInterv";
-            this.labNatioModifInterv.Size = new System.Drawing.Size(92, 20);
-            this.labNatioModifInterv.TabIndex = 15;
-            this.labNatioModifInterv.Text = "Nationalité :";
-            // 
-            // txtNatioModifInterv
-            // 
-            this.txtNatioModifInterv.Location = new System.Drawing.Point(673, 158);
-            this.txtNatioModifInterv.Name = "txtNatioModifInterv";
-            this.txtNatioModifInterv.Size = new System.Drawing.Size(226, 26);
-            this.txtNatioModifInterv.TabIndex = 16;
-            // 
-            // labNatioCreaInterv
-            // 
-            this.labNatioCreaInterv.AutoSize = true;
-            this.labNatioCreaInterv.Location = new System.Drawing.Point(579, 136);
-            this.labNatioCreaInterv.Name = "labNatioCreaInterv";
-            this.labNatioCreaInterv.Size = new System.Drawing.Size(92, 20);
-            this.labNatioCreaInterv.TabIndex = 13;
-            this.labNatioCreaInterv.Text = "Nationalité :";
-            // 
-            // txtNatioCreaInterv
-            // 
-            this.txtNatioCreaInterv.Location = new System.Drawing.Point(673, 133);
-            this.txtNatioCreaInterv.Name = "txtNatioCreaInterv";
-            this.txtNatioCreaInterv.Size = new System.Drawing.Size(226, 26);
-            this.txtNatioCreaInterv.TabIndex = 14;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // VueIntervenantDivers
             // 

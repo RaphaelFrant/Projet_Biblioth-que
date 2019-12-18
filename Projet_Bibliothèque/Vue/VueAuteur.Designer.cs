@@ -31,6 +31,8 @@
             this.labGestAut = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.grpboxCreaAut = new System.Windows.Forms.GroupBox();
+            this.txtNatioCreaAut = new System.Windows.Forms.TextBox();
+            this.labNatioCreaAut = new System.Windows.Forms.Label();
             this.btnCreaAut = new System.Windows.Forms.Button();
             this.txtDateMortCreaAut = new System.Windows.Forms.TextBox();
             this.labDateMortCreaAut = new System.Windows.Forms.Label();
@@ -43,6 +45,8 @@
             this.txtNomCreaAut = new System.Windows.Forms.TextBox();
             this.labNomCreaAut = new System.Windows.Forms.Label();
             this.grpboxEditAut = new System.Windows.Forms.GroupBox();
+            this.txtNatioModifAut = new System.Windows.Forms.TextBox();
+            this.labNatioModifAut = new System.Windows.Forms.Label();
             this.btnModifAut = new System.Windows.Forms.Button();
             this.txtDateMortModifAut = new System.Windows.Forms.TextBox();
             this.labDateMortModifAut = new System.Windows.Forms.Label();
@@ -61,10 +65,6 @@
             this.cmboxChoixSupprAut = new System.Windows.Forms.ComboBox();
             this.labChoixSupprAut = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.labNatioCreaAut = new System.Windows.Forms.Label();
-            this.txtNatioCreaAut = new System.Windows.Forms.TextBox();
-            this.labNatioModifAut = new System.Windows.Forms.Label();
-            this.txtNatioModifAut = new System.Windows.Forms.TextBox();
             this.grpboxCreaAut.SuspendLayout();
             this.grpboxEditAut.SuspendLayout();
             this.grpboxSupprAut.SuspendLayout();
@@ -114,6 +114,22 @@
             this.grpboxCreaAut.TabIndex = 2;
             this.grpboxCreaAut.TabStop = false;
             this.grpboxCreaAut.Text = "Création d\'auteur";
+            // 
+            // txtNatioCreaAut
+            // 
+            this.txtNatioCreaAut.Location = new System.Drawing.Point(129, 140);
+            this.txtNatioCreaAut.Name = "txtNatioCreaAut";
+            this.txtNatioCreaAut.Size = new System.Drawing.Size(232, 26);
+            this.txtNatioCreaAut.TabIndex = 12;
+            // 
+            // labNatioCreaAut
+            // 
+            this.labNatioCreaAut.AutoSize = true;
+            this.labNatioCreaAut.Location = new System.Drawing.Point(25, 143);
+            this.labNatioCreaAut.Name = "labNatioCreaAut";
+            this.labNatioCreaAut.Size = new System.Drawing.Size(98, 20);
+            this.labNatioCreaAut.TabIndex = 11;
+            this.labNatioCreaAut.Text = "Nationalité* :";
             // 
             // btnCreaAut
             // 
@@ -228,6 +244,22 @@
             this.grpboxEditAut.TabIndex = 3;
             this.grpboxEditAut.TabStop = false;
             this.grpboxEditAut.Text = "Modification d\'auteur";
+            // 
+            // txtNatioModifAut
+            // 
+            this.txtNatioModifAut.Location = new System.Drawing.Point(129, 183);
+            this.txtNatioModifAut.Name = "txtNatioModifAut";
+            this.txtNatioModifAut.Size = new System.Drawing.Size(232, 26);
+            this.txtNatioModifAut.TabIndex = 14;
+            // 
+            // labNatioModifAut
+            // 
+            this.labNatioModifAut.AutoSize = true;
+            this.labNatioModifAut.Location = new System.Drawing.Point(25, 186);
+            this.labNatioModifAut.Name = "labNatioModifAut";
+            this.labNatioModifAut.Size = new System.Drawing.Size(98, 20);
+            this.labNatioModifAut.TabIndex = 13;
+            this.labNatioModifAut.Text = "Nationalité* :";
             // 
             // btnModifAut
             // 
@@ -383,38 +415,7 @@
             this.btnRetour.TabIndex = 5;
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
-            // 
-            // labNatioCreaAut
-            // 
-            this.labNatioCreaAut.AutoSize = true;
-            this.labNatioCreaAut.Location = new System.Drawing.Point(25, 143);
-            this.labNatioCreaAut.Name = "labNatioCreaAut";
-            this.labNatioCreaAut.Size = new System.Drawing.Size(98, 20);
-            this.labNatioCreaAut.TabIndex = 11;
-            this.labNatioCreaAut.Text = "Nationalité* :";
-            // 
-            // txtNatioCreaAut
-            // 
-            this.txtNatioCreaAut.Location = new System.Drawing.Point(129, 140);
-            this.txtNatioCreaAut.Name = "txtNatioCreaAut";
-            this.txtNatioCreaAut.Size = new System.Drawing.Size(232, 26);
-            this.txtNatioCreaAut.TabIndex = 12;
-            // 
-            // labNatioModifAut
-            // 
-            this.labNatioModifAut.AutoSize = true;
-            this.labNatioModifAut.Location = new System.Drawing.Point(25, 186);
-            this.labNatioModifAut.Name = "labNatioModifAut";
-            this.labNatioModifAut.Size = new System.Drawing.Size(98, 20);
-            this.labNatioModifAut.TabIndex = 13;
-            this.labNatioModifAut.Text = "Nationalité* :";
-            // 
-            // txtNatioModifAut
-            // 
-            this.txtNatioModifAut.Location = new System.Drawing.Point(129, 183);
-            this.txtNatioModifAut.Name = "txtNatioModifAut";
-            this.txtNatioModifAut.Size = new System.Drawing.Size(232, 26);
-            this.txtNatioModifAut.TabIndex = 14;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // VueAuteur
             // 

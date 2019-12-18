@@ -39,7 +39,6 @@
             this.btnEditeur = new System.Windows.Forms.Button();
             this.btnImpr = new System.Windows.Forms.Button();
             this.btnInterv = new System.Windows.Forms.Button();
-            this.btnRetour = new System.Windows.Forms.Button();
             this.labCreaLivre = new System.Windows.Forms.RichTextBox();
             this.labModifLivre = new System.Windows.Forms.RichTextBox();
             this.txtAffLivre = new System.Windows.Forms.RichTextBox();
@@ -82,6 +81,7 @@
             this.btnCreaLivre.TabIndex = 2;
             this.btnCreaLivre.Text = "Créer un livre";
             this.btnCreaLivre.UseVisualStyleBackColor = true;
+            this.btnCreaLivre.Click += new System.EventHandler(this.btnCreaLivre_Click);
             // 
             // btnModifLivre
             // 
@@ -92,6 +92,7 @@
             this.btnModifLivre.TabIndex = 3;
             this.btnModifLivre.Text = "Modifier un livre";
             this.btnModifLivre.UseVisualStyleBackColor = true;
+            this.btnModifLivre.Click += new System.EventHandler(this.btnModifLivre_Click);
             // 
             // btnAffLivre
             // 
@@ -102,6 +103,7 @@
             this.btnAffLivre.TabIndex = 4;
             this.btnAffLivre.Text = "Afficher un livre";
             this.btnAffLivre.UseVisualStyleBackColor = true;
+            this.btnAffLivre.Click += new System.EventHandler(this.btnAffLivre_Click);
             // 
             // btnSupprLivre
             // 
@@ -112,6 +114,7 @@
             this.btnSupprLivre.TabIndex = 5;
             this.btnSupprLivre.Text = "Supprimer un livre";
             this.btnSupprLivre.UseVisualStyleBackColor = true;
+            this.btnSupprLivre.Click += new System.EventHandler(this.btnSupprLivre_Click);
             // 
             // btnRecherche
             // 
@@ -122,6 +125,7 @@
             this.btnRecherche.TabIndex = 6;
             this.btnRecherche.Text = "Recherche";
             this.btnRecherche.UseVisualStyleBackColor = true;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
             // btnAuteur
             // 
@@ -132,6 +136,7 @@
             this.btnAuteur.TabIndex = 7;
             this.btnAuteur.Text = "Auteurs";
             this.btnAuteur.UseVisualStyleBackColor = true;
+            this.btnAuteur.Click += new System.EventHandler(this.btnAuteur_Click);
             // 
             // btnEditeur
             // 
@@ -142,6 +147,7 @@
             this.btnEditeur.TabIndex = 8;
             this.btnEditeur.Text = "Editeur";
             this.btnEditeur.UseVisualStyleBackColor = true;
+            this.btnEditeur.Click += new System.EventHandler(this.btnEditeur_Click);
             // 
             // btnImpr
             // 
@@ -152,6 +158,7 @@
             this.btnImpr.TabIndex = 9;
             this.btnImpr.Text = "Imprimeur";
             this.btnImpr.UseVisualStyleBackColor = true;
+            this.btnImpr.Click += new System.EventHandler(this.btnImpr_Click);
             // 
             // btnInterv
             // 
@@ -162,16 +169,7 @@
             this.btnInterv.TabIndex = 10;
             this.btnInterv.Text = "Intervenants divers";
             this.btnInterv.UseVisualStyleBackColor = true;
-            // 
-            // btnRetour
-            // 
-            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetour.Location = new System.Drawing.Point(325, 806);
-            this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(158, 46);
-            this.btnRetour.TabIndex = 11;
-            this.btnRetour.Text = "Retour";
-            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnInterv.Click += new System.EventHandler(this.btnInterv_Click);
             // 
             // labCreaLivre
             // 
@@ -285,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 873);
+            this.ClientSize = new System.Drawing.Size(800, 798);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
@@ -295,7 +293,6 @@
             this.Controls.Add(this.txtAffLivre);
             this.Controls.Add(this.labModifLivre);
             this.Controls.Add(this.labCreaLivre);
-            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.btnInterv);
             this.Controls.Add(this.btnImpr);
             this.Controls.Add(this.btnEditeur);
@@ -327,7 +324,6 @@
         private System.Windows.Forms.Button btnEditeur;
         private System.Windows.Forms.Button btnImpr;
         private System.Windows.Forms.Button btnInterv;
-        private System.Windows.Forms.Button btnRetour;
         private System.Windows.Forms.RichTextBox labCreaLivre;
         private System.Windows.Forms.RichTextBox labModifLivre;
         private System.Windows.Forms.RichTextBox txtAffLivre;

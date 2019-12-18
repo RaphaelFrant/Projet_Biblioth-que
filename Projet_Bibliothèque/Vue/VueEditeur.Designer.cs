@@ -31,6 +31,8 @@
             this.labGestEdit = new System.Windows.Forms.Label();
             this.txtGestEdit = new System.Windows.Forms.RichTextBox();
             this.grpboxCreaEdit = new System.Windows.Forms.GroupBox();
+            this.txtNatioCreaEdit = new System.Windows.Forms.TextBox();
+            this.labNatioCreaEdit = new System.Windows.Forms.Label();
             this.btnAjoutCreaEdit = new System.Windows.Forms.Button();
             this.txtAdressCreaEdit = new System.Windows.Forms.TextBox();
             this.labAdressCreaEdit = new System.Windows.Forms.Label();
@@ -41,6 +43,8 @@
             this.txtNomCreaEdit = new System.Windows.Forms.TextBox();
             this.labNomCreaEdit = new System.Windows.Forms.Label();
             this.grpboxModifEdit = new System.Windows.Forms.GroupBox();
+            this.txtNatioModifEdit = new System.Windows.Forms.TextBox();
+            this.labNatioModifEdit = new System.Windows.Forms.Label();
             this.btnModifEdit = new System.Windows.Forms.Button();
             this.txtAdModifEdit = new System.Windows.Forms.TextBox();
             this.labAdModifEdit = new System.Windows.Forms.Label();
@@ -57,10 +61,6 @@
             this.cmboxChoixSupprEdit = new System.Windows.Forms.ComboBox();
             this.labChoixSupprEdit = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.labNatioCreaEdit = new System.Windows.Forms.Label();
-            this.txtNatioCreaEdit = new System.Windows.Forms.TextBox();
-            this.labNatioModifEdit = new System.Windows.Forms.Label();
-            this.txtNatioModifEdit = new System.Windows.Forms.TextBox();
             this.grpboxCreaEdit.SuspendLayout();
             this.grpboxModifEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -108,6 +108,22 @@
             this.grpboxCreaEdit.TabIndex = 2;
             this.grpboxCreaEdit.TabStop = false;
             this.grpboxCreaEdit.Text = "Création d\'éditeur";
+            // 
+            // txtNatioCreaEdit
+            // 
+            this.txtNatioCreaEdit.Location = new System.Drawing.Point(508, 106);
+            this.txtNatioCreaEdit.Name = "txtNatioCreaEdit";
+            this.txtNatioCreaEdit.Size = new System.Drawing.Size(195, 26);
+            this.txtNatioCreaEdit.TabIndex = 10;
+            // 
+            // labNatioCreaEdit
+            // 
+            this.labNatioCreaEdit.AutoSize = true;
+            this.labNatioCreaEdit.Location = new System.Drawing.Point(560, 83);
+            this.labNatioCreaEdit.Name = "labNatioCreaEdit";
+            this.labNatioCreaEdit.Size = new System.Drawing.Size(98, 20);
+            this.labNatioCreaEdit.TabIndex = 9;
+            this.labNatioCreaEdit.Text = "Nationalité* :";
             // 
             // btnAjoutCreaEdit
             // 
@@ -204,6 +220,22 @@
             this.grpboxModifEdit.TabIndex = 3;
             this.grpboxModifEdit.TabStop = false;
             this.grpboxModifEdit.Text = "Modification d\'éditeur";
+            // 
+            // txtNatioModifEdit
+            // 
+            this.txtNatioModifEdit.Location = new System.Drawing.Point(508, 139);
+            this.txtNatioModifEdit.Name = "txtNatioModifEdit";
+            this.txtNatioModifEdit.Size = new System.Drawing.Size(195, 26);
+            this.txtNatioModifEdit.TabIndex = 12;
+            // 
+            // labNatioModifEdit
+            // 
+            this.labNatioModifEdit.AutoSize = true;
+            this.labNatioModifEdit.Location = new System.Drawing.Point(560, 116);
+            this.labNatioModifEdit.Name = "labNatioModifEdit";
+            this.labNatioModifEdit.Size = new System.Drawing.Size(98, 20);
+            this.labNatioModifEdit.TabIndex = 11;
+            this.labNatioModifEdit.Text = "Nationalité* :";
             // 
             // btnModifEdit
             // 
@@ -337,44 +369,13 @@
             // btnRetour
             // 
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetour.Location = new System.Drawing.Point(328, 900);
+            this.btnRetour.Location = new System.Drawing.Point(328, 887);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(127, 52);
             this.btnRetour.TabIndex = 5;
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
-            // 
-            // labNatioCreaEdit
-            // 
-            this.labNatioCreaEdit.AutoSize = true;
-            this.labNatioCreaEdit.Location = new System.Drawing.Point(560, 83);
-            this.labNatioCreaEdit.Name = "labNatioCreaEdit";
-            this.labNatioCreaEdit.Size = new System.Drawing.Size(98, 20);
-            this.labNatioCreaEdit.TabIndex = 9;
-            this.labNatioCreaEdit.Text = "Nationalité* :";
-            // 
-            // txtNatioCreaEdit
-            // 
-            this.txtNatioCreaEdit.Location = new System.Drawing.Point(508, 106);
-            this.txtNatioCreaEdit.Name = "txtNatioCreaEdit";
-            this.txtNatioCreaEdit.Size = new System.Drawing.Size(195, 26);
-            this.txtNatioCreaEdit.TabIndex = 10;
-            // 
-            // labNatioModifEdit
-            // 
-            this.labNatioModifEdit.AutoSize = true;
-            this.labNatioModifEdit.Location = new System.Drawing.Point(560, 116);
-            this.labNatioModifEdit.Name = "labNatioModifEdit";
-            this.labNatioModifEdit.Size = new System.Drawing.Size(98, 20);
-            this.labNatioModifEdit.TabIndex = 11;
-            this.labNatioModifEdit.Text = "Nationalité* :";
-            // 
-            // txtNatioModifEdit
-            // 
-            this.txtNatioModifEdit.Location = new System.Drawing.Point(508, 139);
-            this.txtNatioModifEdit.Name = "txtNatioModifEdit";
-            this.txtNatioModifEdit.Size = new System.Drawing.Size(195, 26);
-            this.txtNatioModifEdit.TabIndex = 12;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // VueEditeur
             // 

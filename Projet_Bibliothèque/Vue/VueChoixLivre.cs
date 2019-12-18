@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Projet_Bibliothèque.Vue
 {
-    public partial class VueImprimeur : Form
+    public partial class VueChoixLivre : Form
     {
-        public VueImprimeur()
+        public VueChoixLivre()
         {
             InitializeComponent();
-        }
-
-        private void labDateDebModifImpr_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRetour_Click(object sender, EventArgs e)

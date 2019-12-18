@@ -17,6 +17,11 @@ namespace Projet_Bibliothèque.Vue
             InitializeComponent();
         }
 
-        
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Accueil pageAcc = new Accueil();
+            pageAcc.Show();
+        }
     }
 }
