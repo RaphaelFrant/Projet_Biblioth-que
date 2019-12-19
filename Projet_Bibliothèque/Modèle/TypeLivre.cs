@@ -45,6 +45,10 @@ namespace Projet_Bibliothèque.Modèle
                 {
                     throw new Exception("Le libellé du type de livre ne peut pas être vide.");
                 }
+                else if (value.Length > 20)
+                {
+                    throw new Exception("Le libellé du type de livre ne peut pas excédé 20 caractères.");
+                }
                 else
                 {
                     this.libTypeLivre = value;

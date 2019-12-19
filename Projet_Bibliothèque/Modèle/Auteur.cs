@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Modèle
     {
         //--------------------------------Variable--------------------------------
         public int idAut;
+        public int idPaysAut;
         public string nomAut;
         public string prenomAut;
         public string surnomAut;
@@ -36,6 +37,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idAut = value;
+                }
+            }
+        }
+
+        public int AccIdPaysAut
+        {
+            get { return this.idPaysAut; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant du pays de l'auteur ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idPaysAut = value;
                 }
             }
         }
@@ -125,9 +142,10 @@ namespace Projet_Bibliothèque.Modèle
         public Auteur() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe Auteur</summary>
-        public Auteur(int numAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
+        public Auteur(int numAuteur, int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
         {
             AccIdAut = numAuteur;
+            AccIdPaysAut = numPaysAuteur;
             AccNomAut = nomAuteur;
             AccPrenomAut = prenomAuteur;
             AccSurnomAut = pseudoAuteur;
@@ -136,8 +154,9 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe Auteur</summary>
-        public Auteur(string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
+        public Auteur(int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
         {
+            AccIdPaysAut = numPaysAuteur;
             AccNomAut = nomAuteur;
             AccPrenomAut = prenomAuteur;
             AccSurnomAut = pseudoAuteur;

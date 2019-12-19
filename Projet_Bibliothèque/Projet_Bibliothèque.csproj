@@ -59,6 +59,10 @@
     <Compile Include="Modèle\Imprimeur.cs" />
     <Compile Include="Modèle\IntervenantDivers.cs" />
     <Compile Include="Modèle\Livre.cs" />
+    <Compile Include="Modèle\ModeleAssocier.cs" />
+    <Compile Include="Modèle\ModeleEcrire.cs" />
+    <Compile Include="Modèle\ModeleIntervenir.cs" />
+    <Compile Include="Modèle\ModeleTravailler.cs" />
     <Compile Include="Modèle\Pays.cs" />
     <Compile Include="Modèle\PeriodeTemporelle.cs" />
     <Compile Include="Modèle\SerieLivre.cs" />

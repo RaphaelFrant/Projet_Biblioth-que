@@ -45,6 +45,10 @@ namespace Projet_Bibliothèque.Modèle
                 {
                     throw new Exception("Le libellé d'une fonction d'un intervenant ne peut pas être vide.");
                 }
+                else if (value.Length > 50)
+                {
+                    throw new Exception("Le libellé de la fonction de l'intervenant ne peut pas excédé 50 caractères.");
+                }
                 else
                 {
                     this.libFonct = value;

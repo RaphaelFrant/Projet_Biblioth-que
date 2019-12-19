@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Modèle
     {
         //--------------------------------Variable--------------------------------
         public int idImprim;
+        public int idPaysImprim;
         public string nomImprim;
         public DateTime dateDebImprim;
         public DateTime dateFinImprim;
@@ -34,6 +35,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idImprim = value;
+                }
+            }
+        }
+
+        public int AccIdPaysImprim
+        {
+            get { return this.idPaysImprim; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant du pays de l'imprimeur ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idPaysImprim = value;
                 }
             }
         }
@@ -91,17 +108,19 @@ namespace Projet_Bibliothèque.Modèle
         public Imprimeur() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe Imprimeur</summary>
-        public Imprimeur (int numImprimeur, string libImprimeur, DateTime dateOuvert, DateTime dateFerme)
+        public Imprimeur (int numImprimeur, int numPaysImprimeur, string libImprimeur, DateTime dateOuvert, DateTime dateFerme)
         {
             AccIdImprim = numImprimeur;
+            AccIdPaysImprim = numPaysImprimeur;
             AccLibImprim = libImprimeur;
             AccDateDebImprim = dateOuvert;
             AccDateFinImprim = dateFerme;
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe Imprimeur</summary>
-        public Imprimeur(string libImprimeur, DateTime dateOuvert, DateTime dateFerme)
+        public Imprimeur(int numPaysImprimeur, string libImprimeur, DateTime dateOuvert, DateTime dateFerme)
         {
+            AccIdPaysImprim = numPaysImprimeur;
             AccLibImprim = libImprimeur;
             AccDateDebImprim = dateOuvert;
             AccDateFinImprim = dateFerme;

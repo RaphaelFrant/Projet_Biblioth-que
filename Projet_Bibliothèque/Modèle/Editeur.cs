@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Modèle
     {
         //--------------------------------Variable--------------------------------
         public int idEditeur;
+        public int idPaysEdit;
         public string nomEditeur;
         public DateTime dateDebEditeur;
         public DateTime dateFinEditeur;
@@ -35,6 +36,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idEditeur = value;
+                }
+            }
+        }
+
+        public int AccIdPaysEditeur
+        {
+            get { return this.idPaysEdit; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant du pays de l'éditeur ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idPaysEdit = value;
                 }
             }
         }
@@ -108,9 +125,10 @@ namespace Projet_Bibliothèque.Modèle
         public Editeur() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe Editeur</summary>
-        public Editeur(int numEditeur, string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
+        public Editeur(int numEditeur, int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
         {
             AccIdEditeur = numEditeur;
+            AccIdPaysEditeur = numIdPaysEditeur;
             AccLibEditeur = libEditeur;
             AccDateDebEditeur = dateOuvertEditeur;
             AccDateFinEditeur = dateFermeEditeur;
@@ -118,8 +136,9 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe Editeur</summary>
-        public Editeur(string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
+        public Editeur(int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
         {
+            AccIdPaysEditeur = numIdPaysEditeur;
             AccLibEditeur = libEditeur;
             AccDateDebEditeur = dateOuvertEditeur;
             AccDateFinEditeur = dateFermeEditeur;

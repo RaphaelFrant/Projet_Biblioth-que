@@ -45,6 +45,10 @@ namespace Projet_Bibliothèque.Modèle
                 {
                     throw new Exception("Le libellé du Pays ne peut pas être vide.");
                 }
+                else if (value.Length > 50)
+                {
+                    throw new Exception("Le nom du pays ne peut pas excédé 50 caractères.");
+                }
                 else
                 {
                     this.libPays = value;

@@ -45,6 +45,10 @@ namespace Projet_Bibliothèque.Modèle
                 {
                     throw new Exception("Le libellé de la période temporelle ne peut pas être vide.");
                 }
+                else if (value.Length > 30)
+                {
+                    throw new Exception("Le libellé de la période temporelle ne peut pas excédé 30 caractères.");
+                }
                 else
                 {
                     this.libPeriodTempo = value;

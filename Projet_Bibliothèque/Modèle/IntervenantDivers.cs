@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Modèle
     {
         //--------------------------------Variable--------------------------------
         public int idInterv;
+        public int idPaysInterv;
         public string nomInterv;
         public string prenomInterv;
         public string surnomInterv;
@@ -36,6 +37,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idInterv = value;
+                }
+            }
+        }
+
+        public int AccIdPaysInterv
+        {
+            get { return this.idPaysInterv; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant du pays de l'intervenant ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idPaysInterv = value;
                 }
             }
         }
@@ -125,9 +142,10 @@ namespace Projet_Bibliothèque.Modèle
         public IntervenantDivers() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe IntervenantDivers</summary>
-        public IntervenantDivers(int numIntervenant, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, DateTime dateDecesIntervenant)
+        public IntervenantDivers(int numIntervenant, int numPaysIntervenant, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, DateTime dateDecesIntervenant)
         {
             AccIdInterv = numIntervenant;
+            AccIdPaysInterv = numPaysIntervenant;
             AccNomInterv = nomIntervenant;
             AccPrenomInterv = prenomIntervenant;
             AccSurnomInterv = pseudoIntervenant;
@@ -136,8 +154,9 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe IntervenantDivers</summary>
-        public IntervenantDivers(string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, DateTime dateDecesIntervenant)
+        public IntervenantDivers(int numPaysIntervenant, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, DateTime dateDecesIntervenant)
         {
+            AccIdPaysInterv = numPaysIntervenant;
             AccNomInterv = nomIntervenant;
             AccPrenomInterv = prenomIntervenant;
             AccSurnomInterv = pseudoIntervenant;
