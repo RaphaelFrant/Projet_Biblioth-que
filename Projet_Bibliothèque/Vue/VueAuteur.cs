@@ -13,6 +13,9 @@ namespace Projet_Bibliothèque.Vue
 {
     public partial class VueAuteur : Form
     {
+        Auteur nouvAut = new Auteur();
+        Pays nouvPays = new Pays();
+
         public VueAuteur()
         {
             InitializeComponent();
@@ -31,15 +34,16 @@ namespace Projet_Bibliothèque.Vue
         {
             try
             {
-                int numeroPays = TrouvNumPays(txtNatioCreaAut.ToString());
-                Auteur nouvAuteur = new Auteur(numeroPays, txtNomCreaAut.ToString(), txtPrenomCreaAut.ToString(), txtSurnomCreaAut.ToString(), 
-                    DateTime.Parse(txtDateNaiCreaAut.ToString()), DateTime.Parse(txtDateMortCreaAut.ToString()));
+                int numeroPays = nouvPays.TrouvNumPays(txtNatioCreaAut.Text);
+                Auteur nouvAuteur = new Auteur(numeroPays, txtNomCreaAut.Text, txtPrenomCreaAut.Text, txtSurnomCreaAut.Text, DateTime.Parse(txtDateNaiCreaAut.Text),
+                    txtDateMortCreaAut.Text);
+                Auteur.InsertAuteur(nouvAuteur);
+                MessageBox.Show("Le nouvelle auteur a bien été créé");
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Impossible de créer un nouvel auteur.");
+                MessageBox.Show(ex.Message);
             }
-            
         }
     }
 }

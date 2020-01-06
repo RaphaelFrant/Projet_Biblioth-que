@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Modèle\Auteur.cs" />
+    <Compile Include="Modèle\ConnexionBase.cs" />
     <Compile Include="Modèle\Editeur.cs" />
     <Compile Include="Modèle\Fonction.cs" />
     <Compile Include="Modèle\GenreLitteraire.cs" />

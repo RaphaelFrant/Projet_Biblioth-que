@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Projet_Bibliothèque.Modèle
     /// </summary>
     /// <remarks>Auteur Raphaël Frantzen, Version 1, le 18/12/2019
     /// Implémentation des attributs des classes</remarks>
-    class Auteur
+    class Auteur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
         public int idAut;
@@ -22,7 +23,7 @@ namespace Projet_Bibliothèque.Modèle
         public string prenomAut;
         public string surnomAut;
         public DateTime dateNaiAut;
-        public DateTime dateMortAut;
+        public string dateMortAut;
 
         //--------------------------------Accesseur--------------------------------
         public int AccIdAut
@@ -94,14 +95,7 @@ namespace Projet_Bibliothèque.Modèle
             get { return this.surnomAut; }
             set
             {
-                if (value.Length == 0)
-                {
-                    throw new Exception("Le surnom de l'auteur ne peut pas être vide.");
-                }
-                else
-                {
-                    this.surnomAut = value;
-                }
+                this.surnomAut = value;
             }
         }
 
@@ -121,18 +115,25 @@ namespace Projet_Bibliothèque.Modèle
             }
         }
 
-        public DateTime AccDateMortAut
+        public string AccDateMortAut
         {
             get { return this.dateMortAut; }
             set
             {
-                if (value >= DateTime.Today)
+                if(value == "")
                 {
-                    throw new ArgumentOutOfRangeException("La date de décès de l'auteur ne peut pas être supérieur à la date du jour.");
+                    this.dateMortAut = null;
                 }
                 else
                 {
-                    this.dateMortAut = value;
+                    if (DateTime.Parse(value) >= DateTime.Today)
+                    {
+                        throw new ArgumentOutOfRangeException("La date de décès de l'auteur ne peut pas être supérieur à la date du jour.");
+                    }
+                    else
+                    {
+                        this.dateMortAut = value;
+                    }
                 }
             }
         }
@@ -142,7 +143,7 @@ namespace Projet_Bibliothèque.Modèle
         public Auteur() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe Auteur</summary>
-        public Auteur(int numAuteur, int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
+        public Auteur(int numAuteur, int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, string dateDecesAuteur)
         {
             AccIdAut = numAuteur;
             AccIdPaysAut = numPaysAuteur;
@@ -154,7 +155,7 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe Auteur</summary>
-        public Auteur(int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, DateTime dateDecesAuteur)
+        public Auteur(int numPaysAuteur, string nomAuteur, string prenomAuteur, string pseudoAuteur, DateTime dateNaiAuteur, string dateDecesAuteur)
         {
             AccIdPaysAut = numPaysAuteur;
             AccNomAut = nomAuteur;
@@ -165,5 +166,30 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         //--------------------------------Méthodes--------------------------------
+        /// <summary>
+        /// Méthode permettant de créer un auteur dans la base de données
+        /// </summary>
+        /// <exception cref="">Renvoie une exception si l'auteur n'a pas pu être créé</exception>
+        public static void InsertAuteur(Auteur nouvAut)
+        {
+            string libAut;
+            try
+            {
+                Connection();
+                libAut = "Insert into Auteur(idPays, nomAut, prenomAut, surnomAut, dateNaiAut, dateMortAut)values (";
+                libAut += "'" + nouvAut.AccIdPaysAut + "', ";
+                libAut += "'" + nouvAut.AccNomAut + "', ";
+                libAut += "'" + nouvAut.AccPrenomAut + "', ";
+                libAut += "'" + nouvAut.AccSurnomAut + "', ";
+                libAut += "'" + nouvAut.AccDateNaiAut + "', ";
+                libAut += "'" + nouvAut.AccDateMortAut + "')";
+                SqlCommand creaBdd = new SqlCommand(libAut, maConnexion);
+                creaBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de créer un nouvel auteur.");
+            }
+        }
     }
 }
