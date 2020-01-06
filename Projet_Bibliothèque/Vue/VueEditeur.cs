@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Vue
             InitializeComponent();
         }
 
+        //Bouton permettant de revenir à la page d'accueil
         private void btnRetour_Click(object sender, EventArgs e)
         {
             this.Hide();

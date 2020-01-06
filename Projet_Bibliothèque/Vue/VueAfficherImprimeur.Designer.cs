@@ -39,6 +39,7 @@
             this.txtNomImpr = new System.Windows.Forms.TextBox();
             this.labNomImpr = new System.Windows.Forms.Label();
             this.labDetailImpr = new System.Windows.Forms.Label();
+            this.btnRetour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewLivreImpr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@
             this.dtGridViewLivreImpr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridViewLivreImpr.Location = new System.Drawing.Point(42, 206);
             this.dtGridViewLivreImpr.Name = "dtGridViewLivreImpr";
-            this.dtGridViewLivreImpr.Size = new System.Drawing.Size(1121, 468);
+            this.dtGridViewLivreImpr.Size = new System.Drawing.Size(1121, 755);
             this.dtGridViewLivreImpr.TabIndex = 41;
             // 
             // txtNatioImpr
@@ -137,11 +138,23 @@
             this.labDetailImpr.TabIndex = 32;
             this.labDetailImpr.Text = "Détail d\'un imprimeur";
             // 
+            // btnRetour
+            // 
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Location = new System.Drawing.Point(527, 994);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(149, 37);
+            this.btnRetour.TabIndex = 43;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
             // VueAfficherImprimeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(1200, 1061);
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.labTabLivreImpr);
             this.Controls.Add(this.dtGridViewLivreImpr);
             this.Controls.Add(this.txtNatioImpr);
@@ -175,5 +188,6 @@
         private System.Windows.Forms.TextBox txtNomImpr;
         private System.Windows.Forms.Label labNomImpr;
         private System.Windows.Forms.Label labDetailImpr;
+        private System.Windows.Forms.Button btnRetour;
     }
 }

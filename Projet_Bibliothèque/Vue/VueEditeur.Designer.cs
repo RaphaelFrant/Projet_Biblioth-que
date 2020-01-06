@@ -312,6 +312,7 @@
             // 
             // cmboxChoixModifEdit
             // 
+            this.cmboxChoixModifEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixModifEdit.FormattingEnabled = true;
             this.cmboxChoixModifEdit.Location = new System.Drawing.Point(262, 29);
             this.cmboxChoixModifEdit.Name = "cmboxChoixModifEdit";
@@ -351,6 +352,7 @@
             // 
             // cmboxChoixSupprEdit
             // 
+            this.cmboxChoixSupprEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixSupprEdit.FormattingEnabled = true;
             this.cmboxChoixSupprEdit.Location = new System.Drawing.Point(276, 33);
             this.cmboxChoixSupprEdit.Name = "cmboxChoixSupprEdit";

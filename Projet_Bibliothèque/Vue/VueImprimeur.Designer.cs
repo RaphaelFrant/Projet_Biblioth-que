@@ -253,7 +253,6 @@
             this.labDateDebModifImpr.Size = new System.Drawing.Size(224, 20);
             this.labDateDebModifImpr.TabIndex = 4;
             this.labDateDebModifImpr.Text = "Date d\'ouverture d\'imprimeur : ";
-            this.labDateDebModifImpr.Click += new System.EventHandler(this.labDateDebModifImpr_Click);
             // 
             // textBox1
             // 
@@ -273,6 +272,7 @@
             // 
             // cmbBoxChoixModifImpr
             // 
+            this.cmbBoxChoixModifImpr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxChoixModifImpr.FormattingEnabled = true;
             this.cmbBoxChoixModifImpr.Location = new System.Drawing.Point(290, 40);
             this.cmbBoxChoixModifImpr.Name = "cmbBoxChoixModifImpr";
@@ -312,6 +312,7 @@
             // 
             // cmbBoxChoixSupprImpr
             // 
+            this.cmbBoxChoixSupprImpr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxChoixSupprImpr.FormattingEnabled = true;
             this.cmbBoxChoixSupprImpr.Location = new System.Drawing.Point(290, 41);
             this.cmbBoxChoixSupprImpr.Name = "cmbBoxChoixSupprImpr";

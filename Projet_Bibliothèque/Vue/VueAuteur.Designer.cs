@@ -139,6 +139,7 @@
             this.btnCreaAut.TabIndex = 10;
             this.btnCreaAut.Text = "Ajouter";
             this.btnCreaAut.UseVisualStyleBackColor = true;
+            this.btnCreaAut.Click += new System.EventHandler(this.btnCreaAut_Click);
             // 
             // txtDateMortCreaAut
             // 
@@ -352,6 +353,7 @@
             // 
             // cmboxChoixModifAut
             // 
+            this.cmboxChoixModifAut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixModifAut.FormattingEnabled = true;
             this.cmboxChoixModifAut.Location = new System.Drawing.Point(269, 35);
             this.cmboxChoixModifAut.Name = "cmboxChoixModifAut";
@@ -391,6 +393,7 @@
             // 
             // cmboxChoixSupprAut
             // 
+            this.cmboxChoixSupprAut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixSupprAut.FormattingEnabled = true;
             this.cmboxChoixSupprAut.Location = new System.Drawing.Point(283, 33);
             this.cmboxChoixSupprAut.Name = "cmboxChoixSupprAut";

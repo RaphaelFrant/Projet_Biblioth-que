@@ -175,6 +175,7 @@
             this.btnRetour.TabIndex = 26;
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // labTabLivreInterv
             // 

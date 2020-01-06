@@ -392,6 +392,7 @@
             // 
             // cmboxChoixModifInterv
             // 
+            this.cmboxChoixModifInterv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixModifInterv.FormattingEnabled = true;
             this.cmboxChoixModifInterv.Location = new System.Drawing.Point(300, 36);
             this.cmboxChoixModifInterv.Name = "cmboxChoixModifInterv";
@@ -431,6 +432,7 @@
             // 
             // cmboxChoixSupprInterv
             // 
+            this.cmboxChoixSupprInterv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixSupprInterv.FormattingEnabled = true;
             this.cmboxChoixSupprInterv.Location = new System.Drawing.Point(314, 37);
             this.cmboxChoixSupprInterv.Name = "cmboxChoixSupprInterv";

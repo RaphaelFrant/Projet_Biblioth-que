@@ -17,11 +17,7 @@ namespace Projet_Bibliothèque.Vue
             InitializeComponent();
         }
 
-        private void labDateDebModifImpr_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Bouton permettant de revenir à la page d'accueil
         private void btnRetour_Click(object sender, EventArgs e)
         {
             this.Hide();

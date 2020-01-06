@@ -41,6 +41,7 @@
             this.labNomEdit = new System.Windows.Forms.Label();
             this.labAdressEditeur = new System.Windows.Forms.Label();
             this.txtAdressEdit = new System.Windows.Forms.TextBox();
+            this.btnRetour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridViewLivreEdit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             this.dtGridViewLivreEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridViewLivreEdit.Location = new System.Drawing.Point(41, 211);
             this.dtGridViewLivreEdit.Name = "dtGridViewLivreEdit";
-            this.dtGridViewLivreEdit.Size = new System.Drawing.Size(1121, 468);
+            this.dtGridViewLivreEdit.Size = new System.Drawing.Size(1121, 749);
             this.dtGridViewLivreEdit.TabIndex = 28;
             // 
             // txtNatioEdit
@@ -156,11 +157,23 @@
             this.txtAdressEdit.Size = new System.Drawing.Size(606, 26);
             this.txtAdressEdit.TabIndex = 31;
             // 
+            // btnRetour
+            // 
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Location = new System.Drawing.Point(542, 982);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(127, 43);
+            this.btnRetour.TabIndex = 32;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
             // VueAfficherEditeur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(1200, 1061);
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.txtAdressEdit);
             this.Controls.Add(this.labAdressEditeur);
             this.Controls.Add(this.labTabLivreEdit);
@@ -199,5 +212,6 @@
         private System.Windows.Forms.Label labNomEdit;
         private System.Windows.Forms.Label labAdressEditeur;
         private System.Windows.Forms.TextBox txtAdressEdit;
+        private System.Windows.Forms.Button btnRetour;
     }
 }

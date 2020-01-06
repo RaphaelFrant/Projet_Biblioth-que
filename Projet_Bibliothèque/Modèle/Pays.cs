@@ -74,5 +74,18 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         //--------------------------------Méthodes--------------------------------
+        public int TrouvNumPays (string nomPays)
+        {
+            try
+            {
+                int numPays = 0;
+                return numPays;
+            }
+            catch
+            {
+                throw new Exception("Le format du nom de pays ne correspond pas à une donnée attendue.");
+            }
+            
+        }
     }
 }

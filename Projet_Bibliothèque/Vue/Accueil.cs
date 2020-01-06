@@ -17,6 +17,7 @@ namespace Projet_Bibliothèque.Vue
             InitializeComponent();
         }
 
+        //Bouton permettant d'appeler la vue pour créer un livre
         private void btnCreaLivre_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -24,6 +25,7 @@ namespace Projet_Bibliothèque.Vue
             creaLivre.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour une recherche d'information
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -31,6 +33,7 @@ namespace Projet_Bibliothèque.Vue
             pageRecherche.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour gérer la liste des auteurs
         private void btnAuteur_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,6 +41,7 @@ namespace Projet_Bibliothèque.Vue
             pageGestAut.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour gérer la liste des éditeurs
         private void btnEditeur_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -45,6 +49,7 @@ namespace Projet_Bibliothèque.Vue
             pageGestEdit.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour gérer la liste des imprimeurs
         private void btnImpr_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -52,6 +57,7 @@ namespace Projet_Bibliothèque.Vue
             pageGestImpr.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour gérer la liste des intervenants
         private void btnInterv_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -59,6 +65,7 @@ namespace Projet_Bibliothèque.Vue
             pageGestInterv.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour modifier un livre
         private void btnModifLivre_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -66,6 +73,7 @@ namespace Projet_Bibliothèque.Vue
             pageChoixModifLivre.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour afficher un livre
         private void btnAffLivre_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -73,11 +81,18 @@ namespace Projet_Bibliothèque.Vue
             pageChoixAffLivre.Show();
         }
 
+        //Bouton permettant d'appeler la vue pour supprimer un livre
         private void btnSupprLivre_Click(object sender, EventArgs e)
         {
             this.Hide();
             VueChoixLivre pageChoixSupprLivre = new VueChoixLivre();
             pageChoixSupprLivre.Show();
+        }
+
+        //Bouton pour fermer l'application
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

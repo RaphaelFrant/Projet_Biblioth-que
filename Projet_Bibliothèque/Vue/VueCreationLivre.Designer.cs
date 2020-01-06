@@ -265,6 +265,7 @@
             // 
             // cmboxPeriodTempo
             // 
+            this.cmboxPeriodTempo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxPeriodTempo.FormattingEnabled = true;
             this.cmboxPeriodTempo.Location = new System.Drawing.Point(442, 100);
             this.cmboxPeriodTempo.Name = "cmboxPeriodTempo";
@@ -282,6 +283,7 @@
             // 
             // cmbboxTierGenreLitt
             // 
+            this.cmbboxTierGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbboxTierGenreLitt.FormattingEnabled = true;
             this.cmbboxTierGenreLitt.Location = new System.Drawing.Point(1672, 67);
             this.cmbboxTierGenreLitt.Name = "cmbboxTierGenreLitt";
@@ -290,6 +292,7 @@
             // 
             // cmbboxSecondGenreLitt
             // 
+            this.cmbboxSecondGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbboxSecondGenreLitt.FormattingEnabled = true;
             this.cmbboxSecondGenreLitt.Location = new System.Drawing.Point(1484, 67);
             this.cmbboxSecondGenreLitt.Name = "cmbboxSecondGenreLitt";
@@ -298,6 +301,7 @@
             // 
             // cmbboxPrimoGenreLitt
             // 
+            this.cmbboxPrimoGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbboxPrimoGenreLitt.FormattingEnabled = true;
             this.cmbboxPrimoGenreLitt.Location = new System.Drawing.Point(1292, 67);
             this.cmbboxPrimoGenreLitt.Name = "cmbboxPrimoGenreLitt";
@@ -605,6 +609,7 @@
             // 
             // cmboxChoixEdit
             // 
+            this.cmboxChoixEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixEdit.FormattingEnabled = true;
             this.cmboxChoixEdit.Location = new System.Drawing.Point(427, 26);
             this.cmboxChoixEdit.Name = "cmboxChoixEdit";
@@ -707,6 +712,7 @@
             // 
             // cmboxChoixImpr
             // 
+            this.cmboxChoixImpr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixImpr.FormattingEnabled = true;
             this.cmboxChoixImpr.Location = new System.Drawing.Point(395, 26);
             this.cmboxChoixImpr.Name = "cmboxChoixImpr";
@@ -845,6 +851,7 @@
             // 
             // cmboxChoixAutPrincip
             // 
+            this.cmboxChoixAutPrincip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixAutPrincip.FormattingEnabled = true;
             this.cmboxChoixAutPrincip.Location = new System.Drawing.Point(64, 49);
             this.cmboxChoixAutPrincip.Name = "cmboxChoixAutPrincip";
@@ -983,6 +990,7 @@
             // 
             // cmboxChoixAutSecond
             // 
+            this.cmboxChoixAutSecond.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixAutSecond.FormattingEnabled = true;
             this.cmboxChoixAutSecond.Location = new System.Drawing.Point(78, 49);
             this.cmboxChoixAutSecond.Name = "cmboxChoixAutSecond";
@@ -1121,6 +1129,7 @@
             // 
             // cmboxChoixAutTiers
             // 
+            this.cmboxChoixAutTiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixAutTiers.FormattingEnabled = true;
             this.cmboxChoixAutTiers.Location = new System.Drawing.Point(78, 49);
             this.cmboxChoixAutTiers.Name = "cmboxChoixAutTiers";
@@ -1165,6 +1174,7 @@
             // 
             // cmboxChoixIntervPrincip
             // 
+            this.cmboxChoixIntervPrincip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixIntervPrincip.FormattingEnabled = true;
             this.cmboxChoixIntervPrincip.Location = new System.Drawing.Point(428, 26);
             this.cmboxChoixIntervPrincip.Name = "cmboxChoixIntervPrincip";
@@ -1321,6 +1331,7 @@
             // 
             // cmboxChoixIntervSecond
             // 
+            this.cmboxChoixIntervSecond.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixIntervSecond.FormattingEnabled = true;
             this.cmboxChoixIntervSecond.Location = new System.Drawing.Point(428, 26);
             this.cmboxChoixIntervSecond.Name = "cmboxChoixIntervSecond";
@@ -1477,6 +1488,7 @@
             // 
             // cmboxChoixIntervTiers
             // 
+            this.cmboxChoixIntervTiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixIntervTiers.FormattingEnabled = true;
             this.cmboxChoixIntervTiers.Location = new System.Drawing.Point(428, 26);
             this.cmboxChoixIntervTiers.Name = "cmboxChoixIntervTiers";
