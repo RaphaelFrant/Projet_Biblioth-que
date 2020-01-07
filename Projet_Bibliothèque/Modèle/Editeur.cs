@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +13,16 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Editeur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 1, le 18/12/2019
-    /// Implémentation des attributs des classes</remarks>
-    class Editeur
+    /// <remarks>Auteur Raphaël Frantzen, Version 3, le 07/01/2019
+    /// Implémentation des méthodes pour la création, la modification et la suppression d'un éditeur</remarks>
+    class Editeur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
         public int idEditeur;
         public int idPaysEdit;
         public string nomEditeur;
         public DateTime dateDebEditeur;
-        public DateTime dateFinEditeur;
+        public string dateFinEditeur;
         public string adEditeur;
 
         //--------------------------------Accesseur--------------------------------
@@ -88,18 +90,25 @@ namespace Projet_Bibliothèque.Modèle
             }
         }
 
-        public DateTime AccDateFinEditeur
+        public string AccDateFinEditeur
         {
             get { return this.dateFinEditeur; }
             set
             {
-                if (value >= DateTime.Today)
+                if (value == "")
                 {
-                    throw new ArgumentOutOfRangeException("La date de fermeture de l'éditeur ne peut pas être supérieur à la date du jour.");
+                    this.dateFinEditeur = null;
                 }
                 else
                 {
-                    this.dateFinEditeur = value;
+                    if (DateTime.Parse(value) >= DateTime.Today)
+                    {
+                        throw new ArgumentOutOfRangeException("La date de fermeture de l'éditeur ne peut pas être supérieur à la date du jour.");
+                    }
+                    else
+                    {
+                        this.dateFinEditeur = value;
+                    }
                 }
             }
         }
@@ -125,7 +134,7 @@ namespace Projet_Bibliothèque.Modèle
         public Editeur() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe Editeur</summary>
-        public Editeur(int numEditeur, int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
+        public Editeur(int numEditeur, int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, string dateFermeEditeur, string adresseEditeur)
         {
             AccIdEditeur = numEditeur;
             AccIdPaysEditeur = numIdPaysEditeur;
@@ -136,7 +145,7 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe Editeur</summary>
-        public Editeur(int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, DateTime dateFermeEditeur, string adresseEditeur)
+        public Editeur(int numIdPaysEditeur, string libEditeur, DateTime dateOuvertEditeur, string dateFermeEditeur, string adresseEditeur)
         {
             AccIdPaysEditeur = numIdPaysEditeur;
             AccLibEditeur = libEditeur;
@@ -146,5 +155,152 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         //--------------------------------Méthodes--------------------------------
+        /// <summary>
+        /// Méthode permettant de créer un nouvel éditeur dans la base de données
+        /// </summary>
+        /// <param name="nouvEdit">Récupère un objet Editeur comportant les informations du nouvel éditeur</param>
+        /// <exception cref="">Retourne une erreur si les données entrées ou la requête SQL sont invalides</exception>
+        public static void InsertEditeur(Editeur nouvEdit)
+        {
+            string libCreaEdit;
+            try
+            {
+                Connection();
+                libCreaEdit = "Insert into Editeur(idPays, nomedit, datedebedit, datefinedit, adedit) values (";
+                libCreaEdit += "'" + nouvEdit.AccIdPaysEditeur + "', ";
+                libCreaEdit += "'" + nouvEdit.AccLibEditeur + "', ";
+                libCreaEdit += "'" + nouvEdit.AccDateDebEditeur + "', ";
+                libCreaEdit += "'" + nouvEdit.AccDateFinEditeur + "', ";
+                libCreaEdit += "'" + nouvEdit.AccAdEditeur + "')";
+                SqlCommand creaEditBdd = new SqlCommand(libCreaEdit, maConnexion);
+                creaEditBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de créer un nouvel éditeur.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des éditeurs présents dans la base de données pour remplir des combobox du formulaire
+        /// </summary>
+        /// <returns>Retourne une ArrayList comportant l'ensemble des éditeurs existants dans la base de donnnées</returns>
+        /// <exception cref="">Renvoie une exception si la liste n'a pas pu être mise en place.</exception>
+        public static ArrayList ListeEditeurExist()
+        {
+            ArrayList listeChoixEdit = new ArrayList();
+            try
+            {
+                Connection();
+                string cmdListeEdit = ("select nomedit from editeur order by nomedit");
+                SqlCommand trouvChoixEdit = new SqlCommand(cmdListeEdit, maConnexion);
+                SqlDataReader lecteurListeEdit = trouvChoixEdit.ExecuteReader();
+
+                if (lecteurListeEdit.HasRows)
+                {
+                    while (lecteurListeEdit.Read())
+                    {
+                        listeChoixEdit.Add(lecteurListeEdit[0].ToString());
+                    }
+                }
+                lecteurListeEdit.Close();
+                return listeChoixEdit;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des éditeurs existants.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de supprimer l'éditeur sélectionné par l'utilisateur
+        /// </summary>
+        /// <param name="libEdit">Récupère le nom de l'éditeur à supprimer</param>
+        /// <exception cref="">Renvoie une exception si l'éditeur ne peut pas être supprimé de la base de données ou si le nom de l'éditeur n'existe pas</exception>
+        public static void DeleteEditeur(string libEdit)
+        {
+            try
+            {
+                string libSupprEdit;
+                Connection();
+                libSupprEdit = "Delete from editeur where nomedit='" + libEdit + "'";
+                SqlCommand supprEditBdd = new SqlCommand(libSupprEdit, maConnexion);
+                supprEditBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de supprimer un éditeur existant.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de modifier les informations de l'éditeur sélectionné par l'utilisateur
+        /// </summary>
+        /// <param name="appelationEdit">Récupère le nom de l'éditeur sélectionné</param>
+        /// <returns>Retourne un objet Editeur avec les informations dudit éditeur pour le modifier</returns>
+        /// <exception cref="">Renvoie une exception si les informations n'ont pas pu être récupérées</exception>
+        public static Editeur RecupInfoEditeur(string appelationEdit)
+        {
+            try
+            {
+                Connection();
+                Editeur editAModif = new Editeur();
+                string cmdInfoEdit = ("select idedit, idpays, nomedit, datedebedit, datefinedit, adedit from editeur where nomedit='" + appelationEdit + "'");
+                SqlCommand trouvInfoEdit = new SqlCommand(cmdInfoEdit, maConnexion);
+                SqlDataReader lecteurInfoEdit = trouvInfoEdit.ExecuteReader();
+                if (lecteurInfoEdit.HasRows)
+                {
+                    while (lecteurInfoEdit.Read())
+                    {
+                        editAModif.AccIdEditeur = int.Parse(lecteurInfoEdit[0].ToString());
+                        editAModif.AccIdPaysEditeur = int.Parse(lecteurInfoEdit[1].ToString());
+                        editAModif.AccLibEditeur = lecteurInfoEdit[2].ToString();
+                        editAModif.AccDateDebEditeur = DateTime.Parse(lecteurInfoEdit[3].ToString());
+                        if (lecteurInfoEdit[4].ToString().Substring(0, 10) == "01/01/1900")
+                        {
+                            editAModif.AccDateFinEditeur = "";
+                        }
+                        else
+                        {
+                            editAModif.AccDateFinEditeur = lecteurInfoEdit[4].ToString().Substring(0, 10);
+                        }
+                        editAModif.AccAdEditeur = lecteurInfoEdit[5].ToString();
+                    }
+                }
+                lecteurInfoEdit.Close();
+                return editAModif;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer les informations de l'éditeur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthide permettant de modifier les informations d'un éditeur présent en base de données
+        /// </summary>
+        /// <param name="editeurAModif">Récupère un objet Editeur avec les nouvelles informations de l'éditeur</param>
+        /// <exception cref="">Renoie une exception si les données de l'éditeur n'ont pas pu être modifiées</exception>
+        public static void UpdateEditeur(Editeur editeurAModif)
+        {
+            string libModifEditeur;
+            try
+            {
+                Connection();
+                libModifEditeur = "Update Editeur Set ";
+                libModifEditeur += "idpays='" + editeurAModif.AccIdPaysEditeur + "', ";
+                libModifEditeur += "nomedit='" + editeurAModif.AccLibEditeur + "', ";
+                libModifEditeur += "datedebedit='" + editeurAModif.AccDateDebEditeur + "', ";
+                libModifEditeur += "datefinedit='" + editeurAModif.AccDateFinEditeur + "', ";
+                libModifEditeur += "adedit='" + editeurAModif.AccAdEditeur + "'";
+                libModifEditeur += "where idedit =" + editeurAModif.AccIdEditeur;
+                SqlCommand modifEditBdd = new SqlCommand(libModifEditeur, maConnexion);
+                modifEditBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de modifier les informations de l'éditeur sélectionné.");
+            }
+        }
     }
 }

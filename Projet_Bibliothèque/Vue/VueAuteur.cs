@@ -25,7 +25,10 @@ namespace Projet_Bibliothèque.Vue
         {
             InitializeComponent();
             cmboxChoixModifAut.DataSource = Auteur.ListeAuteurExist();
+            ViderChamps(false);
+            cmboxChoixModifAut.SelectedIndex = -1;
             cmboxChoixSupprAut.DataSource = Auteur.ListeAuteurExist();
+            cmboxChoixSupprAut.SelectedIndex = -1;
         }
 
         //Bouton permettant de revenir à la page d'accueil
@@ -46,6 +49,9 @@ namespace Projet_Bibliothèque.Vue
                     txtDateMortCreaAut.Text);
                 Auteur.InsertAuteur(nouvAuteur);
                 MessageBox.Show(txtNomCreaAut.Text + " " + txtPrenomCreaAut.Text + " a bien été créé");
+                this.Hide();
+                VueAuteur refreshVueAut = new VueAuteur();
+                refreshVueAut.Show();
             }
             catch (Exception ex)
             {
@@ -56,15 +62,18 @@ namespace Projet_Bibliothèque.Vue
         //Evénement qui a lieu lorsque l'utilisateur sélectionne un auteur a modifié
         private void cmboxChoixModifAut_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string auteurChoisi = cmboxChoixModifAut.SelectedItem.ToString();
-            Auteur autRecup = Auteur.RecupInfoAuteur(auteurChoisi);
-            txtIdAutModif.Text = autRecup.idAut.ToString();
-            txtNomModifAut.Text = autRecup.nomAut;
-            txtPrenomModifAut.Text = autRecup.prenomAut;
-            txtSurnomModifAut.Text = autRecup.surnomAut;
-            txtDateNaiModifAut.Text = autRecup.dateNaiAut.ToString().Substring(0, 10);
-            txtDateMortModifAut.Text = autRecup.dateMortAut;
-            txtNatioModifAut.Text = Pays.TrouvNomPays(autRecup.idPaysAut);
+            if(cmboxChoixModifAut.SelectedIndex != -1)
+            {
+                string auteurChoisi = cmboxChoixModifAut.SelectedItem.ToString();
+                Auteur autRecup = Auteur.RecupInfoAuteur(auteurChoisi);
+                txtIdAutModif.Text = autRecup.idAut.ToString();
+                txtNomModifAut.Text = autRecup.nomAut;
+                txtPrenomModifAut.Text = autRecup.prenomAut;
+                txtSurnomModifAut.Text = autRecup.surnomAut;
+                txtDateNaiModifAut.Text = autRecup.dateNaiAut.ToString().Substring(0, 10);
+                txtDateMortModifAut.Text = autRecup.dateMortAut;
+                txtNatioModifAut.Text = Pays.TrouvNomPays(autRecup.idPaysAut);
+            }
         }
 
         //BOuton permettant d'enregistrer les modifications apporté à un auteur
@@ -77,6 +86,9 @@ namespace Projet_Bibliothèque.Vue
                     DateTime.Parse(txtDateNaiModifAut.Text), txtDateMortModifAut.Text);
                 Auteur.UpdateAuteur(modifAuteur);
                 MessageBox.Show(cmboxChoixModifAut.SelectedItem.ToString() + " a bien été modifié");
+                this.Hide();
+                VueAuteur refreshVueAut = new VueAuteur();
+                refreshVueAut.Show();
             }
             catch (Exception ex)
             {
@@ -87,9 +99,52 @@ namespace Projet_Bibliothèque.Vue
         //Bouton permettant de supprimer un auteur
         private void btnSupprAut_Click(object sender, EventArgs e)
         {
-            string auteurSelect = cmboxChoixSupprAut.SelectedItem.ToString();
-            Auteur.DeleteAuteur(auteurSelect);
-            MessageBox.Show("L'auteur '" + auteurSelect + "' a bien été supprimé.");
+            try
+            {
+                string auteurSelect = cmboxChoixSupprAut.SelectedItem.ToString();
+                Auteur.DeleteAuteur(auteurSelect);
+                MessageBox.Show("L'auteur '" + auteurSelect + "' a bien été supprimé.");
+                this.Hide();
+                VueAuteur refreshVueAut = new VueAuteur();
+                refreshVueAut.Show();
+            }
+            catch
+            {
+                throw new Exception("Impossible de supprimer un auteur.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de vider les champs du formulaire de création après avoir enregistrer un nouvel auteur
+        /// </summary>
+        private void ViderChamps(bool creaFini)
+        {
+            try
+            {
+                if(creaFini is true)
+                {
+                    txtNomCreaAut.Text = "";
+                    txtPrenomCreaAut.Text = "";
+                    txtSurnomCreaAut.Text = "";
+                    txtDateNaiCreaAut.Text = "";
+                    txtDateMortCreaAut.Text = "";
+                    txtNatioCreaAut.Text = "";
+                }
+                else
+                {
+                    txtIdAutModif.Text = "";
+                    txtNomModifAut.Text = "";
+                    txtPrenomModifAut.Text = "";
+                    txtSurnomModifAut.Text = "";
+                    txtDateNaiModifAut.Text = "";
+                    txtDateMortModifAut.Text = "";
+                    txtNatioModifAut.Text = "";
+                }
+            }
+            catch
+            {
+                throw new Exception("Impossible de vider les champs du formulaire de création.");
+            }
         }
     }
 }

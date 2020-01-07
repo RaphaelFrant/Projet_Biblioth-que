@@ -45,6 +45,7 @@
             this.txtNomCreaAut = new System.Windows.Forms.TextBox();
             this.labNomCreaAut = new System.Windows.Forms.Label();
             this.grpboxEditAut = new System.Windows.Forms.GroupBox();
+            this.txtIdAutModif = new System.Windows.Forms.TextBox();
             this.txtNatioModifAut = new System.Windows.Forms.TextBox();
             this.labNatioModifAut = new System.Windows.Forms.Label();
             this.btnModifAut = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.cmboxChoixSupprAut = new System.Windows.Forms.ComboBox();
             this.labChoixSupprAut = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.txtIdAutModif = new System.Windows.Forms.TextBox();
             this.grpboxCreaAut.SuspendLayout();
             this.grpboxEditAut.SuspendLayout();
             this.grpboxSupprAut.SuspendLayout();
@@ -248,6 +248,14 @@
             this.grpboxEditAut.TabStop = false;
             this.grpboxEditAut.Text = "Modification d\'auteur";
             // 
+            // txtIdAutModif
+            // 
+            this.txtIdAutModif.Location = new System.Drawing.Point(722, 35);
+            this.txtIdAutModif.Name = "txtIdAutModif";
+            this.txtIdAutModif.ReadOnly = true;
+            this.txtIdAutModif.Size = new System.Drawing.Size(100, 26);
+            this.txtIdAutModif.TabIndex = 15;
+            // 
             // txtNatioModifAut
             // 
             this.txtNatioModifAut.Location = new System.Drawing.Point(129, 183);
@@ -424,14 +432,6 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
-            // 
-            // txtIdAutModif
-            // 
-            this.txtIdAutModif.Location = new System.Drawing.Point(722, 35);
-            this.txtIdAutModif.Name = "txtIdAutModif";
-            this.txtIdAutModif.ReadOnly = true;
-            this.txtIdAutModif.Size = new System.Drawing.Size(100, 26);
-            this.txtIdAutModif.TabIndex = 15;
             // 
             // VueAuteur
             // 
