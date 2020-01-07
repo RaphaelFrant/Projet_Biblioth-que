@@ -65,6 +65,7 @@
             this.cmboxChoixSupprAut = new System.Windows.Forms.ComboBox();
             this.labChoixSupprAut = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.txtIdAutModif = new System.Windows.Forms.TextBox();
             this.grpboxCreaAut.SuspendLayout();
             this.grpboxEditAut.SuspendLayout();
             this.grpboxSupprAut.SuspendLayout();
@@ -223,6 +224,7 @@
             // 
             // grpboxEditAut
             // 
+            this.grpboxEditAut.Controls.Add(this.txtIdAutModif);
             this.grpboxEditAut.Controls.Add(this.txtNatioModifAut);
             this.grpboxEditAut.Controls.Add(this.labNatioModifAut);
             this.grpboxEditAut.Controls.Add(this.btnModifAut);
@@ -270,6 +272,7 @@
             this.btnModifAut.TabIndex = 12;
             this.btnModifAut.Text = "Enregistrer";
             this.btnModifAut.UseVisualStyleBackColor = true;
+            this.btnModifAut.Click += new System.EventHandler(this.btnModifAut_Click);
             // 
             // txtDateMortModifAut
             // 
@@ -359,6 +362,7 @@
             this.cmboxChoixModifAut.Name = "cmboxChoixModifAut";
             this.cmboxChoixModifAut.Size = new System.Drawing.Size(380, 28);
             this.cmboxChoixModifAut.TabIndex = 1;
+            this.cmboxChoixModifAut.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixModifAut_SelectedIndexChanged);
             // 
             // labChoixModifAut
             // 
@@ -390,6 +394,7 @@
             this.btnSupprAut.TabIndex = 2;
             this.btnSupprAut.Text = "Supprimer";
             this.btnSupprAut.UseVisualStyleBackColor = true;
+            this.btnSupprAut.Click += new System.EventHandler(this.btnSupprAut_Click);
             // 
             // cmboxChoixSupprAut
             // 
@@ -419,6 +424,14 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // txtIdAutModif
+            // 
+            this.txtIdAutModif.Location = new System.Drawing.Point(722, 35);
+            this.txtIdAutModif.Name = "txtIdAutModif";
+            this.txtIdAutModif.ReadOnly = true;
+            this.txtIdAutModif.Size = new System.Drawing.Size(100, 26);
+            this.txtIdAutModif.TabIndex = 15;
             // 
             // VueAuteur
             // 
@@ -483,5 +496,6 @@
         private System.Windows.Forms.Label labNatioCreaAut;
         private System.Windows.Forms.TextBox txtNatioModifAut;
         private System.Windows.Forms.Label labNatioModifAut;
+        private System.Windows.Forms.TextBox txtIdAutModif;
     }
 }

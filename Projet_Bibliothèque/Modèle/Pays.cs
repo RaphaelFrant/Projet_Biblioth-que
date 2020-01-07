@@ -12,8 +12,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Pays 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 1, le 18/12/2019
-    /// Implémentation des attributs des classes</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 2, le 07/01/2020
+    /// Implémentation des méthodes de récupération de l'Identifiant d'un pays et de création d'un nouveau pays</remarks>
     class Pays : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -76,8 +76,7 @@ namespace Projet_Bibliothèque.Modèle
 
         //--------------------------------Méthodes--------------------------------
         /// <summary>
-        /// Méthode permettant de renvoyer le numéro du pays en fonction du nom indiqué. Si le pays n'existe pas encore dans la liste, la méthode l'ajoute avant de renvoyé 
-        /// le numéro du pays
+        /// Méthode permettant de renvoyer le numéro du pays en fonction du nom indiqué. 
         /// </summary>
         /// <param name="nomPays">Nom du pays soumis à la méthode</param>
         /// <returns>Retourne le numéro du pays correspondant</returns>
@@ -103,12 +102,8 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     lecteur.Close();
-                    string libCreaPays;
-                    Connection();
-                    libCreaPays = "Insert into Pays (libpays) values (";
-                    libCreaPays += "'" + nomPays + "')";
-                    SqlCommand creaPaysBdd = new SqlCommand(libCreaPays, maConnexion);
-                    creaPaysBdd.ExecuteScalar();
+                    //Appel la méthode de création d'un pays si le pays mentionné n'existe pas en base de données
+                    InsertPays(nomPays);
 
                     SqlCommand trouvNumPaysCree = new SqlCommand(comdNumPays, maConnexion);
                     SqlDataReader lecteurPaysCree = trouvNumPays.ExecuteReader();
@@ -128,7 +123,62 @@ namespace Projet_Bibliothèque.Modèle
             {
                 throw new Exception(ex.Message);
             }
-            
+        }
+
+        /// <summary>
+        /// Méthode permettant de créer un nouveau pays lorsque l'utilisateur entre un pays inconnu dans l'un des formulaires
+        /// </summary>
+        /// <param name="libPays">Récupère le nom du pays entr par l'utilisateur</param>
+        /// <returns>Renvoie à son tour le nom du pays qui a été créé</returns>
+        /// <exception cref="">Renvoie une erreur si le nom du pays entré est invalide</exception>
+        private string InsertPays(string libPays)
+        {
+            try
+            {
+                string libCreaPays;
+                Connection();
+                libCreaPays = "Insert into Pays (libpays) values (";
+                libCreaPays += "'" + libPays + "')";
+                SqlCommand creaPaysBdd = new SqlCommand(libCreaPays, maConnexion);
+                creaPaysBdd.ExecuteScalar();
+                return libPays;
+            }
+            catch
+            {
+                throw new Exception("Impossible de créer un nouveau pays.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer le nom du pays en fonction de son identifiant
+        /// </summary>
+        /// <param name="identPays">Récupère l'identifiant du pays</param>
+        /// <returns>Retourne le nom du pays correspondant à l'identifiant</returns>
+        /// <exception cref="">Renvoie une erreur si le pays n'a pas pu être trouvé</exception>
+        public static string TrouvNomPays(int identPays)
+        {
+            try
+            {
+                string AppelationPays = "";
+                Connection();
+                string cmdNomPays = ("select libpays from pays where idpays='" + identPays + "'");
+                SqlCommand trouvNomPays = new SqlCommand(cmdNomPays, maConnexion);
+                SqlDataReader lecteurNomPays = trouvNomPays.ExecuteReader();
+
+                if (lecteurNomPays.HasRows)
+                {
+                    while (lecteurNomPays.Read())
+                    {
+                        AppelationPays = lecteurNomPays[0].ToString();
+                    }
+                }
+                lecteurNomPays.Close();
+                return AppelationPays;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Impossible de récupérer le nom du pays.");
+            }
         }
     }
 }
