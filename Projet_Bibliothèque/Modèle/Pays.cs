@@ -106,7 +106,7 @@ namespace Projet_Bibliothèque.Modèle
                     InsertPays(nomPays);
 
                     SqlCommand trouvNumPaysCree = new SqlCommand(comdNumPays, maConnexion);
-                    SqlDataReader lecteurPaysCree = trouvNumPays.ExecuteReader();
+                    SqlDataReader lecteurPaysCree = trouvNumPaysCree.ExecuteReader();
 
                     if (lecteurPaysCree.HasRows)
                     {

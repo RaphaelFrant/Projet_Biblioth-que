@@ -69,6 +69,7 @@
             this.cmboxChoixSupprInterv = new System.Windows.Forms.ComboBox();
             this.labChoixSupprInterv = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.txtIdModifInterv = new System.Windows.Forms.TextBox();
             this.grpboxCreaInterv.SuspendLayout();
             this.grpboxModifInterv.SuspendLayout();
             this.grpboxSupprInterv.SuspendLayout();
@@ -161,6 +162,7 @@
             this.btnAjoutCreaInterv.TabIndex = 10;
             this.btnAjoutCreaInterv.Text = "Ajouter";
             this.btnAjoutCreaInterv.UseVisualStyleBackColor = true;
+            this.btnAjoutCreaInterv.Click += new System.EventHandler(this.btnAjoutCreaInterv_Click);
             // 
             // txtDateMortCreaInterv
             // 
@@ -244,6 +246,7 @@
             // 
             // grpboxModifInterv
             // 
+            this.grpboxModifInterv.Controls.Add(this.txtIdModifInterv);
             this.grpboxModifInterv.Controls.Add(this.txtNatioModifInterv);
             this.grpboxModifInterv.Controls.Add(this.labNatioModifInterv);
             this.grpboxModifInterv.Controls.Add(this.txtFoncModifInterv);
@@ -309,6 +312,7 @@
             this.btnModifInterv.TabIndex = 12;
             this.btnModifInterv.Text = "Enregistrer";
             this.btnModifInterv.UseVisualStyleBackColor = true;
+            this.btnModifInterv.Click += new System.EventHandler(this.btnModifInterv_Click);
             // 
             // txtDateMortModifInterv
             // 
@@ -398,6 +402,7 @@
             this.cmboxChoixModifInterv.Name = "cmboxChoixModifInterv";
             this.cmboxChoixModifInterv.Size = new System.Drawing.Size(559, 28);
             this.cmboxChoixModifInterv.TabIndex = 1;
+            this.cmboxChoixModifInterv.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixModifInterv_SelectedIndexChanged);
             // 
             // labChoixModifInterv
             // 
@@ -429,6 +434,7 @@
             this.btnSupprInterv.TabIndex = 2;
             this.btnSupprInterv.Text = "Supprimer";
             this.btnSupprInterv.UseVisualStyleBackColor = true;
+            this.btnSupprInterv.Click += new System.EventHandler(this.btnSupprInterv_Click);
             // 
             // cmboxChoixSupprInterv
             // 
@@ -458,6 +464,14 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // txtIdModifInterv
+            // 
+            this.txtIdModifInterv.Location = new System.Drawing.Point(651, 219);
+            this.txtIdModifInterv.Name = "txtIdModifInterv";
+            this.txtIdModifInterv.ReadOnly = true;
+            this.txtIdModifInterv.Size = new System.Drawing.Size(100, 26);
+            this.txtIdModifInterv.TabIndex = 17;
             // 
             // VueIntervenantDivers
             // 
@@ -526,5 +540,6 @@
         private System.Windows.Forms.Label labNatioCreaInterv;
         private System.Windows.Forms.TextBox txtNatioModifInterv;
         private System.Windows.Forms.Label labNatioModifInterv;
+        private System.Windows.Forms.TextBox txtIdModifInterv;
     }
 }

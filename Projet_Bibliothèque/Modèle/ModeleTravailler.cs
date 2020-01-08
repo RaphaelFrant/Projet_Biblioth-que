@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe ModeleTravailler 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 1, le 18/12/2019
-    /// Implémentation des attributs des classes</remarks>
-    class ModeleTravailler
+    /// <remarks>Auteur Raphaël Frantzen, Version 5, le 08/01/2020
+    /// Implémentation de la méthode d'insertion d'u couple Intervenant/Fonction dans la base de données</remarks>
+    class ModeleTravailler : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
         public int idInterv;
@@ -64,5 +65,22 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         //--------------------------------Méthodes--------------------------------
+        public static void InsertTravail(ModeleTravailler coupleIdent)
+        {
+            string libTrav;
+            try
+            {
+                Connection();
+                libTrav = "Insert into Travailler_comme(idinterv, idfonction)values (";
+                libTrav += "'" + coupleIdent.AccIdIntervFonct + "', ";
+                libTrav += "'" + coupleIdent.AccIdFonctInterv + "')";
+                SqlCommand creaTravBdd = new SqlCommand(libTrav, maConnexion);
+                creaTravBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de remplir la base de données avec les données entrées");
+            }
+        }
     }
 }
