@@ -1,5 +1,7 @@
-﻿using Projet_Bibliothèque.Modèle;
+﻿using Projet_Bibliothèque.Controlleur;
+using Projet_Bibliothèque.Modèle;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,15 +41,20 @@ namespace Projet_Bibliothèque.Vue
             pageAcc.Show();
         }
 
-        //Bouton permettant d'ajouter un auteur dans la base de données
+        //Bouton permettant d'ajouter un auteur dans la base de données par le biais d'une ArrayList
         private void btnCreaAut_Click(object sender, EventArgs e)
         {
             try
             {
                 int numeroPays = nouvPays.TrouvNumPays(txtNatioCreaAut.Text);
-                Auteur nouvAuteur = new Auteur(numeroPays, txtNomCreaAut.Text, txtPrenomCreaAut.Text, txtSurnomCreaAut.Text, DateTime.Parse(txtDateNaiCreaAut.Text),
-                    txtDateMortCreaAut.Text);
-                Auteur.InsertAuteur(nouvAuteur);
+                ArrayList infNouvAut = new ArrayList();
+                infNouvAut.Add(numeroPays);
+                infNouvAut.Add(txtNomCreaAut.Text);
+                infNouvAut.Add(txtPrenomCreaAut.Text);
+                infNouvAut.Add(txtSurnomCreaAut.Text);
+                infNouvAut.Add(DateTime.Parse(txtDateNaiCreaAut.Text));
+                infNouvAut.Add(txtDateMortCreaAut.Text);
+                ControlAuteur.CreerAuteur(infNouvAut);
                 MessageBox.Show(txtNomCreaAut.Text + " " + txtPrenomCreaAut.Text + " a bien été créé");
                 this.Hide();
                 VueAuteur refreshVueAut = new VueAuteur();
@@ -82,9 +89,15 @@ namespace Projet_Bibliothèque.Vue
             try
             {
                 int numeroPays = nouvPays.TrouvNumPays(txtNatioModifAut.Text);
-                Auteur modifAuteur = new Auteur(int.Parse(txtIdAutModif.Text), numeroPays, txtNomModifAut.Text, txtPrenomModifAut.Text, txtSurnomModifAut.Text, 
-                    DateTime.Parse(txtDateNaiModifAut.Text), txtDateMortModifAut.Text);
-                Auteur.UpdateAuteur(modifAuteur);
+                ArrayList infModifAut = new ArrayList();
+                infModifAut.Add(int.Parse(txtIdAutModif.Text));
+                infModifAut.Add(numeroPays);
+                infModifAut.Add(txtNomModifAut.Text);
+                infModifAut.Add(txtPrenomModifAut.Text);
+                infModifAut.Add(txtSurnomModifAut.Text);
+                infModifAut.Add(DateTime.Parse(txtDateNaiModifAut.Text));
+                infModifAut.Add(txtDateMortModifAut.Text);
+                ControlAuteur.ModifAuteur(infModifAut);
                 MessageBox.Show(cmboxChoixModifAut.SelectedItem.ToString() + " a bien été modifié");
                 this.Hide();
                 VueAuteur refreshVueAut = new VueAuteur();
@@ -102,7 +115,7 @@ namespace Projet_Bibliothèque.Vue
             try
             {
                 string auteurSelect = cmboxChoixSupprAut.SelectedItem.ToString();
-                Auteur.DeleteAuteur(auteurSelect);
+                ControlAuteur.SupprAuteur(auteurSelect);
                 MessageBox.Show("L'auteur '" + auteurSelect + "' a bien été supprimé.");
                 this.Hide();
                 VueAuteur refreshVueAut = new VueAuteur();

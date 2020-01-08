@@ -61,6 +61,7 @@
             this.cmboxChoixSupprEdit = new System.Windows.Forms.ComboBox();
             this.labChoixSupprEdit = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.txtIdModifEdit = new System.Windows.Forms.TextBox();
             this.grpboxCreaEdit.SuspendLayout();
             this.grpboxModifEdit.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -133,6 +134,7 @@
             this.btnAjoutCreaEdit.TabIndex = 8;
             this.btnAjoutCreaEdit.Text = "Ajouter";
             this.btnAjoutCreaEdit.UseVisualStyleBackColor = true;
+            this.btnAjoutCreaEdit.Click += new System.EventHandler(this.btnAjoutCreaEdit_Click);
             // 
             // txtAdressCreaEdit
             // 
@@ -200,6 +202,7 @@
             // 
             // grpboxModifEdit
             // 
+            this.grpboxModifEdit.Controls.Add(this.txtIdModifEdit);
             this.grpboxModifEdit.Controls.Add(this.txtNatioModifEdit);
             this.grpboxModifEdit.Controls.Add(this.labNatioModifEdit);
             this.grpboxModifEdit.Controls.Add(this.btnModifEdit);
@@ -245,6 +248,7 @@
             this.btnModifEdit.TabIndex = 10;
             this.btnModifEdit.Text = "Enregistrer";
             this.btnModifEdit.UseVisualStyleBackColor = true;
+            this.btnModifEdit.Click += new System.EventHandler(this.btnModifEdit_Click);
             // 
             // txtAdModifEdit
             // 
@@ -318,6 +322,7 @@
             this.cmboxChoixModifEdit.Name = "cmboxChoixModifEdit";
             this.cmboxChoixModifEdit.Size = new System.Drawing.Size(460, 28);
             this.cmboxChoixModifEdit.TabIndex = 1;
+            this.cmboxChoixModifEdit.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixModifEdit_SelectedIndexChanged);
             // 
             // labChoixModifEdit
             // 
@@ -349,6 +354,7 @@
             this.btnSupprEdit.TabIndex = 2;
             this.btnSupprEdit.Text = "Supprimer";
             this.btnSupprEdit.UseVisualStyleBackColor = true;
+            this.btnSupprEdit.Click += new System.EventHandler(this.btnSupprEdit_Click);
             // 
             // cmboxChoixSupprEdit
             // 
@@ -378,6 +384,14 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // txtIdModifEdit
+            // 
+            this.txtIdModifEdit.Location = new System.Drawing.Point(547, 230);
+            this.txtIdModifEdit.Name = "txtIdModifEdit";
+            this.txtIdModifEdit.ReadOnly = true;
+            this.txtIdModifEdit.Size = new System.Drawing.Size(100, 26);
+            this.txtIdModifEdit.TabIndex = 13;
             // 
             // VueEditeur
             // 
@@ -438,5 +452,6 @@
         private System.Windows.Forms.Label labNatioCreaEdit;
         private System.Windows.Forms.TextBox txtNatioModifEdit;
         private System.Windows.Forms.Label labNatioModifEdit;
+        private System.Windows.Forms.TextBox txtIdModifEdit;
     }
 }

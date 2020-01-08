@@ -44,11 +44,11 @@
             this.txtNatioModifImpr = new System.Windows.Forms.TextBox();
             this.labNatioModifImpr = new System.Windows.Forms.Label();
             this.btnModifImpr = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDateFinModifImpr = new System.Windows.Forms.TextBox();
+            this.txtDateDebModifImpr = new System.Windows.Forms.TextBox();
             this.labDateFinModifImpr = new System.Windows.Forms.Label();
             this.labDateDebModifImpr = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNomModifImpr = new System.Windows.Forms.TextBox();
             this.labNomModifImpr = new System.Windows.Forms.Label();
             this.cmbBoxChoixModifImpr = new System.Windows.Forms.ComboBox();
             this.labChoixModifImpr = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@
             this.cmbBoxChoixSupprImpr = new System.Windows.Forms.ComboBox();
             this.labChoixSupprImpr = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.txtIdModifImpr = new System.Windows.Forms.TextBox();
             this.grpBoxNouvImprim.SuspendLayout();
             this.grBoxModifImpr.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -127,6 +128,7 @@
             this.btnAjoutImpr.TabIndex = 10;
             this.btnAjoutImpr.Text = "Ajouter";
             this.btnAjoutImpr.UseVisualStyleBackColor = true;
+            this.btnAjoutImpr.Click += new System.EventHandler(this.btnAjoutImpr_Click);
             // 
             // txtDateFinNouvImpr
             // 
@@ -178,14 +180,15 @@
             // 
             // grBoxModifImpr
             // 
+            this.grBoxModifImpr.Controls.Add(this.txtIdModifImpr);
             this.grBoxModifImpr.Controls.Add(this.txtNatioModifImpr);
             this.grBoxModifImpr.Controls.Add(this.labNatioModifImpr);
             this.grBoxModifImpr.Controls.Add(this.btnModifImpr);
-            this.grBoxModifImpr.Controls.Add(this.textBox3);
-            this.grBoxModifImpr.Controls.Add(this.textBox2);
+            this.grBoxModifImpr.Controls.Add(this.txtDateFinModifImpr);
+            this.grBoxModifImpr.Controls.Add(this.txtDateDebModifImpr);
             this.grBoxModifImpr.Controls.Add(this.labDateFinModifImpr);
             this.grBoxModifImpr.Controls.Add(this.labDateDebModifImpr);
-            this.grBoxModifImpr.Controls.Add(this.textBox1);
+            this.grBoxModifImpr.Controls.Add(this.txtNomModifImpr);
             this.grBoxModifImpr.Controls.Add(this.labNomModifImpr);
             this.grBoxModifImpr.Controls.Add(this.cmbBoxChoixModifImpr);
             this.grBoxModifImpr.Controls.Add(this.labChoixModifImpr);
@@ -221,20 +224,21 @@
             this.btnModifImpr.TabIndex = 8;
             this.btnModifImpr.Text = "Enregistrer";
             this.btnModifImpr.UseVisualStyleBackColor = true;
+            this.btnModifImpr.Click += new System.EventHandler(this.btnModifImpr_Click);
             // 
-            // textBox3
+            // txtDateFinModifImpr
             // 
-            this.textBox3.Location = new System.Drawing.Point(458, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 26);
-            this.textBox3.TabIndex = 7;
+            this.txtDateFinModifImpr.Location = new System.Drawing.Point(458, 166);
+            this.txtDateFinModifImpr.Name = "txtDateFinModifImpr";
+            this.txtDateFinModifImpr.Size = new System.Drawing.Size(150, 26);
+            this.txtDateFinModifImpr.TabIndex = 7;
             // 
-            // textBox2
+            // txtDateDebModifImpr
             // 
-            this.textBox2.Location = new System.Drawing.Point(90, 166);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 26);
-            this.textBox2.TabIndex = 6;
+            this.txtDateDebModifImpr.Location = new System.Drawing.Point(90, 166);
+            this.txtDateDebModifImpr.Name = "txtDateDebModifImpr";
+            this.txtDateDebModifImpr.Size = new System.Drawing.Size(150, 26);
+            this.txtDateDebModifImpr.TabIndex = 6;
             // 
             // labDateFinModifImpr
             // 
@@ -254,12 +258,12 @@
             this.labDateDebModifImpr.TabIndex = 4;
             this.labDateDebModifImpr.Text = "Date d\'ouverture d\'imprimeur : ";
             // 
-            // textBox1
+            // txtNomModifImpr
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 93);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(610, 26);
-            this.textBox1.TabIndex = 3;
+            this.txtNomModifImpr.Location = new System.Drawing.Point(90, 93);
+            this.txtNomModifImpr.Name = "txtNomModifImpr";
+            this.txtNomModifImpr.Size = new System.Drawing.Size(610, 26);
+            this.txtNomModifImpr.TabIndex = 3;
             // 
             // labNomModifImpr
             // 
@@ -278,6 +282,7 @@
             this.cmbBoxChoixModifImpr.Name = "cmbBoxChoixModifImpr";
             this.cmbBoxChoixModifImpr.Size = new System.Drawing.Size(410, 28);
             this.cmbBoxChoixModifImpr.TabIndex = 1;
+            this.cmbBoxChoixModifImpr.SelectedIndexChanged += new System.EventHandler(this.cmbBoxChoixModifImpr_SelectedIndexChanged);
             // 
             // labChoixModifImpr
             // 
@@ -309,6 +314,7 @@
             this.btnSupprImpr.TabIndex = 2;
             this.btnSupprImpr.Text = "Supprimer";
             this.btnSupprImpr.UseVisualStyleBackColor = true;
+            this.btnSupprImpr.Click += new System.EventHandler(this.btnSupprImpr_Click);
             // 
             // cmbBoxChoixSupprImpr
             // 
@@ -338,6 +344,14 @@
             this.btnRetour.Text = "Retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // txtIdModifImpr
+            // 
+            this.txtIdModifImpr.Location = new System.Drawing.Point(618, 219);
+            this.txtIdModifImpr.Name = "txtIdModifImpr";
+            this.txtIdModifImpr.ReadOnly = true;
+            this.txtIdModifImpr.Size = new System.Drawing.Size(60, 26);
+            this.txtIdModifImpr.TabIndex = 11;
             // 
             // VueImprimeur
             // 
@@ -378,13 +392,13 @@
         private System.Windows.Forms.GroupBox grBoxModifImpr;
         private System.Windows.Forms.Label labDateFinModifImpr;
         private System.Windows.Forms.Label labDateDebModifImpr;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNomModifImpr;
         private System.Windows.Forms.Label labNomModifImpr;
         private System.Windows.Forms.ComboBox cmbBoxChoixModifImpr;
         private System.Windows.Forms.Label labChoixModifImpr;
         private System.Windows.Forms.Button btnModifImpr;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDateFinModifImpr;
+        private System.Windows.Forms.TextBox txtDateDebModifImpr;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSupprImpr;
         private System.Windows.Forms.ComboBox cmbBoxChoixSupprImpr;
@@ -394,5 +408,6 @@
         private System.Windows.Forms.Label labNatioCreaImpr;
         private System.Windows.Forms.TextBox txtNatioModifImpr;
         private System.Windows.Forms.Label labNatioModifImpr;
+        private System.Windows.Forms.TextBox txtIdModifImpr;
     }
 }

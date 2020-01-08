@@ -225,7 +225,7 @@ namespace Projet_Bibliothèque.Modèle
             {
                 Connection();
                 Imprimeur imprAModif = new Imprimeur();
-                string cmdInfoImpr = ("select idimprim, idpays, nomimpr, datedebimpr, datefinimpr from imprimeur where nomimpr='" + appelationImpr + "'");
+                string cmdInfoImpr = ("select idimprim, idpays, nomimprim, datedebimprim, datefinimprim from imprimeur where nomimprim='" + appelationImpr + "'");
                 SqlCommand trouvInfoImpr = new SqlCommand(cmdInfoImpr, maConnexion);
                 SqlDataReader lecteurInfoImpr = trouvInfoImpr.ExecuteReader();
                 if (lecteurInfoImpr.HasRows)
