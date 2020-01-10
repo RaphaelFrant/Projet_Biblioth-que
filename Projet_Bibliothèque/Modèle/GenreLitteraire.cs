@@ -79,7 +79,7 @@ namespace Projet_Bibliothèque.Modèle
         /// <summary>
         /// Méthode permettant de récupérer l'identifiant d'un genre littéraire
         /// </summary>
-        /// <param name="nomGenre">Récupère le nom du genre littéraire indiqué par l'utilisateur</param>
+        /// <param name="genreChoisi">Récupère un objet Genre littéraire à partir des informations saisies par l'utilisateur</param>
         /// <returns>Retourne l'identifiant du genre littéraire</returns>
         /// <exception cref="">Renvoie une exception si l'identifiant du genre littéraire n'a pas pu être trouvé</exception>
         public static int TrouvNumGenre(GenreLitteraire genreChoisi)

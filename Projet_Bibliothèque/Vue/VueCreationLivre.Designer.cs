@@ -178,7 +178,7 @@
             this.labSurnIntervTiers = new System.Windows.Forms.Label();
             this.txtPrenomIntervTiers = new System.Windows.Forms.TextBox();
             this.labPrenomIntervTiers = new System.Windows.Forms.Label();
-            this.txtChoixIntervTiers = new System.Windows.Forms.TextBox();
+            this.txtNomIntervTiers = new System.Windows.Forms.TextBox();
             this.labNomIntervTiers = new System.Windows.Forms.Label();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnRetour = new System.Windows.Forms.Button();
@@ -591,6 +591,7 @@
             this.cmboxChoixEdit.Name = "cmboxChoixEdit";
             this.cmboxChoixEdit.Size = new System.Drawing.Size(189, 24);
             this.cmboxChoixEdit.TabIndex = 1;
+            this.cmboxChoixEdit.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixEdit_SelectedIndexChanged);
             // 
             // labChoixEdit
             // 
@@ -694,6 +695,7 @@
             this.cmboxChoixImpr.Name = "cmboxChoixImpr";
             this.cmboxChoixImpr.Size = new System.Drawing.Size(204, 24);
             this.cmboxChoixImpr.TabIndex = 1;
+            this.cmboxChoixImpr.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixImpr_SelectedIndexChanged);
             // 
             // labChoixImpr
             // 
@@ -833,6 +835,7 @@
             this.cmboxChoixAutPrincip.Name = "cmboxChoixAutPrincip";
             this.cmboxChoixAutPrincip.Size = new System.Drawing.Size(257, 24);
             this.cmboxChoixAutPrincip.TabIndex = 1;
+            this.cmboxChoixAutPrincip.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixAutPrincip_SelectedIndexChanged);
             // 
             // labChoixAutPrincip
             // 
@@ -972,6 +975,7 @@
             this.cmboxChoixAutSecond.Name = "cmboxChoixAutSecond";
             this.cmboxChoixAutSecond.Size = new System.Drawing.Size(257, 24);
             this.cmboxChoixAutSecond.TabIndex = 1;
+            this.cmboxChoixAutSecond.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixAutSecond_SelectedIndexChanged);
             // 
             // labChoixAutSecond
             // 
@@ -1111,6 +1115,7 @@
             this.cmboxChoixAutTiers.Name = "cmboxChoixAutTiers";
             this.cmboxChoixAutTiers.Size = new System.Drawing.Size(257, 24);
             this.cmboxChoixAutTiers.TabIndex = 1;
+            this.cmboxChoixAutTiers.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixAutTiers_SelectedIndexChanged);
             // 
             // labChoixAutTiers
             // 
@@ -1156,6 +1161,7 @@
             this.cmboxChoixIntervPrincip.Name = "cmboxChoixIntervPrincip";
             this.cmboxChoixIntervPrincip.Size = new System.Drawing.Size(195, 24);
             this.cmboxChoixIntervPrincip.TabIndex = 15;
+            this.cmboxChoixIntervPrincip.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixIntervPrincip_SelectedIndexChanged);
             // 
             // labChoixIntervPrincip
             // 
@@ -1313,6 +1319,7 @@
             this.cmboxChoixIntervSecond.Name = "cmboxChoixIntervSecond";
             this.cmboxChoixIntervSecond.Size = new System.Drawing.Size(195, 24);
             this.cmboxChoixIntervSecond.TabIndex = 15;
+            this.cmboxChoixIntervSecond.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixIntervSecond_SelectedIndexChanged);
             // 
             // labChoixIntervSecond
             // 
@@ -1452,7 +1459,7 @@
             this.grpboxIntervTiers.Controls.Add(this.labSurnIntervTiers);
             this.grpboxIntervTiers.Controls.Add(this.txtPrenomIntervTiers);
             this.grpboxIntervTiers.Controls.Add(this.labPrenomIntervTiers);
-            this.grpboxIntervTiers.Controls.Add(this.txtChoixIntervTiers);
+            this.grpboxIntervTiers.Controls.Add(this.txtNomIntervTiers);
             this.grpboxIntervTiers.Controls.Add(this.labNomIntervTiers);
             this.grpboxIntervTiers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpboxIntervTiers.Location = new System.Drawing.Point(1268, 756);
@@ -1470,6 +1477,7 @@
             this.cmboxChoixIntervTiers.Name = "cmboxChoixIntervTiers";
             this.cmboxChoixIntervTiers.Size = new System.Drawing.Size(195, 24);
             this.cmboxChoixIntervTiers.TabIndex = 15;
+            this.cmboxChoixIntervTiers.SelectedIndexChanged += new System.EventHandler(this.cmboxChoixIntervTiers_SelectedIndexChanged);
             // 
             // labChoixIntervTiers
             // 
@@ -1576,12 +1584,12 @@
             this.labPrenomIntervTiers.TabIndex = 2;
             this.labPrenomIntervTiers.Text = "Prénom:";
             // 
-            // txtChoixIntervTiers
+            // txtNomIntervTiers
             // 
-            this.txtChoixIntervTiers.Location = new System.Drawing.Point(51, 65);
-            this.txtChoixIntervTiers.Name = "txtChoixIntervTiers";
-            this.txtChoixIntervTiers.Size = new System.Drawing.Size(135, 22);
-            this.txtChoixIntervTiers.TabIndex = 1;
+            this.txtNomIntervTiers.Location = new System.Drawing.Point(51, 65);
+            this.txtNomIntervTiers.Name = "txtNomIntervTiers";
+            this.txtNomIntervTiers.Size = new System.Drawing.Size(135, 22);
+            this.txtNomIntervTiers.TabIndex = 1;
             // 
             // labNomIntervTiers
             // 
@@ -1805,7 +1813,7 @@
         private System.Windows.Forms.Label labSurnIntervTiers;
         private System.Windows.Forms.TextBox txtPrenomIntervTiers;
         private System.Windows.Forms.Label labPrenomIntervTiers;
-        private System.Windows.Forms.TextBox txtChoixIntervTiers;
+        private System.Windows.Forms.TextBox txtNomIntervTiers;
         private System.Windows.Forms.Label labNomIntervTiers;
         private System.Windows.Forms.Label labDateMortAutPrincip;
         private System.Windows.Forms.Label labDateMortAutSecond;
