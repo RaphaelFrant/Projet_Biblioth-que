@@ -52,16 +52,13 @@ namespace Projet_Bibliothèque.Vue
                 int numeroPays = nouvPays.TrouvNumPays(txtNatioCreaInterv.Text);
                 ArrayList infNouvInterv = new ArrayList();
                 infNouvInterv.Add(numeroPays);
+                infNouvInterv.Add(numFonction);
                 infNouvInterv.Add(txtNomCreaInterv.Text);
                 infNouvInterv.Add(txtPrenomCreaInterv.Text);
                 infNouvInterv.Add(txtSurnomCreaInterv.Text);
                 infNouvInterv.Add(DateTime.Parse(txtDateNaiCreaInterv.Text));
                 infNouvInterv.Add(txtDateMortCreaInterv.Text);
                 ControlIntervDivers.CreerIntervenant(infNouvInterv);
-                ModeleTravailler nouvDuoIntervFonct = new ModeleTravailler();
-                nouvDuoIntervFonct.AccIdIntervFonct = IntervenantDivers.RecupLastIdInterv(txtNomCreaInterv.Text + " " + txtPrenomCreaInterv.Text);
-                nouvDuoIntervFonct.AccIdFonctInterv = numFonction;
-                ModeleTravailler.InsertTravail(nouvDuoIntervFonct);
                 MessageBox.Show(txtNomCreaInterv.Text + " " + txtPrenomCreaInterv.Text + " a bien été créé");
                 this.Hide();
                 VueIntervenantDivers refreshVueInterv = new VueIntervenantDivers();
@@ -87,6 +84,7 @@ namespace Projet_Bibliothèque.Vue
                 txtDateNaiModifInterv.Text = intervRecup.dateNaiInterv.ToString().Substring(0, 10);
                 txtDateMortModifInterv.Text = intervRecup.dateMortInterv;
                 txtNatioModifInterv.Text = Pays.TrouvNomPays(intervRecup.idPaysInterv);
+                txtFoncModifInterv.Text = Fonction.TrouvNomFonction(intervRecup.idFonct);
             }
         }
 
@@ -96,11 +94,12 @@ namespace Projet_Bibliothèque.Vue
             try
             {
                 string nomFonctionMod = txtFoncCreaInterv.Text;
-                nouvFonct.TrouvNumFonction(nomFonctionMod);
+                int numFonctModif = nouvFonct.TrouvNumFonction(nomFonctionMod);
                 int numeroPays = nouvPays.TrouvNumPays(txtNatioModifInterv.Text);
                 ArrayList infModifInterv = new ArrayList();
                 infModifInterv.Add(int.Parse(txtIdModifInterv.Text));
                 infModifInterv.Add(numeroPays);
+                infModifInterv.Add(numFonctModif);
                 infModifInterv.Add(txtNomModifInterv.Text);
                 infModifInterv.Add(txtPrenomModifInterv.Text);
                 infModifInterv.Add(txtSurnModifInterv.Text);
@@ -151,6 +150,7 @@ namespace Projet_Bibliothèque.Vue
                     txtDateNaiCreaInterv.Text = "";
                     txtDateMortCreaInterv.Text = "";
                     txtNatioCreaInterv.Text = "";
+                    txtFoncCreaInterv.Text = "";
                 }
                 else
                 {
@@ -161,6 +161,7 @@ namespace Projet_Bibliothèque.Vue
                     txtDateNaiModifInterv.Text = "";
                     txtDateMortModifInterv.Text = "";
                     txtNatioModifInterv.Text = "";
+                    txtFoncModifInterv.Text = "";
                 }
             }
             catch

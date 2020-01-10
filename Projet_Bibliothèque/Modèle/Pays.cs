@@ -128,7 +128,7 @@ namespace Projet_Bibliothèque.Modèle
         /// <summary>
         /// Méthode permettant de créer un nouveau pays lorsque l'utilisateur entre un pays inconnu dans l'un des formulaires
         /// </summary>
-        /// <param name="libPays">Récupère le nom du pays entr par l'utilisateur</param>
+        /// <param name="libPays">Récupère le nom du pays entré par l'utilisateur</param>
         /// <returns>Renvoie à son tour le nom du pays qui a été créé</returns>
         /// <exception cref="">Renvoie une erreur si le nom du pays entré est invalide</exception>
         private string InsertPays(string libPays)

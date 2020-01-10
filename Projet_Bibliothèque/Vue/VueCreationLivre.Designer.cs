@@ -35,9 +35,7 @@
             this.labResume = new System.Windows.Forms.Label();
             this.cmboxPeriodTempo = new System.Windows.Forms.ComboBox();
             this.labPeriodTempo = new System.Windows.Forms.Label();
-            this.cmbboxTierGenreLitt = new System.Windows.Forms.ComboBox();
-            this.cmbboxSecondGenreLitt = new System.Windows.Forms.ComboBox();
-            this.cmbboxPrimoGenreLitt = new System.Windows.Forms.ComboBox();
+            this.cmbboxGenreLitt = new System.Windows.Forms.ComboBox();
             this.labGenreLitt = new System.Windows.Forms.Label();
             this.txtTypeOuvr = new System.Windows.Forms.TextBox();
             this.labTypeOuvr = new System.Windows.Forms.Label();
@@ -212,9 +210,7 @@
             this.grpboxNouvLivre.Controls.Add(this.labResume);
             this.grpboxNouvLivre.Controls.Add(this.cmboxPeriodTempo);
             this.grpboxNouvLivre.Controls.Add(this.labPeriodTempo);
-            this.grpboxNouvLivre.Controls.Add(this.cmbboxTierGenreLitt);
-            this.grpboxNouvLivre.Controls.Add(this.cmbboxSecondGenreLitt);
-            this.grpboxNouvLivre.Controls.Add(this.cmbboxPrimoGenreLitt);
+            this.grpboxNouvLivre.Controls.Add(this.cmbboxGenreLitt);
             this.grpboxNouvLivre.Controls.Add(this.labGenreLitt);
             this.grpboxNouvLivre.Controls.Add(this.txtTypeOuvr);
             this.grpboxNouvLivre.Controls.Add(this.labTypeOuvr);
@@ -265,9 +261,8 @@
             // 
             // cmboxPeriodTempo
             // 
-            this.cmboxPeriodTempo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxPeriodTempo.FormattingEnabled = true;
-            this.cmboxPeriodTempo.Location = new System.Drawing.Point(442, 100);
+            this.cmboxPeriodTempo.Location = new System.Drawing.Point(1689, 67);
             this.cmboxPeriodTempo.Name = "cmboxPeriodTempo";
             this.cmboxPeriodTempo.Size = new System.Drawing.Size(181, 24);
             this.cmboxPeriodTempo.TabIndex = 27;
@@ -275,38 +270,19 @@
             // labPeriodTempo
             // 
             this.labPeriodTempo.AutoSize = true;
-            this.labPeriodTempo.Location = new System.Drawing.Point(302, 103);
+            this.labPeriodTempo.Location = new System.Drawing.Point(1549, 70);
             this.labPeriodTempo.Name = "labPeriodTempo";
             this.labPeriodTempo.Size = new System.Drawing.Size(134, 16);
             this.labPeriodTempo.TabIndex = 26;
             this.labPeriodTempo.Text = "Période temporelle* :";
             // 
-            // cmbboxTierGenreLitt
+            // cmbboxGenreLitt
             // 
-            this.cmbboxTierGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbboxTierGenreLitt.FormattingEnabled = true;
-            this.cmbboxTierGenreLitt.Location = new System.Drawing.Point(1672, 67);
-            this.cmbboxTierGenreLitt.Name = "cmbboxTierGenreLitt";
-            this.cmbboxTierGenreLitt.Size = new System.Drawing.Size(182, 24);
-            this.cmbboxTierGenreLitt.TabIndex = 25;
-            // 
-            // cmbboxSecondGenreLitt
-            // 
-            this.cmbboxSecondGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbboxSecondGenreLitt.FormattingEnabled = true;
-            this.cmbboxSecondGenreLitt.Location = new System.Drawing.Point(1484, 67);
-            this.cmbboxSecondGenreLitt.Name = "cmbboxSecondGenreLitt";
-            this.cmbboxSecondGenreLitt.Size = new System.Drawing.Size(182, 24);
-            this.cmbboxSecondGenreLitt.TabIndex = 24;
-            // 
-            // cmbboxPrimoGenreLitt
-            // 
-            this.cmbboxPrimoGenreLitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbboxPrimoGenreLitt.FormattingEnabled = true;
-            this.cmbboxPrimoGenreLitt.Location = new System.Drawing.Point(1292, 67);
-            this.cmbboxPrimoGenreLitt.Name = "cmbboxPrimoGenreLitt";
-            this.cmbboxPrimoGenreLitt.Size = new System.Drawing.Size(182, 24);
-            this.cmbboxPrimoGenreLitt.TabIndex = 23;
+            this.cmbboxGenreLitt.FormattingEnabled = true;
+            this.cmbboxGenreLitt.Location = new System.Drawing.Point(1292, 67);
+            this.cmbboxGenreLitt.Name = "cmbboxGenreLitt";
+            this.cmbboxGenreLitt.Size = new System.Drawing.Size(223, 24);
+            this.cmbboxGenreLitt.TabIndex = 23;
             // 
             // labGenreLitt
             // 
@@ -1625,6 +1601,7 @@
             this.btnEnregistrer.TabIndex = 17;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnRetour
             // 
@@ -1701,9 +1678,7 @@
         private System.Windows.Forms.Label labResume;
         private System.Windows.Forms.ComboBox cmboxPeriodTempo;
         private System.Windows.Forms.Label labPeriodTempo;
-        private System.Windows.Forms.ComboBox cmbboxTierGenreLitt;
-        private System.Windows.Forms.ComboBox cmbboxSecondGenreLitt;
-        private System.Windows.Forms.ComboBox cmbboxPrimoGenreLitt;
+        private System.Windows.Forms.ComboBox cmbboxGenreLitt;
         private System.Windows.Forms.Label labGenreLitt;
         private System.Windows.Forms.TextBox txtTypeOuvr;
         private System.Windows.Forms.Label labTypeOuvr;

@@ -22,6 +22,7 @@ namespace Projet_Bibliothèque.Modèle
         public int idPeriodTempo;
         public int idEditeur;
         public int idImprim;
+        public int idGenre;
         public string libLivre;
         public string libOrigLivre;
         public int prixLivre;
@@ -116,6 +117,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idImprim = value;
+                }
+            }
+        }
+
+        public int AccIdGenre
+        {
+            get { return this.idGenre; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant du genre littéraire ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idGenre = value;
                 }
             }
         }
@@ -281,7 +298,7 @@ namespace Projet_Bibliothèque.Modèle
         public Livre () { }
 
         /// <summary>Constructeur pour la création ou la modification de la classe Livre</summary>
-        public Livre(string numeroIsbn, int numTypeLivre, int numSerieLivre, int numPeriodeTemporelle, int numEdit, int numImprimeur, string titreLivre, string titreOriginal, 
+        public Livre(string numeroIsbn, int numTypeLivre, int numSerieLivre, int numPeriodeTemporelle, int numEdit, int numImprimeur, int numGenre, string titreLivre, string titreOriginal, 
             int montant, DateTime dateAcquisition, string langue, DateTime depotLegal, int pages, string etatOuvrage, string resume)
         {
             AccNumIsbn = numeroIsbn;
@@ -290,6 +307,7 @@ namespace Projet_Bibliothèque.Modèle
             AccIdPeriodTempo = numPeriodeTemporelle;
             AccIdEditeur = numEdit;
             AccIdImprim = numImprimeur;
+            AccIdGenre = numGenre;
             AccLibLivre = titreLivre;
             AccLibOrigLivre = titreOriginal;
             AccPrixLivre = montant;

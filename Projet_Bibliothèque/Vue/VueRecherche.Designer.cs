@@ -81,6 +81,18 @@
             this.cmboxChoixRubrique.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboxChoixRubrique.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmboxChoixRubrique.FormattingEnabled = true;
+            this.cmboxChoixRubrique.Items.AddRange(new object[] {
+            "Auteur",
+            "Editeur",
+            "Fonction",
+            "Genre_Litteraire",
+            "Imprimeur",
+            "Intervenant_Divers",
+            "Livre",
+            "Pays",
+            "Periode_Temporelle",
+            "Serie_de_livre",
+            "Type_de_livre"});
             this.cmboxChoixRubrique.Location = new System.Drawing.Point(400, 188);
             this.cmboxChoixRubrique.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboxChoixRubrique.Name = "cmboxChoixRubrique";

@@ -20,6 +20,7 @@ namespace Projet_Bibliothèque.Modèle
         //--------------------------------Variable--------------------------------
         public int idInterv;
         public int idPaysInterv;
+        public int idFonct;
         public string nomInterv;
         public string prenomInterv;
         public string surnomInterv;
@@ -55,6 +56,22 @@ namespace Projet_Bibliothèque.Modèle
                 else
                 {
                     this.idPaysInterv = value;
+                }
+            }
+        }
+
+        public int AccIdFonctInterv
+        {
+            get { return this.idFonct; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("L'identifiant de la fonction de l'intervenant ne peut pas être inférieur ou égal à zéro.");
+                }
+                else
+                {
+                    this.idFonct = value;
                 }
             }
         }
@@ -144,10 +161,11 @@ namespace Projet_Bibliothèque.Modèle
         public IntervenantDivers() { }
 
         /// <summary>Constructeur pour la modification d'un objet de la classe IntervenantDivers</summary>
-        public IntervenantDivers(int numIntervenant, int numPaysIntervenant, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, string dateDecesIntervenant)
+        public IntervenantDivers(int numIntervenant, int numPaysIntervenant, int numFonct, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, string dateDecesIntervenant)
         {
             AccIdInterv = numIntervenant;
             AccIdPaysInterv = numPaysIntervenant;
+            AccIdFonctInterv = numFonct;
             AccNomInterv = nomIntervenant;
             AccPrenomInterv = prenomIntervenant;
             AccSurnomInterv = pseudoIntervenant;
@@ -156,9 +174,10 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>Constructeur pour l'insertion d'un objet de la classe IntervenantDivers</summary>
-        public IntervenantDivers(int numPaysIntervenant, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, string dateDecesIntervenant)
+        public IntervenantDivers(int numPaysIntervenant, int numFonct, string nomIntervenant, string prenomIntervenant, string pseudoIntervenant, DateTime dateNaiIntervenant, string dateDecesIntervenant)
         {
             AccIdPaysInterv = numPaysIntervenant;
+            AccIdFonctInterv = numFonct;
             AccNomInterv = nomIntervenant;
             AccPrenomInterv = prenomIntervenant;
             AccSurnomInterv = pseudoIntervenant;
@@ -178,8 +197,9 @@ namespace Projet_Bibliothèque.Modèle
             try
             {
                 Connection();
-                libCreaInterv = "Insert into Intervenant_Divers(idPays, nominterv, prenominterv, surnominterv, datenaiinterv, datemortinterv) values (";
+                libCreaInterv = "Insert into Intervenant_Divers(idPays, idfonction, nominterv, prenominterv, surnominterv, datenaiinterv, datemortinterv) values (";
                 libCreaInterv += "'" + nouvInterv.AccIdPaysInterv + "', ";
+                libCreaInterv += "'" + nouvInterv.AccIdFonctInterv + "', ";
                 libCreaInterv += "'" + nouvInterv.AccNomInterv + "', ";
                 libCreaInterv += "'" + nouvInterv.AccPrenomInterv + "', ";
                 libCreaInterv += "'" + nouvInterv.AccSurnomInterv + "', ";
@@ -258,7 +278,7 @@ namespace Projet_Bibliothèque.Modèle
             {
                 Connection();
                 IntervenantDivers intervAModif = new IntervenantDivers();
-                string cmdInfoInterv = ("select idinterv, idpays, nominterv, prenominterv, surnominterv, datenaiinterv, datemortinterv from intervenant_divers " +
+                string cmdInfoInterv = ("select idinterv, idpays, idfonction, nominterv, prenominterv, surnominterv, datenaiinterv, datemortinterv from intervenant_divers " +
                     "where concat(nominterv, ' ', prenominterv) like '" + appelationInterv + "'");
                 SqlCommand trouvInfoInterv = new SqlCommand(cmdInfoInterv, maConnexion);
                 SqlDataReader lecteurInfoInterv = trouvInfoInterv.ExecuteReader();
@@ -268,17 +288,18 @@ namespace Projet_Bibliothèque.Modèle
                     {
                         intervAModif.AccIdInterv = int.Parse(lecteurInfoInterv[0].ToString());
                         intervAModif.AccIdPaysInterv = int.Parse(lecteurInfoInterv[1].ToString());
-                        intervAModif.AccNomInterv = lecteurInfoInterv[2].ToString();
-                        intervAModif.AccPrenomInterv = lecteurInfoInterv[3].ToString();
-                        intervAModif.AccSurnomInterv = lecteurInfoInterv[4].ToString();
-                        intervAModif.AccDateNaiInterv = DateTime.Parse(lecteurInfoInterv[5].ToString());
-                        if (lecteurInfoInterv[6].ToString().Substring(0, 10) == "01/01/1900")
+                        intervAModif.AccIdFonctInterv = int.Parse(lecteurInfoInterv[2].ToString());
+                        intervAModif.AccNomInterv = lecteurInfoInterv[3].ToString();
+                        intervAModif.AccPrenomInterv = lecteurInfoInterv[4].ToString();
+                        intervAModif.AccSurnomInterv = lecteurInfoInterv[5].ToString();
+                        intervAModif.AccDateNaiInterv = DateTime.Parse(lecteurInfoInterv[6].ToString());
+                        if (lecteurInfoInterv[7].ToString().Substring(0, 10) == "01/01/1900")
                         {
                             intervAModif.AccDateMortInterv = "";
                         }
                         else
                         {
-                            intervAModif.AccDateMortInterv = lecteurInfoInterv[6].ToString().Substring(0, 10);
+                            intervAModif.AccDateMortInterv = lecteurInfoInterv[7].ToString().Substring(0, 10);
                         }
                     }
                 }
@@ -304,6 +325,7 @@ namespace Projet_Bibliothèque.Modèle
                 Connection();
                 libModifInterv = "Update intervenant_divers Set ";
                 libModifInterv += "idPays='" + intervAModif.AccIdPaysInterv + "', ";
+                libModifInterv += "idfonction='" + intervAModif.AccIdFonctInterv + "', "; 
                 libModifInterv += "nominterv='" + intervAModif.AccNomInterv + "', ";
                 libModifInterv += "prenominterv='" + intervAModif.AccPrenomInterv + "', ";
                 libModifInterv += "surnominterv='" + intervAModif.AccSurnomInterv + "', ";

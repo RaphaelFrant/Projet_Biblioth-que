@@ -26,11 +26,12 @@ namespace Projet_Bibliothèque.Controlleur
             {
                 IntervenantDivers nouvInterv = new IntervenantDivers();
                 nouvInterv.AccIdPaysInterv = int.Parse(nouvInfoInterv[0].ToString());
-                nouvInterv.AccNomInterv = nouvInfoInterv[1].ToString();
-                nouvInterv.AccPrenomInterv = nouvInfoInterv[2].ToString();
-                nouvInterv.AccSurnomInterv = nouvInfoInterv[3].ToString();
-                nouvInterv.AccDateNaiInterv = DateTime.Parse(nouvInfoInterv[4].ToString());
-                nouvInterv.AccDateMortInterv = nouvInfoInterv[5].ToString();
+                nouvInterv.AccIdFonctInterv = int.Parse(nouvInfoInterv[1].ToString());
+                nouvInterv.AccNomInterv = nouvInfoInterv[2].ToString();
+                nouvInterv.AccPrenomInterv = nouvInfoInterv[3].ToString();
+                nouvInterv.AccSurnomInterv = nouvInfoInterv[4].ToString();
+                nouvInterv.AccDateNaiInterv = DateTime.Parse(nouvInfoInterv[5].ToString());
+                nouvInterv.AccDateMortInterv = nouvInfoInterv[6].ToString();
                 IntervenantDivers.InsertIntervenant(nouvInterv);
             }
             catch
@@ -51,11 +52,12 @@ namespace Projet_Bibliothèque.Controlleur
                 IntervenantDivers modifInterv = new IntervenantDivers();
                 modifInterv.AccIdInterv = int.Parse(modifInfoInterv[0].ToString());
                 modifInterv.AccIdPaysInterv = int.Parse(modifInfoInterv[1].ToString());
-                modifInterv.AccNomInterv = modifInfoInterv[2].ToString();
-                modifInterv.AccPrenomInterv = modifInfoInterv[3].ToString();
-                modifInterv.AccSurnomInterv = modifInfoInterv[4].ToString();
-                modifInterv.AccDateNaiInterv = DateTime.Parse(modifInfoInterv[5].ToString());
-                modifInterv.AccDateMortInterv = modifInfoInterv[6].ToString();
+                modifInterv.AccIdFonctInterv = int.Parse(modifInfoInterv[2].ToString());
+                modifInterv.AccNomInterv = modifInfoInterv[3].ToString();
+                modifInterv.AccPrenomInterv = modifInfoInterv[4].ToString();
+                modifInterv.AccSurnomInterv = modifInfoInterv[5].ToString();
+                modifInterv.AccDateNaiInterv = DateTime.Parse(modifInfoInterv[6].ToString());
+                modifInterv.AccDateMortInterv = modifInfoInterv[7].ToString();
                 IntervenantDivers.UpdateInterv(modifInterv);
             }
             catch
