@@ -39,7 +39,7 @@
             this.labGenreLitt = new System.Windows.Forms.Label();
             this.txtTypeOuvr = new System.Windows.Forms.TextBox();
             this.labTypeOuvr = new System.Windows.Forms.Label();
-            this.txtSérieLivre = new System.Windows.Forms.TextBox();
+            this.txtSerieLivre = new System.Windows.Forms.TextBox();
             this.labSerieLivre = new System.Windows.Forms.Label();
             this.txtEtatLivre = new System.Windows.Forms.TextBox();
             this.labEtatLivre = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.labTitreOrigLivre = new System.Windows.Forms.Label();
             this.txtTitreLivre = new System.Windows.Forms.TextBox();
             this.labTitreLivre = new System.Windows.Forms.Label();
-            this.txtNisbnLivre = new System.Windows.Forms.TextBox();
+            this.txtIsbnLivre = new System.Windows.Forms.TextBox();
             this.labNisbnLivre = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.grpboxEditeur = new System.Windows.Forms.GroupBox();
@@ -214,7 +214,7 @@
             this.grpboxNouvLivre.Controls.Add(this.labGenreLitt);
             this.grpboxNouvLivre.Controls.Add(this.txtTypeOuvr);
             this.grpboxNouvLivre.Controls.Add(this.labTypeOuvr);
-            this.grpboxNouvLivre.Controls.Add(this.txtSérieLivre);
+            this.grpboxNouvLivre.Controls.Add(this.txtSerieLivre);
             this.grpboxNouvLivre.Controls.Add(this.labSerieLivre);
             this.grpboxNouvLivre.Controls.Add(this.txtEtatLivre);
             this.grpboxNouvLivre.Controls.Add(this.labEtatLivre);
@@ -232,7 +232,7 @@
             this.grpboxNouvLivre.Controls.Add(this.labTitreOrigLivre);
             this.grpboxNouvLivre.Controls.Add(this.txtTitreLivre);
             this.grpboxNouvLivre.Controls.Add(this.labTitreLivre);
-            this.grpboxNouvLivre.Controls.Add(this.txtNisbnLivre);
+            this.grpboxNouvLivre.Controls.Add(this.txtIsbnLivre);
             this.grpboxNouvLivre.Controls.Add(this.labNisbnLivre);
             this.grpboxNouvLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpboxNouvLivre.Location = new System.Drawing.Point(12, 127);
@@ -309,12 +309,12 @@
             this.labTypeOuvr.TabIndex = 20;
             this.labTypeOuvr.Text = "Type de livre* :";
             // 
-            // txtSérieLivre
+            // txtSerieLivre
             // 
-            this.txtSérieLivre.Location = new System.Drawing.Point(943, 67);
-            this.txtSérieLivre.Name = "txtSérieLivre";
-            this.txtSérieLivre.Size = new System.Drawing.Size(220, 22);
-            this.txtSérieLivre.TabIndex = 19;
+            this.txtSerieLivre.Location = new System.Drawing.Point(943, 67);
+            this.txtSerieLivre.Name = "txtSerieLivre";
+            this.txtSerieLivre.Size = new System.Drawing.Size(220, 22);
+            this.txtSerieLivre.TabIndex = 19;
             // 
             // labSerieLivre
             // 
@@ -453,12 +453,12 @@
             this.labTitreLivre.TabIndex = 2;
             this.labTitreLivre.Text = "Titre* :";
             // 
-            // txtNisbnLivre
+            // txtIsbnLivre
             // 
-            this.txtNisbnLivre.Location = new System.Drawing.Point(102, 31);
-            this.txtNisbnLivre.Name = "txtNisbnLivre";
-            this.txtNisbnLivre.Size = new System.Drawing.Size(183, 22);
-            this.txtNisbnLivre.TabIndex = 1;
+            this.txtIsbnLivre.Location = new System.Drawing.Point(102, 31);
+            this.txtIsbnLivre.Name = "txtIsbnLivre";
+            this.txtIsbnLivre.Size = new System.Drawing.Size(183, 22);
+            this.txtIsbnLivre.TabIndex = 1;
             // 
             // labNisbnLivre
             // 
@@ -1679,7 +1679,7 @@
         private System.Windows.Forms.Label labTitreOrigLivre;
         private System.Windows.Forms.TextBox txtTitreLivre;
         private System.Windows.Forms.Label labTitreLivre;
-        private System.Windows.Forms.TextBox txtNisbnLivre;
+        private System.Windows.Forms.TextBox txtIsbnLivre;
         private System.Windows.Forms.Label labNisbnLivre;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox txtResume;
@@ -1690,7 +1690,7 @@
         private System.Windows.Forms.Label labGenreLitt;
         private System.Windows.Forms.TextBox txtTypeOuvr;
         private System.Windows.Forms.Label labTypeOuvr;
-        private System.Windows.Forms.TextBox txtSérieLivre;
+        private System.Windows.Forms.TextBox txtSerieLivre;
         private System.Windows.Forms.Label labSerieLivre;
         private System.Windows.Forms.TextBox txtEtatLivre;
         private System.Windows.Forms.Label labEtatLivre;

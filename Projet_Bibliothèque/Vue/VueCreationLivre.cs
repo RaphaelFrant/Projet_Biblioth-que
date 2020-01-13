@@ -1,6 +1,7 @@
 ﻿using Projet_Bibliothèque.Controlleur;
 using Projet_Bibliothèque.Modèle;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,8 @@ namespace Projet_Bibliothèque.Vue
     /// <summary>
     /// Vue permettant de créer des livres et de modifier des livres existants
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 7, le 10/01/2020
-    /// Mise en place des combox de genre littéraire, période temporelle, auteurs, éditeur, imprimeur et intervenants</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 9, le 13/01/2020
+    /// Mise en place des méthodes de création de la série de livre et du type de livre</remarks>
     public partial class VueCreationLivre : Form
     {
         public VueCreationLivre()
@@ -58,10 +59,39 @@ namespace Projet_Bibliothèque.Vue
         {
             try
             {
-                /*string genreIndiq = cmbboxGenreLitt.Text;
-                int identGenre = ControlGenreLitteraire.TrouvGenre(genreIndiq);*/
+                string genreIndiq = cmbboxGenreLitt.Text;
+                int identGenre = ControlGenreLitteraire.TrouvGenre(genreIndiq);
                 string periodeIndiq = cmboxPeriodTempo.Text;
                 int identPeriod = ControlPeriodeTempo.TrouvGenre(periodeIndiq);
+                string serieIndiq = txtSerieLivre.Text;
+                int identSerie = ControlSerie.TrouvSerie(serieIndiq);
+                string typeLivIndiq = txtTypeOuvr.Text;
+                int identTypeLiv = ControlTypeLivre.TrouvTypeLiv(typeLivIndiq);
+
+                //int identEditeur = txtNomEdit.Text;
+
+
+                //int identImprimeur = txtNomImpr.Text;
+
+
+
+                ArrayList infoLivre = new ArrayList();
+                infoLivre.Add(txtIsbnLivre.Text);
+                infoLivre.Add(identTypeLiv);
+                infoLivre.Add(identSerie);
+                infoLivre.Add(identPeriod);
+                infoLivre.Add(identEditeur);
+                infoLivre.Add(identImprimeur);
+                infoLivre.Add(identGenre);
+                infoLivre.Add(txtTitreLivre.Text);
+                infoLivre.Add(txtTitreOrigLivre.Text);
+                infoLivre.Add(int.Parse(txtPrixLivre.Text));
+                infoLivre.Add(DateTime.Parse(txtDateAcquiLivre.Text));
+                infoLivre.Add(txtLangLivre.Text);
+                infoLivre.Add(DateTime.Parse(txtDepotLegLivre.Text));
+                infoLivre.Add(int.Parse(txtNbrePageLivre.Text));
+                infoLivre.Add(txtEtatLivre.Text);
+                infoLivre.Add(txtResume.Text);
 
                 this.Hide();
                 VueCreationLivre nouvPageCreaLiv = new VueCreationLivre();

@@ -52,7 +52,10 @@
     <Compile Include="Controlleur\ControlGenreLitteraire.cs" />
     <Compile Include="Controlleur\ControlImprimeur.cs" />
     <Compile Include="Controlleur\ControlIntervDivers.cs" />
+    <Compile Include="Controlleur\ControlLivre.cs" />
     <Compile Include="Controlleur\ControlPeriodeTempo.cs" />
+    <Compile Include="Controlleur\ControlSerie.cs" />
+    <Compile Include="Controlleur\ControlTypeLivre.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
