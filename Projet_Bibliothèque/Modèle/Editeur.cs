@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Editeur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 3, le 07/01/2019
-    /// Implémentation des méthodes pour la création, la modification et la suppression d'un éditeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2019
+    /// Implémentation de la méthode de récupération de l'identifiant d'un éditeur</remarks>
     class Editeur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -300,6 +300,37 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de modifier les informations de l'éditeur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant de l'éditeur
+        /// </summary>
+        /// <param name="titreEdit">Récupère le nom de l'éditeur dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant de l'éditeur correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdEditeur(string titreEdit)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdEdit = ("select idedit from editeur where nomedit='" + titreEdit + "'");
+                SqlCommand trouvIdEdit = new SqlCommand(cmdTrouvIdEdit, maConnexion);
+                SqlDataReader lecteurTrouvIdEdit = trouvIdEdit.ExecuteReader();
+                if (lecteurTrouvIdEdit.HasRows)
+                {
+                    while (lecteurTrouvIdEdit.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdEdit[0].ToString());
+                    }
+                }
+                lecteurTrouvIdEdit.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'éditeur sélectionné.");
             }
         }
     }

@@ -16,8 +16,8 @@ namespace Projet_Bibliothèque.Vue
     /// <summary>
     /// Vue permettant de créer des livres et de modifier des livres existants
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 9, le 13/01/2020
-    /// Mise en place des méthodes de création de la série de livre et du type de livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2020
+    /// Création d'une ArrayList pour les informations du livre, Recuperation identifiant editeur, Recuperation identifiant imprimeur</remarks>
     public partial class VueCreationLivre : Form
     {
         public VueCreationLivre()
@@ -67,13 +67,10 @@ namespace Projet_Bibliothèque.Vue
                 int identSerie = ControlSerie.TrouvSerie(serieIndiq);
                 string typeLivIndiq = txtTypeOuvr.Text;
                 int identTypeLiv = ControlTypeLivre.TrouvTypeLiv(typeLivIndiq);
+                int identEditeur = ControlEditeur.RecupIdEditeur(txtNomEdit.Text);
+                int identImprimeur = ControlImprimeur.RecupIdImprimeur(txtNomImpr.Text);
 
-                //int identEditeur = txtNomEdit.Text;
-
-
-                //int identImprimeur = txtNomImpr.Text;
-
-
+                /*Insérer le code (sous forme de méthode) pour créer un auteur, editeur, imprimeur, intervenant inexistant et qui recup leurs informations*/
 
                 ArrayList infoLivre = new ArrayList();
                 infoLivre.Add(txtIsbnLivre.Text);
@@ -92,6 +89,8 @@ namespace Projet_Bibliothèque.Vue
                 infoLivre.Add(int.Parse(txtNbrePageLivre.Text));
                 infoLivre.Add(txtEtatLivre.Text);
                 infoLivre.Add(txtResume.Text);
+
+                /*ajout d'une méthode squi relie un livre a un ou des auteurs dans la table ModeleEcrire*/
 
                 this.Hide();
                 VueCreationLivre nouvPageCreaLiv = new VueCreationLivre();
@@ -114,7 +113,7 @@ namespace Projet_Bibliothèque.Vue
                     Editeur editChoisi = Editeur.RecupInfoEditeur(nomEditChoisi);
                     txtNomEdit.Text = editChoisi.nomEditeur;
                     txtNatioEdit.Text = Pays.TrouvNomPays(editChoisi.idPaysEdit);
-                    txtDateCreaEdit.Text = editChoisi.dateDebEditeur.ToString();
+                    txtDateCreaEdit.Text = editChoisi.dateDebEditeur.ToString().Substring(0, 10);
                     txtDateFinEdit.Text = editChoisi.dateFinEditeur;
                     txtAdressEdit.Text = editChoisi.adEditeur;
                 }
@@ -136,7 +135,7 @@ namespace Projet_Bibliothèque.Vue
                     Imprimeur imprChoisi = Imprimeur.RecupInfoImprimeur(nomImprChoisi);
                     txtNomImpr.Text = imprChoisi.nomImprim;
                     txtNatioImpr.Text = Pays.TrouvNomPays(imprChoisi.idPaysImprim);
-                    txtDateCreaImpr.Text = imprChoisi.dateDebImprim.ToString();
+                    txtDateCreaImpr.Text = imprChoisi.dateDebImprim.ToString().Substring(0, 10);
                     txtDateFinImpr.Text = imprChoisi.dateFinImprim;
                 }
             }
@@ -159,7 +158,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomAutPrincip.Text = autPrincipChoisi.prenomAut;
                     txtSurnAutPrincip.Text = autPrincipChoisi.surnomAut;
                     txtNatioAutPrincip.Text = Pays.TrouvNomPays(autPrincipChoisi.idPaysAut);
-                    txtDateNaitAutPrincip.Text = autPrincipChoisi.dateNaiAut.ToString();
+                    txtDateNaitAutPrincip.Text = autPrincipChoisi.dateNaiAut.ToString().Substring(0, 10);
                     txtDateMortAutPrincip.Text = autPrincipChoisi.dateMortAut;
                 }
             }
@@ -182,7 +181,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomAutSecond.Text = autSecondChoisi.prenomAut;
                     txtSurnAutSecond.Text = autSecondChoisi.surnomAut;
                     txtNatioAutSecond.Text = Pays.TrouvNomPays(autSecondChoisi.idPaysAut);
-                    txtDateNaiAutSecond.Text = autSecondChoisi.dateNaiAut.ToString();
+                    txtDateNaiAutSecond.Text = autSecondChoisi.dateNaiAut.ToString().Substring(0, 10);
                     txtDateMortAutSecond.Text = autSecondChoisi.dateMortAut;
                 }
             }
@@ -205,7 +204,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomAutTiers.Text = autTiersChoisi.prenomAut;
                     txtSurnAutTiers.Text = autTiersChoisi.surnomAut;
                     txtNatioAutTiers.Text = Pays.TrouvNomPays(autTiersChoisi.idPaysAut);
-                    txtDateNaiAutTiers.Text = autTiersChoisi.dateNaiAut.ToString();
+                    txtDateNaiAutTiers.Text = autTiersChoisi.dateNaiAut.ToString().Substring(0, 10);
                     txtDateMortAutTiers.Text = autTiersChoisi.dateMortAut;
                 }
             }
@@ -228,7 +227,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomIntervPrincip.Text = intervPrincipChoisi.prenomInterv;
                     txtSurnIntervPrincip.Text = intervPrincipChoisi.surnomInterv;
                     txtNatioIntervPrincip.Text = Pays.TrouvNomPays(intervPrincipChoisi.idPaysInterv);
-                    txtDateNaiIntervPrincip.Text = intervPrincipChoisi.dateNaiInterv.ToString();
+                    txtDateNaiIntervPrincip.Text = intervPrincipChoisi.dateNaiInterv.ToString().Substring(0, 10);
                     txtDateMortIntervPrincip.Text = intervPrincipChoisi.dateMortInterv;
                 }
 
@@ -252,7 +251,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomIntervSecond.Text = intervSecondChoisi.prenomInterv;
                     txtSurnIntervSecond.Text = intervSecondChoisi.surnomInterv;
                     txtNatioIntervSecond.Text = Pays.TrouvNomPays(intervSecondChoisi.idPaysInterv);
-                    txtDateNaiIntervSecond.Text = intervSecondChoisi.dateNaiInterv.ToString();
+                    txtDateNaiIntervSecond.Text = intervSecondChoisi.dateNaiInterv.ToString().Substring(0, 10);
                     txtDateMortIntervSecond.Text = intervSecondChoisi.dateMortInterv;
                 }
             }
@@ -275,7 +274,7 @@ namespace Projet_Bibliothèque.Vue
                     txtPrenomIntervTiers.Text = intervTiersChoisi.prenomInterv;
                     txtSurnIntervTiers.Text = intervTiersChoisi.surnomInterv;
                     txtNatioIntervTiers.Text = Pays.TrouvNomPays(intervTiersChoisi.idPaysInterv);
-                    txtDateNaiIntervTiers.Text = intervTiersChoisi.dateNaiInterv.ToString();
+                    txtDateNaiIntervTiers.Text = intervTiersChoisi.dateNaiInterv.ToString().Substring(0, 10);
                     txtDateMortIntervTiers.Text = intervTiersChoisi.dateMortInterv;
                 }
             }
@@ -288,6 +287,7 @@ namespace Projet_Bibliothèque.Vue
         /// <summary>
         /// Méthode permettant de vider l'ensemble des champs du formulaire
         /// </summary>
+        /// <exception cref="">Renvoie une erreur si les champs des formulaires n'ont pas pu être vidé</exception>
         private void ViderFormulaire()
         {
             try

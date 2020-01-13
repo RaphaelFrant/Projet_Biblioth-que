@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Imprimeur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 4, le 08/01/2020
-    /// Implémentation des contrôles pour la classe Imprimeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2020
+    /// Implémentation des contrôles pour récupérer l'identifiant d'un imprimeur</remarks>
     class ControlImprimeur
     {
         /// <summary>
@@ -74,6 +74,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible d'envoyer la chaine au Modèle pour supprimer l'imprimeur");
+            }
+        }
+        
+        /// <summary>
+        /// Méthode permettant de vérifier que la chaine entrée par l'utilisateur est valide
+        /// </summary>
+        /// <param name="nomImprSelect">Récupère la chaine entrée par l'utilisateur comportant le nom de l'imprimeur dont il faut récupérer l'identifiant</param>
+        /// <exception cref="">Renvoie une erreur si la chaine entrée ne correspond pas à ce qui est attendu</exception>
+        public static int RecupIdImprimeur(string nomImprSelect)
+        {
+            try
+            {
+                int idRecupereImpr = Imprimeur.RecupIdImprimeur(nomImprSelect);
+                return idRecupereImpr;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'imprimeur");
             }
         }
     }

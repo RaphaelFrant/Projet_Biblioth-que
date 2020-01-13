@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Imprimeur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 3, le 07/01/2020
-    /// Implémentation des méthodes de création, de modification et de suppression d'un imprimeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2019
+    /// Implémentation de la méthode de récupération de l'identifiant d'un imprimeur</remarks>
     class Imprimeur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -278,6 +278,37 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de modifier les informations de l'imprimeur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant d'un imprimeur
+        /// </summary>
+        /// <param name="titreImpr">Récupère le nom de l'imprimeur dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant de l'imprimeur correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdImprimeur(string titreImpr)
+        {
+            try
+            {
+                Connection();
+                int idImprTrouve = 0;
+                string cmdTrouvIdImpr = ("select idimprim from imprimeur where nomimprim='" + titreImpr + "'");
+                SqlCommand trouvIdImpr = new SqlCommand(cmdTrouvIdImpr, maConnexion);
+                SqlDataReader lecteurTrouvIdImpr = trouvIdImpr.ExecuteReader();
+                if (lecteurTrouvIdImpr.HasRows)
+                {
+                    while (lecteurTrouvIdImpr.Read())
+                    {
+                        idImprTrouve = int.Parse(lecteurTrouvIdImpr[0].ToString());
+                    }
+                }
+                lecteurTrouvIdImpr.Close();
+                return idImprTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'imprimeur sélectionné.");
             }
         }
     }
