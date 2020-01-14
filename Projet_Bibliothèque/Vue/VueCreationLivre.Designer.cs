@@ -132,7 +132,7 @@
             this.grpboxInterv1 = new System.Windows.Forms.GroupBox();
             this.cmboxChoixIntervPrincip = new System.Windows.Forms.ComboBox();
             this.labChoixIntervPrincip = new System.Windows.Forms.Label();
-            this.txtFoncIntervPrincip = new System.Windows.Forms.TextBox();
+            this.txtFonctIntervPrincip = new System.Windows.Forms.TextBox();
             this.labFonctIntervPrincip = new System.Windows.Forms.Label();
             this.txtNatioIntervPrincip = new System.Windows.Forms.TextBox();
             this.labNatioIntervPrincip = new System.Windows.Forms.Label();
@@ -1131,7 +1131,7 @@
             this.grpboxInterv1.BackColor = System.Drawing.Color.SkyBlue;
             this.grpboxInterv1.Controls.Add(this.cmboxChoixIntervPrincip);
             this.grpboxInterv1.Controls.Add(this.labChoixIntervPrincip);
-            this.grpboxInterv1.Controls.Add(this.txtFoncIntervPrincip);
+            this.grpboxInterv1.Controls.Add(this.txtFonctIntervPrincip);
             this.grpboxInterv1.Controls.Add(this.labFonctIntervPrincip);
             this.grpboxInterv1.Controls.Add(this.txtNatioIntervPrincip);
             this.grpboxInterv1.Controls.Add(this.labNatioIntervPrincip);
@@ -1172,12 +1172,12 @@
             this.labChoixIntervPrincip.TabIndex = 14;
             this.labChoixIntervPrincip.Text = "Choisissez un intervenant extérieur ou remplissez les champs suivants:";
             // 
-            // txtFoncIntervPrincip
+            // txtFonctIntervPrincip
             // 
-            this.txtFoncIntervPrincip.Location = new System.Drawing.Point(414, 133);
-            this.txtFoncIntervPrincip.Name = "txtFoncIntervPrincip";
-            this.txtFoncIntervPrincip.Size = new System.Drawing.Size(184, 22);
-            this.txtFoncIntervPrincip.TabIndex = 13;
+            this.txtFonctIntervPrincip.Location = new System.Drawing.Point(414, 133);
+            this.txtFonctIntervPrincip.Name = "txtFonctIntervPrincip";
+            this.txtFonctIntervPrincip.Size = new System.Drawing.Size(184, 22);
+            this.txtFonctIntervPrincip.TabIndex = 13;
             // 
             // labFonctIntervPrincip
             // 
@@ -1769,7 +1769,7 @@
         private System.Windows.Forms.Label labNomInterv1;
         private System.Windows.Forms.ComboBox cmboxChoixIntervPrincip;
         private System.Windows.Forms.Label labChoixIntervPrincip;
-        private System.Windows.Forms.TextBox txtFoncIntervPrincip;
+        private System.Windows.Forms.TextBox txtFonctIntervPrincip;
         private System.Windows.Forms.Label labFonctIntervPrincip;
         private System.Windows.Forms.TextBox txtNatioIntervPrincip;
         private System.Windows.Forms.Label labNatioIntervPrincip;

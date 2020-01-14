@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe IntervenantDivers 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 5, le 08/01/2020
-    /// Implémentation méthodes de création, modification et suppression d'un intervenant</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
+    /// Implémentation méthodes de récupération de l'identifiant d'un intervenant</remarks>
     class IntervenantDivers : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -369,6 +369,37 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de trouver l'identifiant correspondant au nom de l'intervenant.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant de l'intervenant
+        /// </summary>
+        /// <param name="titreInterv">Récupère le nom de l'intervenant dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant de l'intervenant correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdIntervenant(string titreInterv)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdInterv = ("select idinterv from intervenant_divers where concat(nominterv, ' ', prenominterv)='" + titreInterv + "'");
+                SqlCommand trouvIdInterv = new SqlCommand(cmdTrouvIdInterv, maConnexion);
+                SqlDataReader lecteurTrouvIdInterv = trouvIdInterv.ExecuteReader();
+                if (lecteurTrouvIdInterv.HasRows)
+                {
+                    while (lecteurTrouvIdInterv.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdInterv[0].ToString());
+                    }
+                }
+                lecteurTrouvIdInterv.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'intervenant sélectionné.");
             }
         }
     }

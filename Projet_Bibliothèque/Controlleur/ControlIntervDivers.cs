@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Intervenant_Divers
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 5, le 08/01/2020
-    /// Implémentation des contrôles pour la classe IntervenantDivers</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
+    /// Implémentation du contrôle pour récupérer l'identifiant d'un intervenant</remarks>
     class ControlIntervDivers
     {
         /// <summary>
@@ -80,6 +80,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible d'envoyer la chaine au Modèle pour supprimer l'intervenant");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de vérifier que la chaine entrée par l'utilisateur est valide
+        /// </summary>
+        /// <param name="nomIntervSelect">Récupère la chaine entrée par l'utilisateur comportant le nom de l'intervenant dont il faut récupérer l'identifiant</param>
+        /// <exception cref="">Renvoie une erreur si la chaine entrée ne correspond pas à ce qui est attendu</exception>
+        public static int RetrouvIdIntervenant(string nomIntervSelect)
+        {
+            try
+            {
+                int idRecupereInterv = IntervenantDivers.RecupIdIntervenant(nomIntervSelect);
+                return idRecupereInterv;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'intervenant");
             }
         }
     }

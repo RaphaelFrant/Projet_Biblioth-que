@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Auteur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 2, le 07/01/2020
-    /// Implémentation de la méthode de création, la modification et la suppression d'un nouvel auteur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
+    /// Implémentation de la méthode de récupération de l'identifiant d'un auteur</remarks>
     class Auteur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -315,6 +315,37 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de modifier les informations de l'auteur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant de l'auteur
+        /// </summary>
+        /// <param name="titreAut">Récupère le nom de l'auteur dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant de l'auteur correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdAuteur(string titreAut)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdAut = ("select idaut from auteur where concat(nomaut, ' ', prenomaut)='" + titreAut + "'");
+                SqlCommand trouvIdAut = new SqlCommand(cmdTrouvIdAut, maConnexion);
+                SqlDataReader lecteurTrouvIdAut = trouvIdAut.ExecuteReader();
+                if (lecteurTrouvIdAut.HasRows)
+                {
+                    while (lecteurTrouvIdAut.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdAut[0].ToString());
+                    }
+                }
+                lecteurTrouvIdAut.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de l'auteur sélectionné.");
             }
         }
     }
