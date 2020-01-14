@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,14 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Livre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 1, le 18/12/2019
-    /// Implémentation des attributs des classes</remarks>
-    class Livre
+    /// <remarks>Auteur Raphaël Frantzen, Version 12, le 14/01/2020
+    /// Implémentation de la méthode pour créer un nouveau livre dans la base de données</remarks>
+    class Livre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
         public string numIsbn;
         public int idTypeLivre;
-        public int idSerieLivre;
+        public string idSerieLivre;
         public int idPeriodTempo;
         public int idEditeur;
         public int idImprim;
@@ -40,7 +41,7 @@ namespace Projet_Bibliothèque.Modèle
             get { return this.numIsbn; }
             set
             {
-                if (value.Length == 0 || value.Length != 10 || value.Length != 13)
+                if (value.Length == 0 || value.Length != 17)
                 {
                     throw new Exception("Le numéro d'ISBN du livre ne peut pas être vide et doit comporter 10 ou 13 caractères.");
                 }
@@ -67,7 +68,7 @@ namespace Projet_Bibliothèque.Modèle
             }
         }
 
-        public int AccIdSerieLivre
+        public string AccIdSerieLivre
         {
             get { return this.idSerieLivre; }
             set { this.idSerieLivre = value;}
@@ -298,7 +299,7 @@ namespace Projet_Bibliothèque.Modèle
         public Livre () { }
 
         /// <summary>Constructeur pour la création ou la modification de la classe Livre</summary>
-        public Livre(string numeroIsbn, int numTypeLivre, int numSerieLivre, int numPeriodeTemporelle, int numEdit, int numImprimeur, int numGenre, string titreLivre, string titreOriginal, 
+        public Livre(string numeroIsbn, int numTypeLivre, string numSerieLivre, int numPeriodeTemporelle, int numEdit, int numImprimeur, int numGenre, string titreLivre, string titreOriginal, 
             int montant, DateTime dateAcquisition, string langue, DateTime depotLegal, int pages, string etatOuvrage, string resume)
         {
             AccNumIsbn = numeroIsbn;
@@ -320,5 +321,49 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         //--------------------------------Méthodes--------------------------------
+        /// <summary>
+        /// Méthode permettant de créer un nouveau livre dans la base de données
+        /// </summary>
+        /// <param name="nouvLivre">Récupère un objet Livre comprenant les informations du livre</param>
+        /// <exception cref="">Renvoie une exception si le livre n'a pas pu être créé</exception>
+        public static void InsertLivre(Livre nouvLivre)
+        {
+            string libCreaLivre;
+            try
+            {
+                Connection();
+                libCreaLivre = "Insert into Livre(numisbn, idtypeliv, idserieliv, idperiotemp, idedit, idimprim, idgenre, libliv, liborigliv, prixliv, dateachat, langueliv, " +
+                    "deplegliv, nbpageliv, etatlecture, resumliv)values (";
+                libCreaLivre += "'" + nouvLivre.AccNumIsbn + "', ";
+                libCreaLivre += "'" + nouvLivre.AccIdTypeLivre + "', ";
+                if(nouvLivre.AccIdSerieLivre == "")
+                {
+                    libCreaLivre += "null, ";
+                }
+                else
+                {
+                    libCreaLivre += "'" + nouvLivre.AccIdSerieLivre + "', ";
+                }
+                libCreaLivre += "'" + nouvLivre.AccIdPeriodTempo + "', ";
+                libCreaLivre += "'" + nouvLivre.AccIdEditeur + "', ";
+                libCreaLivre += "'" + nouvLivre.AccIdImprim + "', ";
+                libCreaLivre += "'" + nouvLivre.AccIdGenre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccLibLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccLibOrigLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccPrixLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccDateAchatLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccLangLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccDepLegLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccNbrePageLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccEtatLivre + "', ";
+                libCreaLivre += "'" + nouvLivre.AccResumLivre + "')";
+                SqlCommand creaLivreBdd = new SqlCommand(libCreaLivre, maConnexion);
+                creaLivreBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de créer un nouveau livre.");
+            }
+        }
     }
 }

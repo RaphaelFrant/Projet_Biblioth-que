@@ -11,7 +11,7 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Auteur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
+    /// <remarks>Auteur Raphaël Frantzen, Version 12, le 14/01/2020
     /// Implémentation du contrôle pour récupérer l'identifiant d'un auteur</remarks>
     class ControlAuteur
     {

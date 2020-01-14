@@ -62,81 +62,33 @@ namespace Projet_Bibliothèque.Vue
         {
             try
             {
-                /*string genreIndiq = cmbboxGenreLitt.Text;
+                string genreIndiq = cmbboxGenreLitt.Text;
                 int identGenre = ControlGenreLitteraire.TrouvGenre(genreIndiq);
                 string periodeIndiq = cmboxPeriodTempo.Text;
                 int identPeriod = ControlPeriodeTempo.TrouvGenre(periodeIndiq);
                 string serieIndiq = txtSerieLivre.Text;
-                int identSerie = ControlSerie.TrouvSerie(serieIndiq);
+                int identSerie = 0;
+                if(serieIndiq.Length != 0)
+                {
+                    identSerie = ControlSerie.TrouvSerie(serieIndiq);
+                }
                 string typeLivIndiq = txtTypeOuvr.Text;
                 int identTypeLiv = ControlTypeLivre.TrouvTypeLiv(typeLivIndiq);
                 int identEditeur = DesigneEditeur();
                 int identImprimeur = DesigneImprimeur();
-                int identAutPrincip = 0;
-                if (cmboxChoixAutPrincip.Text.Length != 0 & txtNomAutPrincip.Text.Length != 0)
+
+                //Création du livre
+                ArrayList infoLivre = new ArrayList();
+                infoLivre.Add(txtIsbnLivre.Text);
+                infoLivre.Add(identTypeLiv);
+                if(identSerie == 0)
                 {
-                    identAutPrincip = DesigneAuteurExist(cmboxChoixAutPrincip.Text);
-                }
-                else if(cmboxChoixAutPrincip.Text.Length != 0 & txtNomAutPrincip.Text.Length != 0)
-                {
-                    throw new Exception("Vous n'avez pas indiqué d'auteur principal.");
+                    infoLivre.Add("");
                 }
                 else
                 {
-                    identAutPrincip = DesigneNouvelAuteur("principal");
+                    infoLivre.Add(identSerie);
                 }
-                int identAutSecond = 0;
-                if (cmboxChoixAutSecond.Text.Length != 0 & txtNomAutSecond.Text.Length != 0)
-                {
-                    identAutSecond = DesigneAuteurExist(cmboxChoixAutSecond.Text);
-                }
-                else if (cmboxChoixAutSecond.Text.Length == 0 & txtNomAutSecond.Text.Length != 0)
-                {
-                    identAutSecond = DesigneNouvelAuteur("second");
-                }
-                int identAutTiers = 0;
-                if (cmboxChoixAutTiers.Text.Length != 0 & txtNomAutTiers.Text.Length != 0)
-                {
-                    identAutTiers = DesigneAuteurExist(cmboxChoixAutTiers.Text);
-                }
-                else if (cmboxChoixAutTiers.Text.Length == 0 & txtNomAutTiers.Text.Length != 0)
-                {
-                    identAutTiers = DesigneNouvelAuteur("tiers");
-                }*/
-
-                int identIntervPrincip = 0;
-                if (cmboxChoixIntervPrincip.Text.Length != 0 & txtNomIntervPrincip.Text.Length != 0)
-                {
-                    identIntervPrincip = DesigneIntervExist(cmboxChoixIntervPrincip.Text);
-                }
-                else if (cmboxChoixIntervPrincip.Text.Length == 0 & txtNomIntervPrincip.Text.Length != 0)
-                {
-                    identIntervPrincip = DesigneNouvelIntervenant("principal");
-                }
-                int identIntervSecond = 0;
-                if (cmboxChoixIntervSecond.Text.Length != 0 & txtNomIntervSecond.Text.Length != 0)
-                {
-                    identIntervSecond = DesigneIntervExist(cmboxChoixIntervSecond.Text);
-                }
-                else if (cmboxChoixIntervSecond.Text.Length == 0 & txtNomIntervSecond.Text.Length != 0)
-                {
-                    identIntervSecond = DesigneNouvelIntervenant("second");
-                }
-                int identIntervTiers = 0;
-                if (cmboxChoixIntervTiers.Text.Length != 0 & txtNomIntervTiers.Text.Length != 0)
-                {
-                    identIntervTiers = DesigneIntervExist(cmboxChoixIntervTiers.Text);
-                }
-                else if (cmboxChoixIntervTiers.Text.Length == 0 & txtNomIntervTiers.Text.Length != 0)
-                {
-                    identIntervTiers = DesigneNouvelIntervenant("tiers");
-                }
-
-
-                /*ArrayList infoLivre = new ArrayList();
-                infoLivre.Add(txtIsbnLivre.Text);
-                infoLivre.Add(identTypeLiv);
-                infoLivre.Add(identSerie);
                 infoLivre.Add(identPeriod);
                 infoLivre.Add(identEditeur);
                 infoLivre.Add(identImprimeur);
@@ -149,9 +101,98 @@ namespace Projet_Bibliothèque.Vue
                 infoLivre.Add(DateTime.Parse(txtDepotLegLivre.Text));
                 infoLivre.Add(int.Parse(txtNbrePageLivre.Text));
                 infoLivre.Add(txtEtatLivre.Text);
-                infoLivre.Add(txtResume.Text);*/
+                infoLivre.Add(txtResume.Text);
+                ControlLivre.CreerLivre(infoLivre);
 
-                /*ajout d'une méthode qui relie un livre a un ou des auteurs dans la table ModeleEcrire et un livre à un intervenant dans la table ModeleIntervenir*/
+                /*ajout d'une méthode qui relie  un livre à un intervenant dans la table ModeleIntervenir*/
+
+                //Association des auteurs à un livre
+                int identAutPrincip = 0;
+                if (cmboxChoixAutPrincip.Text.Length != 0 & txtNomAutPrincip.Text.Length != 0)
+                {
+                    identAutPrincip = DesigneAuteurExist(cmboxChoixAutPrincip.Text);
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutPrincip, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+                else if (cmboxChoixAutPrincip.Text.Length != 0 & txtNomAutPrincip.Text.Length != 0)
+                {
+                    throw new Exception("Vous n'avez pas indiqué d'auteur principal.");
+                }
+                else
+                {
+                    identAutPrincip = DesigneNouvelAuteur("principal");
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutPrincip, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+
+                int identAutSecond = 0;
+                if (cmboxChoixAutSecond.Text.Length != 0 & txtNomAutSecond.Text.Length != 0)
+                {
+                    identAutSecond = DesigneAuteurExist(cmboxChoixAutSecond.Text);
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutSecond, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+                else if (cmboxChoixAutSecond.Text.Length == 0 & txtNomAutSecond.Text.Length != 0)
+                {
+                    identAutSecond = DesigneNouvelAuteur("second");
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutSecond, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+
+                int identAutTiers = 0;
+                if (cmboxChoixAutTiers.Text.Length != 0 & txtNomAutTiers.Text.Length != 0)
+                {
+                    identAutTiers = DesigneAuteurExist(cmboxChoixAutTiers.Text);
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutTiers, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+                else if (cmboxChoixAutTiers.Text.Length == 0 & txtNomAutTiers.Text.Length != 0)
+                {
+                    identAutTiers = DesigneNouvelAuteur("tiers");
+                    ModeleEcrire nouvAssocLivAut = new ModeleEcrire(identAutTiers, txtIsbnLivre.Text);
+                    ModeleEcrire.InsertEcrire(nouvAssocLivAut);
+                }
+
+                //Association des intervenants à un livre
+                int identIntervPrincip = 0;
+                if (cmboxChoixIntervPrincip.Text.Length != 0 & txtNomIntervPrincip.Text.Length != 0)
+                {
+                    identIntervPrincip = DesigneIntervExist(cmboxChoixIntervPrincip.Text);
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervPrincip, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
+                else if (cmboxChoixIntervPrincip.Text.Length == 0 & txtNomIntervPrincip.Text.Length != 0)
+                {
+                    identIntervPrincip = DesigneNouvelIntervenant("principal");
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervPrincip, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
+                int identIntervSecond = 0;
+                if (cmboxChoixIntervSecond.Text.Length != 0 & txtNomIntervSecond.Text.Length != 0)
+                {
+                    identIntervSecond = DesigneIntervExist(cmboxChoixIntervSecond.Text);
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervSecond, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
+                else if (cmboxChoixIntervSecond.Text.Length == 0 & txtNomIntervSecond.Text.Length != 0)
+                {
+                    identIntervSecond = DesigneNouvelIntervenant("second");
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervSecond, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
+                int identIntervTiers = 0;
+                if (cmboxChoixIntervTiers.Text.Length != 0 & txtNomIntervTiers.Text.Length != 0)
+                {
+                    identIntervTiers = DesigneIntervExist(cmboxChoixIntervTiers.Text);
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervTiers, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
+                else if (cmboxChoixIntervTiers.Text.Length == 0 & txtNomIntervTiers.Text.Length != 0)
+                {
+                    identIntervTiers = DesigneNouvelIntervenant("tiers");
+                    ModeleIntervenir nouvAssocIntervLiv = new ModeleIntervenir(identIntervTiers, txtIsbnLivre.Text);
+                    ModeleIntervenir.InsertIntervention(nouvAssocIntervLiv);
+                }
 
                 this.Hide();
                 VueCreationLivre nouvPageCreaLiv = new VueCreationLivre();
@@ -360,7 +401,7 @@ namespace Projet_Bibliothèque.Vue
                 int idRecupEdit = 0;
                 if (cmboxChoixEdit.Text.Length != 0)
                 {
-                    idRecupEdit = ControlEditeur.RecupIdEditeur(txtNomEdit.Text); ;
+                    idRecupEdit = ControlEditeur.RecupIdEditeur(txtNomEdit.Text);
                     return idRecupEdit;
                 }
                 else
@@ -394,7 +435,7 @@ namespace Projet_Bibliothèque.Vue
                 int idRecupImpr = 0;
                 if (cmboxChoixImpr.Text.Length != 0)
                 {
-                    idRecupImpr = ControlImprimeur.RecupIdImprimeur(txtNomImpr.Text); ;
+                    idRecupImpr = ControlImprimeur.RecupIdImprimeur(txtNomImpr.Text);
                     return idRecupImpr;
                 }
                 else
@@ -425,7 +466,7 @@ namespace Projet_Bibliothèque.Vue
             try
             {
                 int idRecupAut = 0;
-                idRecupAut = ControlAuteur.RecupIdAuteur(nomPrenomAut); ;
+                idRecupAut = ControlAuteur.RecupIdAuteur(nomPrenomAut);
                 return idRecupAut;
             }
             catch
@@ -501,7 +542,7 @@ namespace Projet_Bibliothèque.Vue
             try
             {
                 int idRecupInterv = 0;
-                idRecupInterv = ControlIntervDivers.RetrouvIdIntervenant(nomPrenomInterv); ;
+                idRecupInterv = ControlIntervDivers.RetrouvIdIntervenant(nomPrenomInterv);
                 return idRecupInterv;
             }
             catch
