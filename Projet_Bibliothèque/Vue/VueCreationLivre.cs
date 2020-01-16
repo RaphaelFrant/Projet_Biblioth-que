@@ -103,8 +103,7 @@ namespace Projet_Bibliothèque.Vue
                 infoLivre.Add(txtEtatLivre.Text);
                 infoLivre.Add(txtResume.Text);
                 ControlLivre.CreerLivre(infoLivre);
-
-                /*ajout d'une méthode qui relie  un livre à un intervenant dans la table ModeleIntervenir*/
+                
 
                 //Association des auteurs à un livre
                 int identAutPrincip = 0;

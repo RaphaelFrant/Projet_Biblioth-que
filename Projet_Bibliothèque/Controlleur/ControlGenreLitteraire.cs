@@ -1,5 +1,6 @@
 ﻿using Projet_Bibliothèque.Modèle;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe GenreLittéraire
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 6, le 10/01/2020
-    /// Implémentation des contrôles pour la classe Genre littéraire</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 13, le 16/01/2020
+    /// Implémentation de la méthode de récupération des oeuvres en lien avec le genre choiis par l'utilisateur</remarks>
     class ControlGenreLitteraire
     {
         /// <summary>
@@ -32,6 +33,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de créer un objet GenreLittéraire avec les informations entrées par l'utilisateur");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupéré la liste des oeuvres associés au genre littéraire sélectionné
+        /// </summary>
+        /// <param name="numGenreChoisi">Récupère l'identifiant du genre sélectionné</param>
+        /// <returns>Retourne une ArrayList avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
+        public static ArrayList TrouvOeuvreAssoc(int numGenreChoisi)
+        {
+            try
+            {
+                return GenreLitteraire.RecupOeuvreAssoc(numGenreChoisi);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés ");
             }
         }
     }

@@ -35,9 +35,12 @@
             this.labContRecherche = new System.Windows.Forms.Label();
             this.txtContRecherche = new System.Windows.Forms.TextBox();
             this.btnRecherche = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtGridRecherche = new System.Windows.Forms.DataGridView();
             this.btnRetour = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnModifLivre = new System.Windows.Forms.Button();
+            this.btnSupprimerLivre = new System.Windows.Forms.Button();
+            this.btnAfficherLivre = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridRecherche)).BeginInit();
             this.SuspendLayout();
             // 
             // labRecherche
@@ -125,18 +128,22 @@
             this.btnRecherche.TabIndex = 6;
             this.btnRecherche.Text = "Rechercher";
             this.btnRecherche.UseVisualStyleBackColor = true;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
             // 
-            // dataGridView1
+            // dtGridRecherche
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 286);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(798, 688);
-            this.dataGridView1.TabIndex = 7;
+            this.dtGridRecherche.AllowUserToAddRows = false;
+            this.dtGridRecherche.AllowUserToDeleteRows = false;
+            this.dtGridRecherche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridRecherche.Location = new System.Drawing.Point(12, 286);
+            this.dtGridRecherche.Name = "dtGridRecherche";
+            this.dtGridRecherche.ReadOnly = true;
+            this.dtGridRecherche.Size = new System.Drawing.Size(798, 688);
+            this.dtGridRecherche.TabIndex = 7;
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(362, 995);
+            this.btnRetour.Location = new System.Drawing.Point(709, 993);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(101, 45);
             this.btnRetour.TabIndex = 8;
@@ -144,13 +151,43 @@
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
+            // btnModifLivre
+            // 
+            this.btnModifLivre.Location = new System.Drawing.Point(12, 995);
+            this.btnModifLivre.Name = "btnModifLivre";
+            this.btnModifLivre.Size = new System.Drawing.Size(103, 41);
+            this.btnModifLivre.TabIndex = 9;
+            this.btnModifLivre.Text = "Modifier";
+            this.btnModifLivre.UseVisualStyleBackColor = true;
+            // 
+            // btnSupprimerLivre
+            // 
+            this.btnSupprimerLivre.Location = new System.Drawing.Point(246, 994);
+            this.btnSupprimerLivre.Name = "btnSupprimerLivre";
+            this.btnSupprimerLivre.Size = new System.Drawing.Size(103, 42);
+            this.btnSupprimerLivre.TabIndex = 10;
+            this.btnSupprimerLivre.Text = "Supprimer";
+            this.btnSupprimerLivre.UseVisualStyleBackColor = true;
+            // 
+            // btnAfficherLivre
+            // 
+            this.btnAfficherLivre.Location = new System.Drawing.Point(486, 994);
+            this.btnAfficherLivre.Name = "btnAfficherLivre";
+            this.btnAfficherLivre.Size = new System.Drawing.Size(103, 42);
+            this.btnAfficherLivre.TabIndex = 11;
+            this.btnAfficherLivre.Text = "Afficher";
+            this.btnAfficherLivre.UseVisualStyleBackColor = true;
+            // 
             // VueRecherche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 1061);
+            this.Controls.Add(this.btnAfficherLivre);
+            this.Controls.Add(this.btnSupprimerLivre);
+            this.Controls.Add(this.btnModifLivre);
             this.Controls.Add(this.btnRetour);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtGridRecherche);
             this.Controls.Add(this.btnRecherche);
             this.Controls.Add(this.txtContRecherche);
             this.Controls.Add(this.labContRecherche);
@@ -162,7 +199,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "VueRecherche";
             this.Text = "VueRecherche";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridRecherche)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,7 +214,10 @@
         private System.Windows.Forms.Label labContRecherche;
         private System.Windows.Forms.TextBox txtContRecherche;
         private System.Windows.Forms.Button btnRecherche;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtGridRecherche;
         private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.Button btnModifLivre;
+        private System.Windows.Forms.Button btnSupprimerLivre;
+        private System.Windows.Forms.Button btnAfficherLivre;
     }
 }

@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe GenreLittéraire 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 6, le 09/01/2020
-    /// Implémentation des méthodes de récupération de l'Identifiant d'un genre littéraire et de création d'un nouveau genre littéraire</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 13, le 16/01/2020
+    /// Implémentation de la méthode de récupération des oeuvres en lien avec le genre choisi par l'utilisateur</remarks>
     class GenreLitteraire : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -210,6 +210,38 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des genres littéraires.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés au genre indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numGenreSelect">Récupère le numéro du genre sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à ce genre</returns>
+        /// <exception cref="">Renvoie ue erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssoc(int numGenreSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssoc = new ArrayList();
+                string cmdOeuvreAssoc = ("select L.numisbn, L.libliv from livre as L where L.idgenre ='" + numGenreSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssoc = new SqlCommand(cmdOeuvreAssoc, maConnexion);
+                SqlDataReader lecteurOeuvreAssoc = trouvOeuvreAssoc.ExecuteReader();
+                if (lecteurOeuvreAssoc.HasRows)
+                {
+                    while (lecteurOeuvreAssoc.Read())
+                    {
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(0));
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(1));
+                    }
+                }
+                lecteurOeuvreAssoc.Close();
+                return listeOeuvreAssoc;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à ce genre littéraire.");
             }
         }
     }
