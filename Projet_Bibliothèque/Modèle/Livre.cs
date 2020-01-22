@@ -12,8 +12,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Livre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 12, le 14/01/2020
-    /// Implémentation de la méthode pour créer un nouveau livre dans la base de données</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
+    /// Implémentation de la méthode de suppression d'un livre</remarks>
     class Livre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -363,6 +363,27 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de créer un nouveau livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de supprimer un livre en fonction de la donnée sélectionné par l'utilisateur
+        /// </summary>
+        /// <param name="codeIsbn">Récupère le numéro d'ISBN du livre que l'utilisateur a sélectionné</param>
+        /// <exception cref="">Renvoie une erreur si le livre n'a pas pu être supprimé</exception>
+        public static void DeleteLivre(string codeIsbn)
+        {
+            try
+            {
+                string libSupprLiv;
+                Connection();
+                libSupprLiv = "Delete from livre where numisbn='" + codeIsbn + "'";
+                SqlCommand supprLivBdd = new SqlCommand(libSupprLiv, maConnexion);
+                supprLivBdd.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Impossible de supprimer le livre sélectionné.");
             }
         }
     }

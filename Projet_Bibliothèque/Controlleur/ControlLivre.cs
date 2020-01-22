@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Livre
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 12, le 14/01/2020
-    /// Implémentation du contrôle pour créer un nouveau livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
+    /// Implémentation de la méthode de suppression d'un livre</remarks>
     class ControlLivre
     {
         /// <summary>
@@ -46,6 +46,23 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de créer un objet Livre avec les informations entrées par l'utilisateur");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de vérifier la chaine entré
+        /// </summary>
+        /// <param name="numIsbn">Récupère le numéro d'ISBN du livre choisi par l'utilisateur</param>
+        /// <exception cref="">Renvoie une erreur si la chaine est incorrect ou si le livre n'a pas pu être supprimé</exception>
+        public static void SupprLivre(string numIsbn)
+        {
+            try
+            {
+                Livre.DeleteLivre(numIsbn);
+            }
+            catch
+            {
+                throw new Exception("Impossible d'envoyer la chaine au Modèle pour supprimer le livre sélectionné");
             }
         }
     }

@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe GenreLittéraire 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 13, le 16/01/2020
-    /// Implémentation de la méthode de récupération des oeuvres en lien avec le genre choisi par l'utilisateur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
+    /// Implémentation de la méthode de suppression d'un livre</remarks>
     class GenreLitteraire : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -225,7 +225,13 @@ namespace Projet_Bibliothèque.Modèle
             {
                 Connection();
                 ArrayList listeOeuvreAssoc = new ArrayList();
-                string cmdOeuvreAssoc = ("select L.numisbn, L.libliv from livre as L where L.idgenre ='" + numGenreSelect + "'order by L.libliv asc");
+                string cmdOeuvreAssoc = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idgenre ='" + numGenreSelect + "'order by L.libliv asc");
                 SqlCommand trouvOeuvreAssoc = new SqlCommand(cmdOeuvreAssoc, maConnexion);
                 SqlDataReader lecteurOeuvreAssoc = trouvOeuvreAssoc.ExecuteReader();
                 if (lecteurOeuvreAssoc.HasRows)
@@ -234,6 +240,10 @@ namespace Projet_Bibliothèque.Modèle
                     {
                         listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(0));
                         listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(1));
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(2));
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetDateTime(3));
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(4));
+                        listeOeuvreAssoc.Add(lecteurOeuvreAssoc.GetString(5));
                     }
                 }
                 lecteurOeuvreAssoc.Close();

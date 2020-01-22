@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe GenreLittéraire
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 13, le 16/01/2020
-    /// Implémentation de la méthode de récupération des oeuvres en lien avec le genre choiis par l'utilisateur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
+    /// Implémentation de la méthode de suppression d'un livre</remarks>
     class ControlGenreLitteraire
     {
         /// <summary>

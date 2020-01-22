@@ -138,12 +138,12 @@
             this.dtGridRecherche.Location = new System.Drawing.Point(12, 286);
             this.dtGridRecherche.Name = "dtGridRecherche";
             this.dtGridRecherche.ReadOnly = true;
-            this.dtGridRecherche.Size = new System.Drawing.Size(798, 688);
+            this.dtGridRecherche.Size = new System.Drawing.Size(798, 619);
             this.dtGridRecherche.TabIndex = 7;
             // 
             // btnRetour
             // 
-            this.btnRetour.Location = new System.Drawing.Point(709, 993);
+            this.btnRetour.Location = new System.Drawing.Point(709, 927);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(101, 45);
             this.btnRetour.TabIndex = 8;
@@ -153,7 +153,7 @@
             // 
             // btnModifLivre
             // 
-            this.btnModifLivre.Location = new System.Drawing.Point(12, 995);
+            this.btnModifLivre.Location = new System.Drawing.Point(12, 929);
             this.btnModifLivre.Name = "btnModifLivre";
             this.btnModifLivre.Size = new System.Drawing.Size(103, 41);
             this.btnModifLivre.TabIndex = 9;
@@ -162,16 +162,17 @@
             // 
             // btnSupprimerLivre
             // 
-            this.btnSupprimerLivre.Location = new System.Drawing.Point(246, 994);
+            this.btnSupprimerLivre.Location = new System.Drawing.Point(246, 928);
             this.btnSupprimerLivre.Name = "btnSupprimerLivre";
             this.btnSupprimerLivre.Size = new System.Drawing.Size(103, 42);
             this.btnSupprimerLivre.TabIndex = 10;
             this.btnSupprimerLivre.Text = "Supprimer";
             this.btnSupprimerLivre.UseVisualStyleBackColor = true;
+            this.btnSupprimerLivre.Click += new System.EventHandler(this.btnSupprimerLivre_Click);
             // 
             // btnAfficherLivre
             // 
-            this.btnAfficherLivre.Location = new System.Drawing.Point(486, 994);
+            this.btnAfficherLivre.Location = new System.Drawing.Point(486, 928);
             this.btnAfficherLivre.Name = "btnAfficherLivre";
             this.btnAfficherLivre.Size = new System.Drawing.Size(103, 42);
             this.btnAfficherLivre.TabIndex = 11;
@@ -182,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 1061);
+            this.ClientSize = new System.Drawing.Size(831, 987);
             this.Controls.Add(this.btnAfficherLivre);
             this.Controls.Add(this.btnSupprimerLivre);
             this.Controls.Add(this.btnModifLivre);
