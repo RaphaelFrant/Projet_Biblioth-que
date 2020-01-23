@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe IntervenantDivers 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
-    /// Implémentation méthodes de récupération de l'identifiant d'un intervenant</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'intervenant indiqué</remarks>
     class IntervenantDivers : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -400,6 +400,51 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'intervenant sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'intervenant indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numIntervSelect">Récupère le numéro de l'intervenant sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet intervenant</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocInterv(int numIntervSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocInterv = new ArrayList();
+                string cmdOeuvreAssocInterv = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "inner join Intervenir as I on I.NUMISBN = L.NUMISBN " +
+                    "inner join INTERVENANT_DIVERS as Interv on Interv.IDINTERV = I.IDINTERV " +
+                    "where Interv.IDINTERV = '" + numIntervSelect + "' " +
+                    "order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocInterv = new SqlCommand(cmdOeuvreAssocInterv, maConnexion);
+                SqlDataReader lecteurOeuvreAssocInterv = trouvOeuvreAssocInterv.ExecuteReader();
+                if (lecteurOeuvreAssocInterv.HasRows)
+                {
+                    while (lecteurOeuvreAssocInterv.Read())
+                    {
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetString(0));
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetString(1));
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetString(2));
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetDateTime(3));
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetString(4));
+                        listeOeuvreAssocInterv.Add(lecteurOeuvreAssocInterv.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocInterv.Close();
+                return listeOeuvreAssocInterv;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet intervenant.");
             }
         }
     }

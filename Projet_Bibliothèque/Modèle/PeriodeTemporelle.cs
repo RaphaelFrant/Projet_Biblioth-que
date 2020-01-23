@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe PeriodeTemporelle 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 7, le 09/01/2020
-    /// Implémentation des méthodes de récupération de l'Identifiant d'une période temporelle et de création d'une période temporelle</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de la période temporelle et une méthode pour récupérer l'identifiant de la période temporelle</remarks>
     class PeriodeTemporelle : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -210,6 +210,79 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des périodes temporelles.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant de la période temporelle
+        /// </summary>
+        /// <param name="nomPeriod">Récupère le nom de la période temporelle dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant du nom de la période temporelle correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdPeriodTemp(string nomPeriod)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdPeriod = ("select idperiotemp from periode_temporelle where libperiotemp='" + nomPeriod + "'");
+                SqlCommand trouvIdPeriod = new SqlCommand(cmdTrouvIdPeriod, maConnexion);
+                SqlDataReader lecteurTrouvIdPeriod = trouvIdPeriod.ExecuteReader();
+                if (lecteurTrouvIdPeriod.HasRows)
+                {
+                    while (lecteurTrouvIdPeriod.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdPeriod[0].ToString());
+                    }
+                }
+                lecteurTrouvIdPeriod.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de la nom de la période temporelle sélectionnée.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à la période temporelle indiquée par l'utilisateur
+        /// </summary>
+        /// <param name="numPeriodTempoSelect">Récupère le numéro de la période temporelle sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cette période temporelle</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocPeriodTempo(int numPeriodTempoSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocPeriod = new ArrayList();
+                string cmdOeuvreAssocPeriod = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idperiotemp ='" + numPeriodTempoSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocPeriod = new SqlCommand(cmdOeuvreAssocPeriod, maConnexion);
+                SqlDataReader lecteurOeuvreAssocPeriod = trouvOeuvreAssocPeriod.ExecuteReader();
+                if (lecteurOeuvreAssocPeriod.HasRows)
+                {
+                    while (lecteurOeuvreAssocPeriod.Read())
+                    {
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetString(0));
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetString(1));
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetString(2));
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetDateTime(3));
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetString(4));
+                        listeOeuvreAssocPeriod.Add(lecteurOeuvreAssocPeriod.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocPeriod.Close();
+                return listeOeuvreAssocPeriod;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cette période temporelle.");
             }
         }
     }

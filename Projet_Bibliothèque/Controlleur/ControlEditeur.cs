@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Editeur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2020
-    /// Implémentation des contrôles pour récupérer l'identifiant d'un éditeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'éditeur</remarks>
     class ControlEditeur
     {
         /// <summary>
@@ -94,6 +94,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'éditeur");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupéré la liste des oeuvres associés à l'éditeur sélectionné
+        /// </summary>
+        /// <param name="numEditeurChoisi">Récupère l'identifiant de l'éditeur sélectionné</param>
+        /// <returns>Retourne une ArrayList avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
+        public static ArrayList TrouvOeuvreAssocEdit(int numEditeurChoisi)
+        {
+            try
+            {
+                return Editeur.RecupOeuvreAssocEdit(numEditeurChoisi);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés ");
             }
         }
     }

@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Imprimeur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2019
-    /// Implémentation de la méthode de récupération de l'identifiant d'un imprimeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'imprimeur</remarks>
     class Imprimeur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -309,6 +309,48 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'imprimeur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'imprimeur indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numImprSelect">Récupère le numéro de l'imprimeur sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet imprimeur</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocImprimeur(int numImprSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocImpr = new ArrayList();
+                string cmdOeuvreAssocImpr = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idimprim ='" + numImprSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocImpr = new SqlCommand(cmdOeuvreAssocImpr, maConnexion);
+                SqlDataReader lecteurOeuvreAssocImpr = trouvOeuvreAssocImpr.ExecuteReader();
+                if (lecteurOeuvreAssocImpr.HasRows)
+                {
+                    while (lecteurOeuvreAssocImpr.Read())
+                    {
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetString(0));
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetString(1));
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetString(2));
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetDateTime(3));
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetString(4));
+                        listeOeuvreAssocImpr.Add(lecteurOeuvreAssocImpr.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocImpr.Close();
+                return listeOeuvreAssocImpr;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet imprimeur.");
             }
         }
     }

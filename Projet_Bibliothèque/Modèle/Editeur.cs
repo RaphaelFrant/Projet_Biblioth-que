@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Editeur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2019
-    /// Implémentation de la méthode de récupération de l'identifiant d'un éditeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'éditeur</remarks>
     class Editeur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -331,6 +331,48 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'éditeur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'éditeur indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numEditeurSelect">Récupère le numéro de l'éditeur sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet éditeur</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocEdit(int numEditeurSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocEdit = new ArrayList();
+                string cmdOeuvreAssocEdit = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idedit ='" + numEditeurSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocEdit = new SqlCommand(cmdOeuvreAssocEdit, maConnexion);
+                SqlDataReader lecteurOeuvreAssocEdit = trouvOeuvreAssocEdit.ExecuteReader();
+                if (lecteurOeuvreAssocEdit.HasRows)
+                {
+                    while (lecteurOeuvreAssocEdit.Read())
+                    {
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetString(0));
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetString(1));
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetString(2));
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetDateTime(3));
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetString(4));
+                        listeOeuvreAssocEdit.Add(lecteurOeuvreAssocEdit.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocEdit.Close();
+                return listeOeuvreAssocEdit;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet éditeur.");
             }
         }
     }

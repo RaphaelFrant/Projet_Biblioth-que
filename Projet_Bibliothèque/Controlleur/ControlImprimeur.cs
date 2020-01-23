@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Imprimeur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 10, le 13/01/2020
-    /// Implémentation des contrôles pour récupérer l'identifiant d'un imprimeur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'imprimeur</remarks>
     class ControlImprimeur
     {
         /// <summary>
@@ -92,6 +92,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'imprimeur");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupéré la liste des oeuvres associés à l'imprimeur sélectionné
+        /// </summary>
+        /// <param name="numImprimeurChoisi">Récupère l'identifiant de l'imprimeur sélectionné</param>
+        /// <returns>Retourne une ArrayList avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
+        public static ArrayList TrouvOeuvreAssocImpr(int numImprimeurChoisi)
+        {
+            try
+            {
+                return Imprimeur.RecupOeuvreAssocImprimeur(numImprimeurChoisi);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à l'imprimeur");
             }
         }
     }

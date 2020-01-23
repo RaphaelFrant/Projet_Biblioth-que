@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Auteur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 12, le 14/01/2020
-    /// Implémentation du contrôle pour récupérer l'identifiant d'un auteur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'auteur</remarks>
     class ControlAuteur
     {
         /// <summary>
@@ -96,6 +96,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'auteur");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupéré la liste des oeuvres associés à l'auteur sélectionné
+        /// </summary>
+        /// <param name="numAutChoisi">Récupère l'identifiant de l'auteur sélectionné</param>
+        /// <returns>Retourne une ArrayList avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
+        public static ArrayList TrouvOeuvreAssocAut(int numAutChoisi)
+        {
+            try
+            {
+                return Auteur.RecupOeuvreAssocAut(numAutChoisi);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associées à l'auteur.");
             }
         }
     }

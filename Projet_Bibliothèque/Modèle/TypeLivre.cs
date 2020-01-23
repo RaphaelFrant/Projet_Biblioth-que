@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe TypeLivre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 9, le 13/01/2020
-    /// Implémentation des méthodes de récupération de l'Identifiant d'un type de livre et de sa création</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction du type de livre</remarks>
     class TypeLivre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -178,6 +179,79 @@ namespace Projet_Bibliothèque.Modèle
             catch (Exception ex)
             {
                 throw new Exception("Impossible de récupérer le nom du type de livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant du type de livre
+        /// </summary>
+        /// <param name="nomTypeLiv">Récupère le nom du type de livre dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant du type de livre correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdTypeLivre(string nomTypeLiv)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdTypeLiv = ("select idtypeliv from type_de_livre where libtypeliv='" + nomTypeLiv + "'");
+                SqlCommand trouvIdTypeLiv = new SqlCommand(cmdTrouvIdTypeLiv, maConnexion);
+                SqlDataReader lecteurTrouvIdTypeLiv = trouvIdTypeLiv.ExecuteReader();
+                if (lecteurTrouvIdTypeLiv.HasRows)
+                {
+                    while (lecteurTrouvIdTypeLiv.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdTypeLiv[0].ToString());
+                    }
+                }
+                lecteurTrouvIdTypeLiv.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant du type de livre sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés au type de livre indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numTypeLivSelect">Récupère le numéro ddu type de livre sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à ce type de livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocTypeLivre(int numTypeLivSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocTypeLiv = new ArrayList();
+                string cmdOeuvreAssocTypeLiv = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idtypeliv ='" + numTypeLivSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocTypeLiv = new SqlCommand(cmdOeuvreAssocTypeLiv, maConnexion);
+                SqlDataReader lecteurOeuvreAssocTypeLiv = trouvOeuvreAssocTypeLiv.ExecuteReader();
+                if (lecteurOeuvreAssocTypeLiv.HasRows)
+                {
+                    while (lecteurOeuvreAssocTypeLiv.Read())
+                    {
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetString(0));
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetString(1));
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetString(2));
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetDateTime(3));
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetString(4));
+                        listeOeuvreAssocTypeLiv.Add(lecteurOeuvreAssocTypeLiv.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocTypeLiv.Close();
+                return listeOeuvreAssocTypeLiv;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à ce type de livre.");
             }
         }
     }

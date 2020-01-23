@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Auteur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 11, le 14/01/2020
-    /// Implémentation de la méthode de récupération de l'identifiant d'un auteur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de l'auteur</remarks>
     class Auteur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -346,6 +346,48 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer l'identifiant de l'auteur sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'auteur indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="numAutSelect">Récupère le numéro de l'auteur sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet auteur</returns>
+        /// <exception cref="">Renvoie ue erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocAut(int numAutSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocAut = new ArrayList();
+                string cmdOeuvreAssocAut = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where Aut.idaut ='" + numAutSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocAut = new SqlCommand(cmdOeuvreAssocAut, maConnexion);
+                SqlDataReader lecteurOeuvreAssocAut = trouvOeuvreAssocAut.ExecuteReader();
+                if (lecteurOeuvreAssocAut.HasRows)
+                {
+                    while (lecteurOeuvreAssocAut.Read())
+                    {
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetString(0));
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetString(1));
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetString(2));
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetDateTime(3));
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetString(4));
+                        listeOeuvreAssocAut.Add(lecteurOeuvreAssocAut.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocAut.Close();
+                return listeOeuvreAssocAut;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet auteur.");
             }
         }
     }
