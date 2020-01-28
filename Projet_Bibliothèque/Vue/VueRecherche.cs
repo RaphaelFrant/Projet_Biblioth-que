@@ -17,8 +17,8 @@ namespace Projet_Bibliothèque.Vue
     /// 
     /// Cette vue permet à l'utilisateur d'effectuer une recherche dans sa base de données en fonction des informations qu'il a entré 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de l'auteur, de l'éditeur, de l'imprimeur, de la période temporelle, du type de livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de la série de livre et d'un titre</remarks>
     public partial class VueRecherche : Form
     {
         public VueRecherche()
@@ -62,8 +62,7 @@ namespace Projet_Bibliothèque.Vue
             }
             else if (sujetChoisi == "Auteur")
             {
-                int numAutRecherche = ControlAuteur.RecupIdAuteur(txtContRecherche.Text);
-                listeOeuvre = ControlAuteur.TrouvOeuvreAssocAut(numAutRecherche);
+                listeOeuvre = ControlAuteur.TrouvOeuvreAssocAut(txtContRecherche.Text);
                 for (int cursAuteur = 0; cursAuteur < listeOeuvre.Count; cursAuteur++)
                 {
                     dtGridRecherche.Rows.Add(listeOeuvre[cursAuteur], listeOeuvre[cursAuteur + 1], listeOeuvre[cursAuteur + 2], listeOeuvre[cursAuteur + 3],
@@ -73,8 +72,7 @@ namespace Projet_Bibliothèque.Vue
             }
             else if(sujetChoisi == "Editeur")
             {
-                int numEditRecherche = ControlEditeur.RecupIdEditeur(txtContRecherche.Text);
-                listeOeuvre = ControlEditeur.TrouvOeuvreAssocEdit(numEditRecherche);
+                listeOeuvre = ControlEditeur.TrouvOeuvreAssocEdit(txtContRecherche.Text);
                 for (int cursEditeur = 0; cursEditeur < listeOeuvre.Count; cursEditeur++)
                 {
                     dtGridRecherche.Rows.Add(listeOeuvre[cursEditeur], listeOeuvre[cursEditeur + 1], listeOeuvre[cursEditeur + 2], listeOeuvre[cursEditeur + 3],
@@ -84,8 +82,7 @@ namespace Projet_Bibliothèque.Vue
             }
             else if(sujetChoisi == "Imprimeur")
             {
-                int numImprRecherche = ControlImprimeur.RecupIdImprimeur(txtContRecherche.Text);
-                listeOeuvre = ControlImprimeur.TrouvOeuvreAssocImpr(numImprRecherche);
+                listeOeuvre = ControlImprimeur.TrouvOeuvreAssocImpr(txtContRecherche.Text);
                 for (int cursImpr = 0; cursImpr < listeOeuvre.Count; cursImpr++)
                 {
                     dtGridRecherche.Rows.Add(listeOeuvre[cursImpr], listeOeuvre[cursImpr + 1], listeOeuvre[cursImpr + 2], listeOeuvre[cursImpr + 3],
@@ -95,8 +92,7 @@ namespace Projet_Bibliothèque.Vue
             }
             else if(sujetChoisi == "Intervenant_Divers")
             {
-                int numIntervRecherche = ControlIntervDivers.RetrouvIdIntervenant(txtContRecherche.Text);
-                listeOeuvre = ControlIntervDivers.TrouvOeuvreAssocInterv(numIntervRecherche);
+                listeOeuvre = ControlIntervDivers.TrouvOeuvreAssocInterv(txtContRecherche.Text);
                 for (int cursInterv = 0; cursInterv < listeOeuvre.Count; cursInterv++)
                 {
                     dtGridRecherche.Rows.Add(listeOeuvre[cursInterv], listeOeuvre[cursInterv + 1], listeOeuvre[cursInterv + 2], listeOeuvre[cursInterv + 3],
@@ -124,6 +120,27 @@ namespace Projet_Bibliothèque.Vue
                     dtGridRecherche.Rows.Add(listeOeuvre[cursTypeLiv], listeOeuvre[cursTypeLiv + 1], listeOeuvre[cursTypeLiv + 2], listeOeuvre[cursTypeLiv + 3],
                         listeOeuvre[cursTypeLiv + 4], listeOeuvre[cursTypeLiv + 5]);
                     cursTypeLiv += 5;
+                }
+            }
+            else if (sujetChoisi == "Serie_de_livre")
+            {
+                int numSerieLivRecherche = ControlSerie.RecupIdSerieLiv(txtContRecherche.Text);
+                listeOeuvre = ControlSerie.TrouvOeuvreAssocSerieLiv(numSerieLivRecherche);
+                for (int cursSerieLiv = 0; cursSerieLiv < listeOeuvre.Count; cursSerieLiv++)
+                {
+                    dtGridRecherche.Rows.Add(listeOeuvre[cursSerieLiv], listeOeuvre[cursSerieLiv + 1], listeOeuvre[cursSerieLiv + 2], listeOeuvre[cursSerieLiv + 3],
+                        listeOeuvre[cursSerieLiv + 4], listeOeuvre[cursSerieLiv + 5]);
+                    cursSerieLiv += 5;
+                }
+            }
+            else if (sujetChoisi == "Livre")
+            {
+                listeOeuvre = ControlLivre.TrouvOeuvreAssocLivre(txtContRecherche.Text);
+                for (int cursLivre = 0; cursLivre < listeOeuvre.Count; cursLivre++)
+                {
+                    dtGridRecherche.Rows.Add(listeOeuvre[cursLivre], listeOeuvre[cursLivre + 1], listeOeuvre[cursLivre + 2], listeOeuvre[cursLivre + 3],
+                        listeOeuvre[cursLivre + 4], listeOeuvre[cursLivre + 5]);
+                    cursLivre += 5;
                 }
             }
             dtGridRecherche.AutoResizeColumns();

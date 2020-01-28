@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Livre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
-    /// Implémentation de la méthode de suppression d'un livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
+    /// Implémentation de la méthode de recherche d'un livre en fonction d'un titre</remarks>
     class Livre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -384,6 +385,48 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de supprimer le livre sélectionné.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés au titre indiqué par l'utilisateur
+        /// </summary>
+        /// <param name="chaineLivre">Récupère la chaine entré par l'auteur comme titre de livre</param>
+        /// <returns>Retourne la liste des oeuvres qui correspondent à la chaine entrée</returns>
+        /// <exception cref="">Renvoie une exception si la requête n'a pas pu aboutir et que la liste n'a pas pu être récupéré</exception>
+        public static ArrayList RecupOeuvreAssocLivre(string chaineLivre)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocLivre = new ArrayList();
+                string cmdOeuvreAssocLivre = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.libliv like '%" + chaineLivre + "%' order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocLivre = new SqlCommand(cmdOeuvreAssocLivre, maConnexion);
+                SqlDataReader lecteurOeuvreAssocLivre = trouvOeuvreAssocLivre.ExecuteReader();
+                if (lecteurOeuvreAssocLivre.HasRows)
+                {
+                    while (lecteurOeuvreAssocLivre.Read())
+                    {
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetString(0));
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetString(1));
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetString(2));
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetDateTime(3));
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetString(4));
+                        listeOeuvreAssocLivre.Add(lecteurOeuvreAssocLivre.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocLivre.Close();
+                return listeOeuvreAssocLivre;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet intitulé de livre.");
             }
         }
     }

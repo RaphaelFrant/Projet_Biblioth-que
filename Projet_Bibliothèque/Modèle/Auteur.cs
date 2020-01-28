@@ -352,10 +352,10 @@ namespace Projet_Bibliothèque.Modèle
         /// <summary>
         /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'auteur indiqué par l'utilisateur
         /// </summary>
-        /// <param name="numAutSelect">Récupère le numéro de l'auteur sélectionné par l'utilisateur</param>
+        /// <param name="chaineAutSelect">Récupère la chaine de caractère indiqué par l'utilisateur et lié à un auteur</param>
         /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet auteur</returns>
         /// <exception cref="">Renvoie ue erreur si la liste n'a pas pu être récupérée</exception>
-        public static ArrayList RecupOeuvreAssocAut(int numAutSelect)
+        public static ArrayList RecupOeuvreAssocAut(string chaineAutSelect)
         {
             try
             {
@@ -367,7 +367,8 @@ namespace Projet_Bibliothèque.Modèle
                     "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
                     "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
                     "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
-                    "where Aut.idaut ='" + numAutSelect + "'order by L.libliv asc");
+                    "where Aut.nomaut like '%" + chaineAutSelect + "%' or Aut.prenomaut like '%" + chaineAutSelect + "%' or concat(nomaut, ' ', prenomaut) like '%" + chaineAutSelect + "%'" +
+                    "order by L.libliv asc");
                 SqlCommand trouvOeuvreAssocAut = new SqlCommand(cmdOeuvreAssocAut, maConnexion);
                 SqlDataReader lecteurOeuvreAssocAut = trouvOeuvreAssocAut.ExecuteReader();
                 if (lecteurOeuvreAssocAut.HasRows)

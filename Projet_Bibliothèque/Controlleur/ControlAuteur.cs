@@ -102,14 +102,14 @@ namespace Projet_Bibliothèque.Controlleur
         /// <summary>
         /// Méthode permettant de récupéré la liste des oeuvres associés à l'auteur sélectionné
         /// </summary>
-        /// <param name="numAutChoisi">Récupère l'identifiant de l'auteur sélectionné</param>
+        /// <param name="chaineAut">Récupère la chaine de caractères entrées par l'utilisateur pour l'auteur</param>
         /// <returns>Retourne une ArrayList avec les informations du livre</returns>
         /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
-        public static ArrayList TrouvOeuvreAssocAut(int numAutChoisi)
+        public static ArrayList TrouvOeuvreAssocAut(string chaineAut)
         {
             try
             {
-                return Auteur.RecupOeuvreAssocAut(numAutChoisi);
+                return Auteur.RecupOeuvreAssocAut(chaineAut);
             }
             catch
             {

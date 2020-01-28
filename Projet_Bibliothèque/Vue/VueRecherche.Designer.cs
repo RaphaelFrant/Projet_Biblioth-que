@@ -87,12 +87,10 @@
             this.cmboxChoixRubrique.Items.AddRange(new object[] {
             "Auteur",
             "Editeur",
-            "Fonction",
             "Genre_Litteraire",
             "Imprimeur",
             "Intervenant_Divers",
             "Livre",
-            "Pays",
             "Periode_Temporelle",
             "Serie_de_livre",
             "Type_de_livre"});

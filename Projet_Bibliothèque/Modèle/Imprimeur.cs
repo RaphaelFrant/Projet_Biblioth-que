@@ -315,10 +315,10 @@ namespace Projet_Bibliothèque.Modèle
         /// <summary>
         /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'imprimeur indiqué par l'utilisateur
         /// </summary>
-        /// <param name="numImprSelect">Récupère le numéro de l'imprimeur sélectionné par l'utilisateur</param>
+        /// <param name="nomImprSelect">Récupère la chaine indiquée par l'utilisateur lié à un imprimeur</param>
         /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet imprimeur</returns>
         /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
-        public static ArrayList RecupOeuvreAssocImprimeur(int numImprSelect)
+        public static ArrayList RecupOeuvreAssocImprimeur(string nomImprSelect)
         {
             try
             {
@@ -330,7 +330,7 @@ namespace Projet_Bibliothèque.Modèle
                     "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
                     "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
                     "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
-                    "where L.idimprim ='" + numImprSelect + "'order by L.libliv asc");
+                    "where Impr.nomimprim like '%" + nomImprSelect + "%'order by L.libliv asc");
                 SqlCommand trouvOeuvreAssocImpr = new SqlCommand(cmdOeuvreAssocImpr, maConnexion);
                 SqlDataReader lecteurOeuvreAssocImpr = trouvOeuvreAssocImpr.ExecuteReader();
                 if (lecteurOeuvreAssocImpr.HasRows)

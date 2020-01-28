@@ -98,14 +98,14 @@ namespace Projet_Bibliothèque.Controlleur
         /// <summary>
         /// Méthode permettant de récupéré la liste des oeuvres associés à l'imprimeur sélectionné
         /// </summary>
-        /// <param name="numImprimeurChoisi">Récupère l'identifiant de l'imprimeur sélectionné</param>
+        /// <param name="nomImprimEntr">Récupère une chaine de caractère entrée par l'utilisateur pour la recherche d'un imprimeur</param>
         /// <returns>Retourne une ArrayList avec les informations du livre</returns>
         /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
-        public static ArrayList TrouvOeuvreAssocImpr(int numImprimeurChoisi)
+        public static ArrayList TrouvOeuvreAssocImpr(string nomImprimEntr)
         {
             try
             {
-                return Imprimeur.RecupOeuvreAssocImprimeur(numImprimeurChoisi);
+                return Imprimeur.RecupOeuvreAssocImprimeur(nomImprimEntr);
             }
             catch
             {

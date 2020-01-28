@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe SérieLivre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 9, le 13/01/2020
-    /// Implémentation des méthodes de récupération de l'Identifiant d'une série de livre et de sa création</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
+    /// Implémentation de la méthode de recherche de livre en fonction de la série de livre</remarks>
     class SerieLivre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -177,6 +178,79 @@ namespace Projet_Bibliothèque.Modèle
             catch (Exception ex)
             {
                 throw new Exception("Impossible de récupérer le nom de la série de livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer l'identifiant d'une série de livre
+        /// </summary>
+        /// <param name="titreSerie">Récupère le nom de la série de livre dont on veut récupérer l'identifiant</param>
+        /// <returns>Retourne l'identifiant de la série de livre correspondant au nom entré</returns>
+        /// <exception cref="">Renvoie une exception si l'identifiant n'a pas pu être récupéré</exception>
+        public static int RecupIdSerie(string titreSerie)
+        {
+            try
+            {
+                Connection();
+                int idTrouve = 0;
+                string cmdTrouvIdSerie = ("select idserieliv from serie_de_livre where libserieliv='" + titreSerie + "'");
+                SqlCommand trouvIdSerie = new SqlCommand(cmdTrouvIdSerie, maConnexion);
+                SqlDataReader lecteurTrouvIdSerie = trouvIdSerie.ExecuteReader();
+                if (lecteurTrouvIdSerie.HasRows)
+                {
+                    while (lecteurTrouvIdSerie.Read())
+                    {
+                        idTrouve = int.Parse(lecteurTrouvIdSerie[0].ToString());
+                    }
+                }
+                lecteurTrouvIdSerie.Close();
+                return idTrouve;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer l'identifiant de la série de livre sélectionnée.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à la série de livre indiquée par l'utilisateur
+        /// </summary>
+        /// <param name="numSerieSelect">Récupère le numéro de la série de livre sélectionné par l'utilisateur</param>
+        /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cette série de livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupOeuvreAssocSerie(int numSerieSelect)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeOeuvreAssocSerie = new ArrayList();
+                string cmdOeuvreAssocSerie = ("select L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L  " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.idserieliv ='" + numSerieSelect + "'order by L.libliv asc");
+                SqlCommand trouvOeuvreAssocSerie = new SqlCommand(cmdOeuvreAssocSerie, maConnexion);
+                SqlDataReader lecteurOeuvreAssocSerie = trouvOeuvreAssocSerie.ExecuteReader();
+                if (lecteurOeuvreAssocSerie.HasRows)
+                {
+                    while (lecteurOeuvreAssocSerie.Read())
+                    {
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetString(0));
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetString(1));
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetString(2));
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetDateTime(3));
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetString(4));
+                        listeOeuvreAssocSerie.Add(lecteurOeuvreAssocSerie.GetString(5));
+                    }
+                }
+                lecteurOeuvreAssocSerie.Close();
+                return listeOeuvreAssocSerie;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à cette série de livre.");
             }
         }
     }

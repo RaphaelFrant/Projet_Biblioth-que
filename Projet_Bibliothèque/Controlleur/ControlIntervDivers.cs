@@ -104,14 +104,14 @@ namespace Projet_Bibliothèque.Controlleur
         /// <summary>
         /// Méthode permettant de récupéré la liste des oeuvres associés à l'intervenant sélectionné
         /// </summary>
-        /// <param name="numIntervChoisi">Récupère l'identifiant de l'intervenant sélectionné</param>
+        /// <param name="chaineIntervEntr">Récupère la chaine entrée par l'utilisateur en lien avec un intervenant</param>
         /// <returns>Retourne une ArrayList avec les informations du livre</returns>
         /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
-        public static ArrayList TrouvOeuvreAssocInterv(int numIntervChoisi)
+        public static ArrayList TrouvOeuvreAssocInterv(string chaineIntervEntr)
         {
             try
             {
-                return IntervenantDivers.RecupOeuvreAssocInterv(numIntervChoisi);
+                return IntervenantDivers.RecupOeuvreAssocInterv(chaineIntervEntr);
             }
             catch
             {

@@ -100,14 +100,14 @@ namespace Projet_Bibliothèque.Controlleur
         /// <summary>
         /// Méthode permettant de récupéré la liste des oeuvres associés à l'éditeur sélectionné
         /// </summary>
-        /// <param name="numEditeurChoisi">Récupère l'identifiant de l'éditeur sélectionné</param>
+        /// <param name="nomEditeurChoisi">Récupère une chaine de caractère sélectionnée par l'utilisateur</param>
         /// <returns>Retourne une ArrayList avec les informations du livre</returns>
         /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
-        public static ArrayList TrouvOeuvreAssocEdit(int numEditeurChoisi)
+        public static ArrayList TrouvOeuvreAssocEdit(string nomEditeurChoisi)
         {
             try
             {
-                return Editeur.RecupOeuvreAssocEdit(numEditeurChoisi);
+                return Editeur.RecupOeuvreAssocEdit(nomEditeurChoisi);
             }
             catch
             {

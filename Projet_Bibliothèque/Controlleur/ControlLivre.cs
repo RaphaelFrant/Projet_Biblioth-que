@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Livre
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 14, le 22/01/2020
-    /// Implémentation de la méthode de suppression d'un livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
+    /// mplémentation de la méthode de recherche d'un livre en fonction d'un titre</remarks>
     class ControlLivre
     {
         /// <summary>
@@ -63,6 +63,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible d'envoyer la chaine au Modèle pour supprimer le livre sélectionné");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupéré la liste des oeuvres associés à un titre de livre sélectionné
+        /// </summary>
+        /// <param name="chaineTitreChoisi">Récupère l'identifiant du livre indiqué</param>
+        /// <returns>Retourne une ArrayList avec les informations des oeuvres récupérées</returns>
+        /// <exception cref="">Renvoie une erreur si la liste ne peut pas être récupéré</exception>
+        public static ArrayList TrouvOeuvreAssocLivre(string chaineTitreChoisi)
+        {
+            try
+            {
+                return Livre.RecupOeuvreAssocLivre(chaineTitreChoisi);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres associés à un titre de livre");
             }
         }
     }

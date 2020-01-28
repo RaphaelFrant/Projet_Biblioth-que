@@ -335,12 +335,12 @@ namespace Projet_Bibliothèque.Modèle
         }
 
         /// <summary>
-        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'éditeur indiqué par l'utilisateur
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'éditeur indiquée par l'utilisateur
         /// </summary>
-        /// <param name="numEditeurSelect">Récupère le numéro de l'éditeur sélectionné par l'utilisateur</param>
+        /// <param name="nomEditeurSelect">Récupère une chaine de caractère entrée par l'utilisateur</param>
         /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet éditeur</returns>
         /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
-        public static ArrayList RecupOeuvreAssocEdit(int numEditeurSelect)
+        public static ArrayList RecupOeuvreAssocEdit(string nomEditeurSelect)
         {
             try
             {
@@ -352,7 +352,7 @@ namespace Projet_Bibliothèque.Modèle
                     "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
                     "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
                     "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
-                    "where L.idedit ='" + numEditeurSelect + "'order by L.libliv asc");
+                    "where Edit.nomedit like '%" + nomEditeurSelect + "%'order by L.libliv asc");
                 SqlCommand trouvOeuvreAssocEdit = new SqlCommand(cmdOeuvreAssocEdit, maConnexion);
                 SqlDataReader lecteurOeuvreAssocEdit = trouvOeuvreAssocEdit.ExecuteReader();
                 if (lecteurOeuvreAssocEdit.HasRows)

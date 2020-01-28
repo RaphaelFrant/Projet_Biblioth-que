@@ -406,10 +406,10 @@ namespace Projet_Bibliothèque.Modèle
         /// <summary>
         /// Méthode permettant de récupérer la liste des oeuvres qui sont associés à l'intervenant indiqué par l'utilisateur
         /// </summary>
-        /// <param name="numIntervSelect">Récupère le numéro de l'intervenant sélectionné par l'utilisateur</param>
+        /// <param name="nomIntervSelect">Récupère une chaine de caractère entrée par l'utilisateur en lien avec un intervenant</param>
         /// <returns>Retourne une ArrayList contenant toutes les oeuvres associées à cet intervenant</returns>
         /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
-        public static ArrayList RecupOeuvreAssocInterv(int numIntervSelect)
+        public static ArrayList RecupOeuvreAssocInterv(string nomIntervSelect)
         {
             try
             {
@@ -423,7 +423,7 @@ namespace Projet_Bibliothèque.Modèle
                     "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
                     "inner join Intervenir as I on I.NUMISBN = L.NUMISBN " +
                     "inner join INTERVENANT_DIVERS as Interv on Interv.IDINTERV = I.IDINTERV " +
-                    "where Interv.IDINTERV = '" + numIntervSelect + "' " +
+                    "where Interv.nominterv like '%" + nomIntervSelect + "%' or Interv.prenominterv like '%" + nomIntervSelect + "%' or concat(nominterv, ' ', prenominterv) like '%" + nomIntervSelect + "%'" +
                     "order by L.libliv asc");
                 SqlCommand trouvOeuvreAssocInterv = new SqlCommand(cmdOeuvreAssocInterv, maConnexion);
                 SqlDataReader lecteurOeuvreAssocInterv = trouvOeuvreAssocInterv.ExecuteReader();
