@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Auteur 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de l'auteur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode permettant de récupérer la liste des auteurs pour un livre</remarks>
     class Auteur : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -389,6 +389,40 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet auteur.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des auteurs pour un livre précis
+        /// </summary>
+        /// <param name="codeIsbn">Récupère le numéro ISBN du livre</param>
+        /// <returns>Retourne la liste des auteurs ayant participé à l'écriture du livre</returns>
+        /// <exception cref="">Renvoie une exception si la liste n'a pas pu être créée</exception>
+        public static ArrayList RecupAuteurLivre(string codeIsbn)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeAut = new ArrayList();
+                string cmdAutLivre = "select (Aut.NOMAUT + ' ' + Aut.PRENOMAUT) from auteur as Aut " +
+                    "inner join Ecrire as Ecr on Ecr.IDAUT = Aut.IDAUT " +
+                    "inner join Livre as L on L.NUMISBN = Ecr.NUMISBN " +
+                    "where L.NUMISBN = '" + codeIsbn + "'";
+                SqlCommand trouvAutLivre = new SqlCommand(cmdAutLivre, maConnexion);
+                SqlDataReader lecteurAutLivre = trouvAutLivre.ExecuteReader();
+                if (lecteurAutLivre.HasRows)
+                {
+                    while (lecteurAutLivre.Read())
+                    {
+                        listeAut.Add(lecteurAutLivre.GetString(0));
+                    }
+                }
+                lecteurAutLivre.Close();
+                return listeAut;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des auteurs pour un livre donné");
             }
         }
     }

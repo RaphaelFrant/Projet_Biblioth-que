@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe IntervenantDivers 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de l'intervenant indiqué</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode pour récupérer la liste des intervenants pour un livre précis</remarks>
     class IntervenantDivers : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -445,6 +445,40 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet intervenant.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des intervenants pour un livre précis
+        /// </summary>
+        /// <param name="codeIsbn">Récupère le numéro ISBN du livre</param>
+        /// <returns>Retourne la liste des intervenants ayant participé à l'écriture du livre</returns>
+        /// <exception cref="">Renvoie une exception si la liste n'a pas pu être créée</exception>
+        public static ArrayList RecupIntervenantLivre(string codeIsbn)
+        {
+            try
+            {
+                Connection();
+                ArrayList listeInterv = new ArrayList();
+                string cmdIntervLivre = "select (IntDiv.NOMINTERV + ' ' + IntDiv.PRENOMINTERV) from INTERVENANT_DIVERS as IntDiv " +
+                    "inner join INTERVENIR as Interv on Interv.IDINTERV = IntDiv.IDINTERV " +
+                    "inner join Livre as L on L.NUMISBN = Interv.NUMISBN " +
+                    "where L.NUMISBN = '" + codeIsbn + "'";
+                SqlCommand trouvIntervLivre = new SqlCommand(cmdIntervLivre, maConnexion);
+                SqlDataReader lecteurIntervLivre = trouvIntervLivre.ExecuteReader();
+                if (lecteurIntervLivre.HasRows)
+                {
+                    while (lecteurIntervLivre.Read())
+                    {
+                        listeInterv.Add(lecteurIntervLivre.GetString(0));
+                    }
+                }
+                lecteurIntervLivre.Close();
+                return listeInterv;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des intervenants pour un livre donné");
             }
         }
     }

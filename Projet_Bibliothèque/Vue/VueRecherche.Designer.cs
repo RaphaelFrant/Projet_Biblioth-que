@@ -176,6 +176,7 @@
             this.btnAfficherLivre.TabIndex = 11;
             this.btnAfficherLivre.Text = "Afficher";
             this.btnAfficherLivre.UseVisualStyleBackColor = true;
+            this.btnAfficherLivre.Click += new System.EventHandler(this.btnAfficherLivre_Click);
             // 
             // VueRecherche
             // 

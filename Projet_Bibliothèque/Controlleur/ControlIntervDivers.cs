@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Intervenant_Divers
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de l'intervenant indiqué</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode pour récupérer la liste des intervenants pour un livre précis</remarks>
     class ControlIntervDivers
     {
         /// <summary>
@@ -116,6 +116,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à un intervenant");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des intervenants ayant participés à la sortie du livre
+        /// </summary>
+        /// <param name="chaineIsbn">Récupère le numéro d'ISBN du livre</param>
+        /// <returns>Retourne une ArrayList avec les noms de tous les intervenants</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupIntervLivre(string chaineIsbn)
+        {
+            try
+            {
+                return IntervenantDivers.RecupIntervenantLivre(chaineIsbn);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des intervenants associés au livre.");
             }
         }
     }

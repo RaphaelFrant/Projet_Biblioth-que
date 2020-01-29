@@ -17,8 +17,8 @@ namespace Projet_Bibliothèque.Vue
     /// 
     /// Cette vue permet à l'utilisateur d'effectuer une recherche dans sa base de données en fonction des informations qu'il a entré 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de la série de livre et d'un titre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode pour afficher un livre</remarks>
     public partial class VueRecherche : Form
     {
         public VueRecherche()
@@ -153,6 +153,16 @@ namespace Projet_Bibliothèque.Vue
             string isbnRecup = dtGridRecherche.Rows[LigneSelectionnee].Cells[0].Value.ToString();
             ControlLivre.SupprLivre(isbnRecup);
             MessageBox.Show("Le livre intitulé '" + dtGridRecherche.Rows[LigneSelectionnee].Cells[1].Value.ToString() + "' a bien été supprimé.");
+        }
+
+        //Bouton permettant d'afficher les informations du livre sélectionné
+        private void btnAfficherLivre_Click(object sender, EventArgs e)
+        {
+            int LigneSelectionnee = dtGridRecherche.CurrentCell.RowIndex;
+            string isbnRecup = dtGridRecherche.Rows[LigneSelectionnee].Cells[0].Value.ToString();
+            this.Hide();
+            VueAfficherLivre livreAAfficher = new VueAfficherLivre(isbnRecup);
+            livreAAfficher.Show();
         }
     }
 }

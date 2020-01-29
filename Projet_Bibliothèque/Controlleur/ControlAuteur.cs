@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Auteur
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 15, le 23/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de l'auteur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 28/01/2020
+    /// Implémentation de la méthode récupération de la liste des auteurs d'un livre</remarks>
     class ControlAuteur
     {
         /// <summary>
@@ -114,6 +114,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associées à l'auteur.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des auteurs ayant participés à la sortie du livre
+        /// </summary>
+        /// <param name="chaineIsbn">Récupère le numéro d'ISBN du livre</param>
+        /// <returns>Retourne une ArrayList avec les noms de tous les auteurs</returns>
+        /// <exception cref="">Renvoie une erreur si la liste n'a pas pu être récupérée</exception>
+        public static ArrayList RecupAutLivre(string chaineIsbn)
+        {
+            try
+            {
+                return Auteur.RecupAuteurLivre(chaineIsbn);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des auteurs associés au livre.");
             }
         }
     }

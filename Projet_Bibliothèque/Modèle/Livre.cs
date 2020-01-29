@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Livre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
-    /// Implémentation de la méthode de recherche d'un livre en fonction d'un titre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode récupération des informations d'un livre pour l'afficher à l'utilisateur</remarks>
     class Livre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -427,6 +427,59 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à cet intitulé de livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des informations concernant le livre choisi par l'utilisateur
+        /// </summary>
+        /// <param name="isbn">Récupère le numéro d'ISBN du livre</param>
+        /// <returns>Retourne une ArrayList avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une erreur si la liste des informations n'a pas pu être récupéré</exception>
+        public static ArrayList AfficherLivre(string isbn)
+        {
+            try
+            {
+                Connection();
+                ArrayList livreAff = new ArrayList();
+                string cmdLivreARecup = "select L.NUMISBN, L.libliv, L.LIBORIGLIV, L.PRIXLIV, L.DATEACHAT, L.LANGUELIV, L.DEPLEGLIV, L.NBPAGELIV, L.ETATLECTURE, Genr.LIBGENRE, " +
+                    "Perio.LIBPERIOTEMP, typ.LIBTYPELIV, L.RESUMLIV, Edit.NOMEDIT, Impr.NOMIMPRIM " +
+                    "from livre as L " +
+                    "inner join GENRE_LITTERAIRE as Genr on Genr.IDGENRE = L.IDGENRE " +
+                    "inner join PERIODE_TEMPORELLE as Perio on Perio.IDPERIOTEMP = L.IDPERIOTEMP " +
+                    "inner join TYPE_DE_LIVRE as typ on typ.IDTYPELIV = L.IDTYPELIV " +
+                    "inner join Editeur as Edit on Edit.IDEDIT =  L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "where L.NUMISBN = '" + isbn + "'";
+                SqlCommand trouvLivreARecup = new SqlCommand(cmdLivreARecup, maConnexion);
+                SqlDataReader lecteurLivreARecup = trouvLivreARecup.ExecuteReader();
+                if (lecteurLivreARecup.HasRows)
+                {
+                    while (lecteurLivreARecup.Read())
+                    {
+                        livreAff.Add(lecteurLivreARecup.GetString(0));
+                        livreAff.Add(lecteurLivreARecup.GetString(1));
+                        livreAff.Add(lecteurLivreARecup.GetString(2));
+                        livreAff.Add(int.Parse(lecteurLivreARecup[3].ToString()));
+                        livreAff.Add(lecteurLivreARecup.GetDateTime(4));
+                        livreAff.Add(lecteurLivreARecup.GetString(5));
+                        livreAff.Add(lecteurLivreARecup.GetDateTime(6));
+                        livreAff.Add(int.Parse(lecteurLivreARecup[7].ToString()));
+                        livreAff.Add(lecteurLivreARecup.GetString(8));
+                        livreAff.Add(lecteurLivreARecup.GetString(9));
+                        livreAff.Add(lecteurLivreARecup.GetString(10));
+                        livreAff.Add(lecteurLivreARecup.GetString(11));
+                        livreAff.Add(lecteurLivreARecup.GetString(12));
+                        livreAff.Add(lecteurLivreARecup.GetString(13));
+                        livreAff.Add(lecteurLivreARecup.GetString(14));
+                    }
+                }
+                lecteurLivreARecup.Close();
+                return livreAff;
+            }
+            catch
+            {
+                throw new Exception("La liste des informations du livre n'a pas pu être récupéré.");
             }
         }
     }

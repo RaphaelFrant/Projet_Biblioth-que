@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Serie de livre
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
-    /// mplémentation de la méthode de recherche de livre en fonction de la série de livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode permettant de récupérer la série de livre associé à un livre précis</remarks>
     class ControlSerie
     {
         /// <summary>
@@ -69,6 +69,24 @@ namespace Projet_Bibliothèque.Controlleur
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à une série de livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer le nom de la série à laquelle appartient le livre
+        /// </summary>
+        /// <param name="chaineIsbn">Récupère le numéro d'ISBN du livre</param>
+        /// <returns>Retourne le nom de la série correspondante</returns>
+        /// <exception cref="">Renvoie une erreur si le nom de la série n'a pas pu être récupéré n'a pas pu être récupérée</exception>
+        public static string RecupSerieAssocie(string chaineIsbn)
+        {
+            try
+            {
+                return SerieLivre.RecupSerieLivre(chaineIsbn);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer le nom de la série associée au livre.");
             }
         }
     }

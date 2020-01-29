@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe SérieLivre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
-    /// Implémentation de la méthode de recherche de livre en fonction de la série de livre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
+    /// Implémentation de la méthode permettant de récupérer la série de livre associé à un livre précis</remarks>
     class SerieLivre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -251,6 +251,39 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à cette série de livre.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des auteurs pour un livre précis
+        /// </summary>
+        /// <param name="codeIsbn">Récupère le numéro ISBN du livre</param>
+        /// <returns>Retourne le nom de la série auquel appartient le livre</returns>
+        /// <exception cref="">Renvoie une exception si lenom de la série n'a pas pu être récupéré</exception>
+        public static string RecupSerieLivre(string codeIsbn)
+        {
+            try
+            {
+                Connection();
+                string serieAssoc = "";
+                string cmdSerieAssoc = "select Serie.LIBSERIELIV from SERIE_DE_LIVRE as Serie " +
+                    "inner join Livre as L on L.IDSERIELIV = Serie.IDSERIELIV " +
+                    "where L.NUMISBN = '" + codeIsbn + "'";
+                SqlCommand trouvSerieAssoc = new SqlCommand(cmdSerieAssoc, maConnexion);
+                SqlDataReader lecteurSerieAssoc = trouvSerieAssoc.ExecuteReader();
+                if (lecteurSerieAssoc.HasRows)
+                {
+                    while (lecteurSerieAssoc.Read())
+                    {
+                        serieAssoc = lecteurSerieAssoc.GetString(0);
+                    }
+                }
+                lecteurSerieAssoc.Close();
+                return serieAssoc;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer le nom de la série pour un livre donné");
             }
         }
     }

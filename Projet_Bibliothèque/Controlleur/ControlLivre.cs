@@ -83,5 +83,23 @@ namespace Projet_Bibliothèque.Controlleur
                 throw new Exception("Impossible de récupérer la liste des oeuvres associés à un titre de livre");
             }
         }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des informations d'un livre sélectionné pour affichage
+        /// </summary>
+        /// <param name="chaineIsbn">Récupère le numéro d'ISBn du livre</param>
+        /// <returns>Retourne une ArrayListe avec les informations du livre</returns>
+        /// <exception cref="">Renvoie une exception si la chaine est incorrecte ou si la liste des informations n'a pas pu être récupéré</exception>
+        public static ArrayList RecupInfoLivre(string chaineIsbn)
+        {
+            try
+            {
+                return Livre.AfficherLivre(chaineIsbn);
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer les informations du livre sélectionné.");
+            }
+        }
     }
 }
