@@ -150,6 +150,12 @@
     <Compile Include="Vue\VueIntervenantDivers.Designer.cs">
       <DependentUpon>VueIntervenantDivers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vue\VueNouveaute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\VueNouveaute.Designer.cs">
+      <DependentUpon>VueNouveaute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vue\VueRecherche.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueIntervenantDivers.resx">
       <DependentUpon>VueIntervenantDivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\VueNouveaute.resx">
+      <DependentUpon>VueNouveaute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\VueRecherche.resx">
       <DependentUpon>VueRecherche.cs</DependentUpon>

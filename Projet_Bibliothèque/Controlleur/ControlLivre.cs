@@ -11,8 +11,8 @@ namespace Projet_Bibliothèque.Controlleur
     /// <summary>
     /// Controlleur pour les objets en lien avec la classe Livre
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 16, le 28/01/2020
-    /// mplémentation de la méthode de recherche d'un livre en fonction d'un titre</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 18, le 30/01/2020
+    /// Implémentation de la méthode de recherche des livres les plus récemment acquis</remarks>
     class ControlLivre
     {
         /// <summary>

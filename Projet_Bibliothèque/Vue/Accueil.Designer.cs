@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
             this.labGestBiblio = new System.Windows.Forms.Label();
             this.txtPresentGestBiblio = new System.Windows.Forms.RichTextBox();
             this.btnCreaLivre = new System.Windows.Forms.Button();
             this.btnModifLivre = new System.Windows.Forms.Button();
-            this.btnAffLivre = new System.Windows.Forms.Button();
-            this.btnSupprLivre = new System.Windows.Forms.Button();
             this.btnRecherche = new System.Windows.Forms.Button();
             this.btnAuteur = new System.Windows.Forms.Button();
             this.btnEditeur = new System.Windows.Forms.Button();
@@ -41,14 +40,14 @@
             this.btnInterv = new System.Windows.Forms.Button();
             this.labCreaLivre = new System.Windows.Forms.RichTextBox();
             this.labModifLivre = new System.Windows.Forms.RichTextBox();
-            this.txtAffLivre = new System.Windows.Forms.RichTextBox();
-            this.txtSupprLivre = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.txtAuteur = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.txtNouveau = new System.Windows.Forms.RichTextBox();
+            this.btnNouveaute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labGestBiblio
@@ -66,17 +65,16 @@
             this.txtPresentGestBiblio.BackColor = System.Drawing.SystemColors.Menu;
             this.txtPresentGestBiblio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPresentGestBiblio.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPresentGestBiblio.Location = new System.Drawing.Point(28, 79);
+            this.txtPresentGestBiblio.Location = new System.Drawing.Point(28, 100);
             this.txtPresentGestBiblio.Name = "txtPresentGestBiblio";
-            this.txtPresentGestBiblio.Size = new System.Drawing.Size(729, 57);
+            this.txtPresentGestBiblio.Size = new System.Drawing.Size(729, 81);
             this.txtPresentGestBiblio.TabIndex = 1;
-            this.txtPresentGestBiblio.Text = "Maintenant que vous etes dans l\'application, vous pouvez choisir l\'action à effec" +
-    "tuer pour la bonne gestion de votre bibliothèque personnelle. ";
+            this.txtPresentGestBiblio.Text = resources.GetString("txtPresentGestBiblio.Text");
             // 
             // btnCreaLivre
             // 
             this.btnCreaLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreaLivre.Location = new System.Drawing.Point(546, 166);
+            this.btnCreaLivre.Location = new System.Drawing.Point(546, 232);
             this.btnCreaLivre.Name = "btnCreaLivre";
             this.btnCreaLivre.Size = new System.Drawing.Size(158, 46);
             this.btnCreaLivre.TabIndex = 2;
@@ -87,35 +85,13 @@
             // btnModifLivre
             // 
             this.btnModifLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifLivre.Location = new System.Drawing.Point(546, 242);
+            this.btnModifLivre.Location = new System.Drawing.Point(546, 308);
             this.btnModifLivre.Name = "btnModifLivre";
             this.btnModifLivre.Size = new System.Drawing.Size(158, 46);
             this.btnModifLivre.TabIndex = 3;
             this.btnModifLivre.Text = "Modifier un livre";
             this.btnModifLivre.UseVisualStyleBackColor = true;
             this.btnModifLivre.Click += new System.EventHandler(this.btnModifLivre_Click);
-            // 
-            // btnAffLivre
-            // 
-            this.btnAffLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAffLivre.Location = new System.Drawing.Point(546, 313);
-            this.btnAffLivre.Name = "btnAffLivre";
-            this.btnAffLivre.Size = new System.Drawing.Size(158, 46);
-            this.btnAffLivre.TabIndex = 4;
-            this.btnAffLivre.Text = "Afficher un livre";
-            this.btnAffLivre.UseVisualStyleBackColor = true;
-            this.btnAffLivre.Click += new System.EventHandler(this.btnAffLivre_Click);
-            // 
-            // btnSupprLivre
-            // 
-            this.btnSupprLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupprLivre.Location = new System.Drawing.Point(546, 385);
-            this.btnSupprLivre.Name = "btnSupprLivre";
-            this.btnSupprLivre.Size = new System.Drawing.Size(158, 46);
-            this.btnSupprLivre.TabIndex = 5;
-            this.btnSupprLivre.Text = "Supprimer un livre";
-            this.btnSupprLivre.UseVisualStyleBackColor = true;
-            this.btnSupprLivre.Click += new System.EventHandler(this.btnSupprLivre_Click);
             // 
             // btnRecherche
             // 
@@ -177,7 +153,7 @@
             this.labCreaLivre.BackColor = System.Drawing.SystemColors.Menu;
             this.labCreaLivre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.labCreaLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labCreaLivre.Location = new System.Drawing.Point(28, 166);
+            this.labCreaLivre.Location = new System.Drawing.Point(28, 232);
             this.labCreaLivre.Name = "labCreaLivre";
             this.labCreaLivre.Size = new System.Drawing.Size(501, 46);
             this.labCreaLivre.TabIndex = 12;
@@ -189,36 +165,12 @@
             this.labModifLivre.BackColor = System.Drawing.SystemColors.Menu;
             this.labModifLivre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.labModifLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labModifLivre.Location = new System.Drawing.Point(28, 242);
+            this.labModifLivre.Location = new System.Drawing.Point(28, 308);
             this.labModifLivre.Name = "labModifLivre";
             this.labModifLivre.Size = new System.Drawing.Size(501, 46);
             this.labModifLivre.TabIndex = 13;
             this.labModifLivre.Text = "Ce bouton vous permettra d\'accéder à un formulaire qui vous permet de modifier un" +
     " livre présent dans votre catalogue";
-            // 
-            // txtAffLivre
-            // 
-            this.txtAffLivre.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtAffLivre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAffLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAffLivre.Location = new System.Drawing.Point(28, 313);
-            this.txtAffLivre.Name = "txtAffLivre";
-            this.txtAffLivre.Size = new System.Drawing.Size(501, 46);
-            this.txtAffLivre.TabIndex = 14;
-            this.txtAffLivre.Text = "Ce bouton vous permettra d\'accéder à un formulaire qui vous permet d\'afficher un " +
-    "livre existant dans votre catalogue";
-            // 
-            // txtSupprLivre
-            // 
-            this.txtSupprLivre.BackColor = System.Drawing.SystemColors.Menu;
-            this.txtSupprLivre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSupprLivre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupprLivre.Location = new System.Drawing.Point(28, 385);
-            this.txtSupprLivre.Name = "txtSupprLivre";
-            this.txtSupprLivre.Size = new System.Drawing.Size(501, 46);
-            this.txtSupprLivre.TabIndex = 15;
-            this.txtSupprLivre.Text = "Ce bouton vous permettra d\'accéder à un formulaire qui vous permet de supprimer u" +
-    "n livre de votre catalogue";
             // 
             // richTextBox3
             // 
@@ -291,19 +243,42 @@
             this.btnQuitter.UseVisualStyleBackColor = true;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
+            // txtNouveau
+            // 
+            this.txtNouveau.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtNouveau.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNouveau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNouveau.Location = new System.Drawing.Point(29, 386);
+            this.txtNouveau.Name = "txtNouveau";
+            this.txtNouveau.Size = new System.Drawing.Size(500, 42);
+            this.txtNouveau.TabIndex = 22;
+            this.txtNouveau.Text = "Ce bouton vous permettra de visualiser les derniers livres que vous avez ajouter " +
+    "au logiciel";
+            // 
+            // btnNouveaute
+            // 
+            this.btnNouveaute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveaute.Location = new System.Drawing.Point(546, 382);
+            this.btnNouveaute.Name = "btnNouveaute";
+            this.btnNouveaute.Size = new System.Drawing.Size(158, 46);
+            this.btnNouveaute.TabIndex = 23;
+            this.btnNouveaute.Text = "Nouveautés";
+            this.btnNouveaute.UseVisualStyleBackColor = true;
+            this.btnNouveaute.Click += new System.EventHandler(this.btnNouveaute_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 911);
+            this.Controls.Add(this.btnNouveaute);
+            this.Controls.Add(this.txtNouveau);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.txtAuteur);
             this.Controls.Add(this.richTextBox3);
-            this.Controls.Add(this.txtSupprLivre);
-            this.Controls.Add(this.txtAffLivre);
             this.Controls.Add(this.labModifLivre);
             this.Controls.Add(this.labCreaLivre);
             this.Controls.Add(this.btnInterv);
@@ -311,8 +286,6 @@
             this.Controls.Add(this.btnEditeur);
             this.Controls.Add(this.btnAuteur);
             this.Controls.Add(this.btnRecherche);
-            this.Controls.Add(this.btnSupprLivre);
-            this.Controls.Add(this.btnAffLivre);
             this.Controls.Add(this.btnModifLivre);
             this.Controls.Add(this.btnCreaLivre);
             this.Controls.Add(this.txtPresentGestBiblio);
@@ -330,8 +303,6 @@
         private System.Windows.Forms.RichTextBox txtPresentGestBiblio;
         private System.Windows.Forms.Button btnCreaLivre;
         private System.Windows.Forms.Button btnModifLivre;
-        private System.Windows.Forms.Button btnAffLivre;
-        private System.Windows.Forms.Button btnSupprLivre;
         private System.Windows.Forms.Button btnRecherche;
         private System.Windows.Forms.Button btnAuteur;
         private System.Windows.Forms.Button btnEditeur;
@@ -339,13 +310,13 @@
         private System.Windows.Forms.Button btnInterv;
         private System.Windows.Forms.RichTextBox labCreaLivre;
         private System.Windows.Forms.RichTextBox labModifLivre;
-        private System.Windows.Forms.RichTextBox txtAffLivre;
-        private System.Windows.Forms.RichTextBox txtSupprLivre;
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox txtAuteur;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.RichTextBox txtNouveau;
+        private System.Windows.Forms.Button btnNouveaute;
     }
 }

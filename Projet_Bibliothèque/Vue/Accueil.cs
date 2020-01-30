@@ -10,6 +10,13 @@ using System.Windows.Forms;
 
 namespace Projet_Bibliothèque.Vue
 {
+    /// <summary>
+    /// Vue Accueil
+    /// 
+    /// Cette vue est la première que l'utilisateur voit et celle qui lui permet de s'orienter dans l'application
+    /// </summary>
+    /// <remarks>Auteur Raphaël Frantzen, Version 18, le 30/01/2020
+    /// Implémentation de la méthode de recherche des livres les plus récemment acquis à travers le bouton "Nouveauté"</remarks>
     public partial class Accueil : Form
     {
         public Accueil()
@@ -73,26 +80,18 @@ namespace Projet_Bibliothèque.Vue
             pageChoixModifLivre.Show();
         }
 
-        //Bouton permettant d'appeler la vue pour afficher un livre
-        private void btnAffLivre_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            VueChoixLivre pageChoixAffLivre = new VueChoixLivre();
-            pageChoixAffLivre.Show();
-        }
-
-        //Bouton permettant d'appeler la vue pour supprimer un livre
-        private void btnSupprLivre_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            VueChoixLivre pageChoixSupprLivre = new VueChoixLivre();
-            pageChoixSupprLivre.Show();
-        }
-
         //Bouton pour fermer l'application
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        //Bouton permettant d'accéder à la vue "Nouveauté" de l'application
+        private void btnNouveaute_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            VueNouveaute pageNouveau = new VueNouveaute();
+            pageNouveau.Show();
         }
     }
 }

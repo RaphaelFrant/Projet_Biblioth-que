@@ -13,8 +13,8 @@ namespace Projet_Bibliothèque.Modèle
     /// 
     /// Ensemble des variables et des méthodes appartenant à la classe Livre 
     /// </summary>
-    /// <remarks>Auteur Raphaël Frantzen, Version 17, le 29/01/2020
-    /// Implémentation de la méthode récupération des informations d'un livre pour l'afficher à l'utilisateur</remarks>
+    /// <remarks>Auteur Raphaël Frantzen, Version 18, le 30/01/2020
+    /// Implémentation de la méthode de recherche des livres les plus récemment acquis</remarks>
     class Livre : ConnexionBase
     {
         //--------------------------------Variable--------------------------------
@@ -480,6 +480,50 @@ namespace Projet_Bibliothèque.Modèle
             catch
             {
                 throw new Exception("La liste des informations du livre n'a pas pu être récupéré.");
+            }
+        }
+
+        /// <summary>
+        /// Méthode permettant de récupérer la liste des oeuvres qui sont les plus récentes
+        /// </summary>
+        /// <param name="chaineLivre">Récupère la chaine entré par l'auteur comme titre de livre</param>
+        /// <returns>Retourne la liste des oeuvres qui correspondent à la chaine entrée</returns>
+        /// <exception cref="">Renvoie une exception si la requête n'a pas pu aboutir et que la liste n'a pas pu être récupéré</exception>
+        public static ArrayList RecupererNouveaute()
+        {
+            try
+            {
+                Connection();
+                ArrayList listeNouveaute = new ArrayList();
+                DateTime dateJour = DateTime.Today;
+                string cmdNouveaute = ("select Top(5) L.numisbn, L.libliv, (Aut.NOMAUT + ' ' + PRENOMAUT) as 'Nom Auteur', L.DEPLEGLIV, Edit.NOMEDIT, Impr.NOMIMPRIM, L.dateachat " +
+                    "from livre as L " +
+                    "inner join Ecrire as Ecr on Ecr.NUMISBN = L.NUMISBN " +
+                    "inner join Auteur as Aut on  Aut.IDAUT = Ecr.IDAUT " +
+                    "inner join Editeur as Edit on Edit.IDEDIT = L.IDEDIT " +
+                    "inner join Imprimeur as Impr on Impr.IDIMPRIM = L.IDIMPRIM " +
+                    "order by year(L.DATEACHAT) desc");
+                SqlCommand trouvNouveaute = new SqlCommand(cmdNouveaute, maConnexion);
+                SqlDataReader lecteurNouveaute = trouvNouveaute.ExecuteReader();
+                if (lecteurNouveaute.HasRows)
+                {
+                    while (lecteurNouveaute.Read())
+                    {
+                        listeNouveaute.Add(lecteurNouveaute.GetString(0));
+                        listeNouveaute.Add(lecteurNouveaute.GetString(1));
+                        listeNouveaute.Add(lecteurNouveaute.GetString(2));
+                        listeNouveaute.Add(lecteurNouveaute.GetDateTime(3));
+                        listeNouveaute.Add(lecteurNouveaute.GetString(4));
+                        listeNouveaute.Add(lecteurNouveaute.GetString(5));
+                        listeNouveaute.Add(lecteurNouveaute.GetDateTime(6));
+                    }
+                }
+                lecteurNouveaute.Close();
+                return listeNouveaute;
+            }
+            catch
+            {
+                throw new Exception("Impossible de récupérer la liste des oeuvres les plus récentes.");
             }
         }
     }
